@@ -7,7 +7,7 @@ LLM ?= 0
 BACKEND ?= claude
 MODEL ?=
 
-.PHONY: help install run run-basic run-qwen run-llama run-phi prepare-scenario test clean
+.PHONY: help install run run-basic run-qwen run-llama run-phi validate-scenario test clean
 
 help:
 	@echo "Targets:"
@@ -17,7 +17,7 @@ help:
 	@echo "  run-qwen          Start with local Ollama backend, Qwen 3 8B"
 	@echo "  run-llama         Start with local Ollama backend, Llama 3.1 8B"
 	@echo "  run-phi           Start with local Ollama backend, Phi-4-mini 3.8B"
-	@echo "  prepare-scenario  Build corpus_summary.yaml for a scenario (S=examples/<name>/)"
+	@echo "  validate-scenario Validate a scenario directory (S=examples/<name>/)"
 	@echo "  test              Run the pytest suite"
 	@echo "  clean             Remove Python bytecode caches"
 
@@ -55,9 +55,9 @@ run-phi: BACKEND := ollama
 run-phi: MODEL := phi4-mini:3.8b
 run-phi: _serve
 
-prepare-scenario:
-	@if [ -z "$(S)" ]; then echo "Usage: make prepare-scenario S=examples/<scenario>/"; exit 2; fi
-	$(PY) -m app.cli.prepare_scenario $(S)
+validate-scenario:
+	@if [ -z "$(S)" ]; then echo "Usage: make validate-scenario S=examples/<scenario>/"; exit 2; fi
+	$(PY) -m app.cli.validate_scenario $(S)
 
 test:
 	$(PY) -m pytest tests/ -q
