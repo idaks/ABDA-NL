@@ -1,0 +1,1574 @@
+/* ── Reset & Variables ────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #f0f1f3;
+  --surface:     #ffffff;
+  --border:      #dde1e6;
+  --text:        #1a1a2e;
+  --text-dim:    #5f6878;
+  --accent:      #2d5aa0;
+  --accent-light:#e8eef7;
+  --tag-accepted:    #1a7a3a;
+  --tag-accepted-bg: #e6f4ea;
+  --tag-rejected:    #a82a2a;
+  --tag-rejected-bg: #fce8e8;
+  --tag-undecided:   #8a6d00;
+  --tag-undecided-bg:#fff8e0;
+  --rule-bg:     #f0f1f3;
+  --suspended-bg:#f0f0f0;
+  --radius:      8px;
+  --shadow:      0 1px 3px rgba(0,0,0,.1);
+  --shadow-lg:   0 2px 6px rgba(0,0,0,.13);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.55;
+  color: var(--text); background: var(--bg);
+  height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+}
+
+/* ── Top Bar ─────────────────────────────────────────── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .5rem 1.1rem; background: var(--surface);
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.topbar-left { display: flex; align-items: center; gap: .5rem; font-size: .86rem; min-width: 0; }
+.topbar-right { display: flex; gap: .35rem; }
+.app-title { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.sep { color: var(--border); }
+.scenario-name { color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.modified-indicator {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: .14rem .45rem;
+  border-radius: 999px;
+  border: 1px solid #d7b46a;
+  background: #fff6dc;
+  color: #6a4b00;
+  font-size: .72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.modified-indicator[hidden] { display: none; }
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .82rem; font-weight: 500;
+  padding: .4rem .9rem; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); cursor: pointer;
+  transition: background .12s, border-color .12s;
+}
+.btn:hover { background: var(--bg); border-color: #bbc0c8; }
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { background: #244a88; }
+.btn-small { font-size: .76rem; padding: .28rem .65rem; }
+
+/* ── LLM-gated elements ──────────────────────────────── */
+/* Hidden when the server reports ABDA_ENABLE_LLM=0 (the default).
+   app.js toggles body.llm-disabled after fetching GET /config. */
+body.llm-disabled .llm-only { display: none !important; }
+body.llm-disabled .left-panel { width: 100%; }
+
+/* ── Two-Panel Layout ────────────────────────────────── */
+.main-area { flex: 1; display: flex; overflow: hidden; }
+
+/* ── Panel Header (shared style) ─────────────────────── */
+.panel-header {
+  font-size: .78rem; font-weight: 600;
+  padding: .5rem .9rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim); text-transform: uppercase;
+  letter-spacing: .04em;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+
+/* ── Left Panel ──────────────────────────────────────── */
+.left-panel {
+  width: 75%; min-width: 400px;
+  display: flex; flex-direction: column;
+  overflow: hidden; background: var(--bg);
+}
+
+/* ── Top Section: Conclusions + Facts ─────────────────── */
+.top-section {
+  display: flex;
+  flex-shrink: 0;
+  height: 35%;
+  min-height: 120px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 3px 8px rgba(0,0,0,.1);
+  position: relative; z-index: 1;
+}
+.conclusions-panel {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+}
+.conclusions-header-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.concl-filters { display: flex; gap: .1rem; }
+.concl-filter {
+  font-size: .68rem; font-weight: 500;
+  padding: .15rem .4rem; border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent; color: var(--text-dim);
+  cursor: pointer; transition: all .12s;
+}
+.concl-filter:hover { background: var(--bg); color: var(--text); }
+.concl-filter.active {
+  background: var(--accent-light); color: var(--accent);
+  font-weight: 600;
+}
+.conclusions-list {
+  flex: 1; overflow-y: auto;
+  padding: .5rem .7rem;
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.facts-panel {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+}
+.facts-header-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.facts-list {
+  flex: 1; overflow-y: auto;
+  padding: .5rem .7rem;
+  display: flex; flex-direction: column; gap: .15rem;
+}
+
+/* ── Conclusion Card ─────────────────────────────────── */
+.conclusion-card {
+  display: flex; align-items: stretch; gap: 0;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .84rem; font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: box-shadow .12s, border-color .12s;
+  overflow: hidden;
+  min-height: 2rem;
+}
+.conclusion-card:hover { box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.conclusion-card.label-changed {
+  animation: conclusion-label-pulse .75s ease-out;
+}
+@keyframes conclusion-label-pulse {
+  0% {
+    box-shadow: 0 0 0 3px rgba(45,90,160,.35), var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  100% {
+    box-shadow: var(--shadow);
+    border-color: var(--border);
+  }
+}
+.conclusion-status-bar {
+  width: 5.5rem; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .64rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em;
+  /* Match the card's inner rounded corners on the left so the coloured
+     border isn't clipped by the card's overflow:hidden at top-left and
+     bottom-left. Right side stays square — it butts up against the label. */
+  border-top-left-radius: calc(var(--radius) - 1px);
+  border-bottom-left-radius: calc(var(--radius) - 1px);
+}
+/* Hue family matches the AF-graph node fills (fillFor() in app.js): blue for
+   accepted, orange for rejected, yellow for undecided. Pattern is light tint
+   bg + dark text + colored border of the same hue. */
+.conclusion-status-bar.status-accepted  { background: #dce8f7; color: #1d4f8c; border: 1px solid #3a7ad0; }
+.conclusion-status-bar.status-rejected  { background: #fae5cf; color: #7a3f10; border: 1px solid #e08a3a; }
+.conclusion-status-bar.status-undecided { background: #fbf1c8; color: #5a4500; border: 1px solid #c0a93a; }
+.conclusion-label { flex: 1; padding: .3rem .5rem; }
+.conclusion-actions { display: flex; gap: .25rem; align-items: center; padding: .3rem .4rem .3rem 0; }
+
+/* ── Status Badges ───────────────────────────────────── */
+.badge {
+  font-size: .62rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .04em; padding: .1rem .35rem;
+  border-radius: 100px; white-space: nowrap;
+}
+.badge-accepted { background: #dce8f7; color: #1d4f8c; border: 1px solid #3a7ad0; }
+.badge-rejected { background: #fae5cf; color: #7a3f10; border: 1px solid #e08a3a; }
+.badge-undecided { background: #fbf1c8; color: #5a4500; border: 1px solid #c0a93a; }
+
+/* ── Why Button ──────────────────────────────────────── */
+.btn-explain {
+  font-size: .72rem; font-weight: 600; color: #4a7abf; cursor: pointer;
+  background: transparent; border: 1px solid #4a7abf;
+  border-radius: var(--radius); padding: .15rem .5rem;
+  transition: background .12s, color .12s;
+}
+.btn-explain:hover:not(:disabled) { background: #4a7abf; color: #fff; }
+.btn-explain:disabled {
+  color: #9aa4ad; border-color: #c9d0d7; cursor: not-allowed;
+  background: transparent;
+}
+
+/* ── Fact Card ───────────────────────────────────────── */
+.fact-id {
+  font-size: .68rem; font-weight: 600; flex-shrink: 0;
+  color: var(--text-dim);
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  min-width: 2rem;
+}
+.fact-card {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .25rem .5rem; margin-bottom: .1rem;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .78rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow .12s;
+}
+.fact-card:hover { box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.fact-card input[type="checkbox"] {
+  accent-color: var(--accent);
+  cursor: pointer; flex-shrink: 0;
+}
+.fact-text { flex: 1; }
+.fact-tag {
+  font-size: .6rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .03em; padding: .1rem .3rem;
+  border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+}
+.tag-material { background: #f0ede8; color: #7a6a52; border: 1px solid #c4b8a4; }
+.tag-evidence { background: #e8eef0; color: #4a6a7a; border: 1px solid #a0b8c4; }
+.tag-unchallenged { background: #e8e8ec; color: #5a5a6a; border: 1px solid #b0b0c0; }
+.tag-witness-testimony { background: #efeaf4; color: #5a3a7a; border: 1px solid #c0aed0; }
+.tag-commonsense { background: #eef0e8; color: #5a6a3a; border: 1px solid #b0c0a0; }
+.tag-doctrine { background: #eaefea; color: #3a6a4a; border: 1px solid #a8c4ae; }
+.tag-equity { background: #f4e8e8; color: #7a3a3a; border: 1px solid #c4a0a0; }
+.tag-inference-validity { background: #f0eae4; color: #6a5a3a; border: 1px solid #c4b8a4; }
+
+/* ── Facts & Assumptions: type filter bar ───────────────── */
+.facts-filter-bar {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .4rem .9rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+.facts-filter {
+  font-size: .72rem; font-weight: 500;
+  padding: .2rem .5rem; border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent; color: var(--text-dim);
+  cursor: pointer; transition: all .12s;
+}
+.facts-filter:hover { background: var(--bg); color: var(--text); }
+.facts-filter.active {
+  background: var(--accent-light); color: var(--accent);
+  border-color: var(--accent-light); font-weight: 600;
+}
+
+/* ── Divergence from YAML baseline (lavender) ───────────── */
+/* --- Scenario select, error banner --- */
+
+.scenario-select {
+  background: var(--bg-alt, var(--bg));
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: .35rem .5rem;
+  font: inherit;
+  cursor: pointer;
+  min-width: 17rem;
+  max-width: 24rem;
+}
+.scenario-select:focus { outline: none; border-color: var(--accent); }
+
+/* Inactive assumptions mirror the suspended-rule visual: faded + muted bg. */
+.fact-card.suspended {
+  opacity: .5;
+  background: var(--suspended-bg);
+}
+
+/* "Absent" status = no argument concludes this proposition (nor its
+   negation). Render with neutral grey so it reads as "nothing derived
+   yet" rather than a positive/negative outcome. */
+.conclusion-status-bar.status-absent {
+  background: #e5e6ea;
+  color: #6a7080;
+}
+.conclusion-card:has(.status-absent) {
+  opacity: .7;
+}
+
+.error-banner {
+  background: #f4d4d4;
+  color: #5a1e1e;
+  padding: .5rem .75rem;
+  margin: .5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: .9em;
+}
+
+/* Rule / fact / assumption ids rendered inline at the end of the
+   description, rather than as a left-edge metadata cell. */
+.inline-id {
+  font-size: .85em;
+  font-weight: 600;
+  color: var(--text-dim);
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  margin-left: .4rem;
+  white-space: nowrap;
+}
+
+/* --- Game Explorer additions --- */
+
+/* Style the .kw keyword class globally (previously only scoped per
+   container). "If", "then", "normally", "necessarily", "and" render
+   in uppercase + bold + muted dark gray at slightly smaller size.
+   Applies everywhere .kw is used (rule cards, Explain modal, Conflicts
+   view, Game Explorer). */
+.kw {
+  font-weight: 700;
+  color: #4a4a5a;
+  text-transform: uppercase;
+  font-size: .92em;
+}
+
+.game-picker-header {
+  font-size: .85rem;
+  color: var(--text-dim);
+  margin-bottom: .5rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--border);
+}
+.game-picker-list { display: flex; flex-direction: column; gap: .4rem; }
+.game-picker-card {
+  padding: .6rem .75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color .12s, box-shadow .12s;
+}
+.game-picker-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+.game-picker-rule {
+  font-size: .85rem;
+  line-height: 1.45;
+  margin-bottom: .3rem;
+}
+.game-picker-meta {
+  font-size: .7rem;
+  color: var(--text-dim);
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+}
+.game-toolbar {
+  /* Sticky so "Back to arguments" stays visible even after the user
+     has scrolled through a deep game tree. */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--surface);
+  padding: .3rem 0 .6rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: .6rem;
+}
+.support-rule-line {
+  font-size: .82rem;
+  line-height: 1.4;
+  margin-bottom: .2rem;
+}
+
+/* Applies uniformly to fact-cards and rule-cards that have been
+   toggled, modified, or otherwise diverge from the scenario
+   authoring baseline. */
+/* Violet outline for "modified from baseline". Outline only (normal
+   gray card background preserved); a thicker 5px left bar makes the
+   divergence pop in a scan. Violet is deliberately out-of-palette --
+   the accepted/rejected/undecided status colours (blue/orange/yellow)
+   never use violet, so there's no risk of reading it as a label. */
+.kb-divergent {
+  border-color: #7a3fa0 !important;
+  border-left: 5px solid #7a3fa0 !important;
+}
+.kb-divergent .fact-id,
+.kb-divergent .rule-id {
+  color: #4a2a70;
+}
+
+/* ── Toggle checkbox placement: right side, with breathing room ── */
+.rule-card .rule-active-toggle {
+  margin-left: .5rem;
+  margin-right: .25rem;
+}
+.fact-card > input[type="checkbox"]:last-child {
+  margin-left: auto;
+  margin-right: .15rem;
+}
+
+/* ── Resize Handles ──────────────────────────────────── */
+/* Vertical bar (col-resize) — between side-by-side panels */
+.v-resize-handle {
+  width: 5px; cursor: col-resize;
+  background: var(--border);
+  flex-shrink: 0;
+  transition: background .12s;
+}
+.v-resize-handle:hover, .v-resize-handle.dragging {
+  background: var(--accent);
+}
+/* Horizontal bar (row-resize) — between stacked panels */
+.h-resize-handle {
+  height: 5px; cursor: row-resize;
+  background: var(--border);
+  flex-shrink: 0;
+  transition: background .12s;
+}
+.h-resize-handle:hover, .h-resize-handle.dragging {
+  background: var(--accent);
+}
+/* Special case: between conclusions and facts (side-by-side in a row) */
+.top-section > .v-resize-handle {
+  /* uses default v-resize-handle style */
+}
+
+/* ── Rules Section ───────────────────────────────────── */
+.rules-section {
+  flex: 1; display: flex; flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+}
+.rules-toolbar {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .4rem .9rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+.kb-tabs { display: flex; gap: .1rem; }
+.kb-tab {
+  font-size: .74rem; font-weight: 500;
+  padding: .2rem .5rem; border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent; color: var(--text-dim);
+  cursor: pointer; transition: all .12s;
+}
+.kb-tab:hover { background: var(--bg); color: var(--text); }
+.kb-tab.active {
+  background: var(--accent-light); color: var(--accent);
+  border-color: var(--accent-light); font-weight: 600;
+}
+.toolbar-spacer { flex: 1; }
+.kb-search input {
+  font-size: .78rem; padding: .22rem .5rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  width: 140px; outline: none;
+  transition: border-color .12s;
+}
+.kb-search input:focus { border-color: var(--accent); }
+
+.kb-content {
+  flex: 1; overflow-y: auto;
+  padding: .6rem .9rem;
+  background: var(--surface);
+}
+
+/* ── KB Group ────────────────────────────────────────── */
+.kb-group {
+  margin-bottom: .8rem;
+}
+.kb-group-title {
+  padding: .25rem 0; margin-bottom: .3rem;
+  border-bottom: 1px solid var(--border);
+}
+.kb-group-title .kb-badge {
+  font-size: .65rem;
+  padding: .15rem .5rem;
+  margin: 0;
+}
+
+/* ── Category badge (Compact view) ───────────────────── */
+/* Option C from the badge mock: light tint bg, dark text, NO border,
+   square corners. Reads as a label, not a button (keeping clear
+   distinction from the outlined Explain-button pattern). Placed
+   right-justified inside the card, just before the `?` info icon
+   (see .fact-card and .rule-actions). */
+.kb-badge {
+  display: inline-block;
+  font-size: .58rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: .1rem .4rem;
+  border: 0;
+  border-radius: 0;
+  vertical-align: middle;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin: 0 .25rem;
+}
+
+/* ── Compact-view switch (top bar) ───────────────────── */
+.compact-switch {
+  display: inline-flex; align-items: center; gap: .4rem;
+  cursor: pointer;
+  padding: .25rem .4rem;
+  user-select: none;
+}
+.compact-switch input {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+.compact-switch-slider {
+  position: relative;
+  display: inline-block;
+  width: 28px; height: 15px;
+  background: #c8cdd4;
+  border-radius: 20px;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.compact-switch-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 11px; height: 11px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+  transition: transform .15s;
+}
+.compact-switch input:checked + .compact-switch-slider {
+  background: var(--accent);
+}
+.compact-switch input:checked + .compact-switch-slider::before {
+  transform: translateX(13px);
+}
+.compact-switch input:focus-visible + .compact-switch-slider {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.compact-switch-label {
+  font-size: .82rem; font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Rule Card ───────────────────────────────────────── */
+.rule-card {
+  display: flex; align-items: stretch; gap: 0;
+  margin-bottom: .25rem;
+  background: var(--rule-bg); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: box-shadow .12s;
+  overflow: hidden;
+}
+.rule-card:hover { box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.rule-card.suspended {
+  opacity: .5; background: var(--suspended-bg);
+}
+.rule-card.rule-modified {
+  background: #f0edf5; border-color: #c4b8d4;
+}
+.rule-card.rule-modified .rule-id {
+  color: #7a5a9a;
+}
+.rule-modified-badge {
+  display: inline-block;
+  font-size: .58rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .03em; padding: .08rem .25rem;
+  border-radius: 100px;
+  background: #e0d8ec; color: #6a4a8a; border: 1px solid #c0a8d8;
+  margin-right: .15rem;
+}
+.rule-kind-badge {
+  font-size: .6rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .03em; padding: .1rem .3rem;
+  border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+}
+.rule-kind-strict {
+  background: #e8e8ec; color: #5a5a6a; border: 1px solid #b0b0c0;
+}
+.rule-kind-defeasible {
+  background: #e8e8ec; color: #5a5a6a; border: 1px solid #b0b0c0;
+}
+.rule-id {
+  font-size: .68rem; font-weight: 600; flex-shrink: 0;
+  padding: .35rem .3rem .35rem .4rem;
+  color: var(--text-dim);
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  min-width: 2.5rem;
+}
+.rule-body { flex: 1; min-width: 0; padding: .35rem .4rem; }
+.rule-text { font-size: .82rem; line-height: 1.45; }
+.rule-text .kw {
+  font-weight: 700; color: #4a4a5a;
+}
+.rule-info {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.2rem; height: 1.2rem;
+  font-size: .68rem; font-weight: 700;
+  color: var(--text-dim); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 50%;
+  cursor: help; flex-shrink: 0;
+  transition: color .12s, border-color .12s;
+}
+.rule-info:hover { color: var(--accent); border-color: var(--accent); }
+.rule-actions {
+  display: flex; gap: .2rem; align-items: center;
+  flex-shrink: 0; padding: .35rem .5rem .35rem 0;
+}
+
+/* ── Right Panel: Chat ───────────────────────────────── */
+.right-panel {
+  flex: 1; min-width: 280px;
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  overflow: hidden;
+}
+.chat-messages {
+  flex: 1; overflow-y: auto;
+  padding: .7rem .9rem;
+  display: flex; flex-direction: column; gap: .5rem;
+  background: var(--surface);
+}
+.chat-input-area {
+  display: flex; gap: .4rem; align-items: stretch;
+  padding: .6rem .9rem;
+  flex-shrink: 0;
+  min-height: 80px;
+  background: var(--surface);
+}
+.chat-input-area textarea {
+  flex: 1; font-size: .88rem;
+  font-family: inherit; line-height: 1.45;
+  padding: .5rem .7rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  outline: none; resize: none;
+  background: var(--surface);
+  transition: border-color .12s;
+}
+.chat-input-area textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
+.chat-input-area .btn { padding: .5rem 1rem; font-size: .84rem; align-self: flex-end; }
+
+/* ── Chat Messages ───────────────────────────────────── */
+.chat-msg { font-size: .84rem; }
+.chat-msg-system .chat-bubble,
+.chat-msg-assistant .chat-bubble {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: .5rem .75rem;
+}
+.chat-msg-user { text-align: right; }
+.chat-msg-user .chat-bubble {
+  background: var(--accent-light); border: 1px solid #c8d6ea;
+  border-radius: var(--radius); padding: .4rem .7rem;
+  display: inline-block; text-align: left; max-width: 85%;
+  white-space: pre-wrap; word-wrap: break-word;
+}
+/* Markdown content inside assistant bubbles: tighten spacing. */
+.chat-msg-assistant .chat-bubble > :first-child { margin-top: 0; }
+.chat-msg-assistant .chat-bubble > :last-child { margin-bottom: 0; }
+.chat-msg-assistant .chat-bubble p { margin: .35rem 0; line-height: 1.45; }
+.chat-msg-assistant .chat-bubble ul,
+.chat-msg-assistant .chat-bubble ol { margin: .35rem 0; padding-left: 1.4rem; }
+.chat-msg-assistant .chat-bubble li { margin: .15rem 0; }
+.chat-msg-assistant .chat-bubble code {
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 0 .25rem; border-radius: 3px;
+  font-size: .82rem;
+}
+.chat-msg-assistant .chat-bubble pre {
+  background: var(--bg); border: 1px solid var(--border);
+  padding: .5rem .65rem; border-radius: var(--radius);
+  overflow-x: auto; margin: .4rem 0;
+}
+.chat-msg-assistant .chat-bubble pre code {
+  background: none; border: none; padding: 0;
+}
+.chat-msg-assistant .chat-bubble blockquote {
+  margin: .4rem 0; padding: 0 .7rem;
+  border-left: 3px solid var(--border); color: var(--text-dim);
+}
+.chat-msg-assistant .chat-bubble h1,
+.chat-msg-assistant .chat-bubble h2,
+.chat-msg-assistant .chat-bubble h3 {
+  margin: .5rem 0 .3rem; font-size: .92rem; font-weight: 700;
+}
+/* Typing indicator (three bouncing dots) shown while a request is in flight. */
+.chat-msg-loading .chat-bubble {
+  display: inline-flex; gap: .25rem; align-items: center;
+  padding: .55rem .7rem;
+}
+.chat-dot {
+  display: inline-block;
+  width: .4rem; height: .4rem; border-radius: 50%;
+  background: var(--text-dim);
+  animation: chat-dot-bounce 1.1s infinite ease-in-out;
+}
+.chat-dot:nth-child(2) { animation-delay: .15s; }
+.chat-dot:nth-child(3) { animation-delay: .3s; }
+@keyframes chat-dot-bounce {
+  0%, 80%, 100% { opacity: .25; transform: translateY(0); }
+  40%           { opacity: 1;   transform: translateY(-3px); }
+}
+/* Empty-state placeholder shown when chatMessages is empty. */
+.chat-empty {
+  color: var(--text-dim); font-size: .82rem;
+  padding: .4rem .2rem; line-height: 1.5;
+}
+.chat-empty .rule-info-demo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.1rem; height: 1.1rem;
+  font-size: .62rem; font-weight: 700;
+  color: var(--text-dim); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* LLM mode: the `?` buttons become clickable (they prefill chat). Without
+   LLM mode, they remain pure tooltips (cursor: help set on .rule-info). */
+body:not(.llm-disabled) .rule-info { cursor: pointer; }
+
+/* ── Modals ──────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.35);
+  display: none; align-items: center; justify-content: center;
+  z-index: 100;
+}
+.modal-backdrop.visible { display: flex; }
+.modal-content {
+  background: var(--surface);
+  border-radius: calc(var(--radius) * 1.5);
+  box-shadow: var(--shadow-lg);
+  max-height: 85vh; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.modal-game-content { width: 75vw; max-width: 900px; }
+.modal-af-content { width: 90vw; max-width: 1400px; }
+.modal-fact-content { width: 550px; max-width: 90vw; }
+.modal-rule-content { width: 600px; max-width: 90vw; }
+.modal-prefs-content { width: 500px; max-width: 90vw; }
+.modal-aspic-content { width: 70vw; max-width: 900px; }
+.modal-edit-content { width: 640px; max-width: 92vw; }
+.modal-save-content { width: 480px; max-width: 92vw; }
+.modal-save-collision-content { width: 440px; max-width: 92vw; }
+.modal-suspend-impact-content { width: 520px; max-width: 92vw; }
+
+/* ── Suspend-impact preview modal ────────────────────── */
+.modal-suspend-impact-content .modal-body { padding: .9rem 1rem .4rem; }
+.suspend-impact-summary {
+  font-size: .88rem;
+  margin-bottom: .8rem;
+  padding: .5rem .6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.suspend-impact-summary strong { font-weight: 600; }
+.suspend-impact-section-label {
+  font-size: .78rem; font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: .35rem;
+}
+.suspend-impact-list {
+  display: flex; flex-direction: column; gap: .35rem;
+  max-height: 40vh; overflow-y: auto;
+}
+.suspend-impact-item {
+  padding: .4rem .55rem;
+  font-size: .84rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.suspend-impact-item-text { display: block; margin-bottom: .25rem; }
+.suspend-impact-transition {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .7rem;
+}
+.suspend-impact-empty {
+  font-size: .84rem; color: var(--text-dim);
+  padding: .4rem 0; font-style: italic;
+}
+
+/* ── Save-as-new-scenario modal ──────────────────────── */
+.modal-save-content .modal-body { padding: .9rem 1rem .3rem; }
+.save-field { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .9rem; }
+.save-field label { font-size: .82rem; font-weight: 600; color: var(--text); }
+.save-field input {
+  font-family: inherit; font-size: .88rem;
+  padding: .5rem .6rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  outline: none; background: var(--surface); color: var(--text);
+}
+.save-field input:focus { border-color: var(--accent); }
+.save-hint { font-size: .74rem; color: var(--text-dim); }
+.save-status { min-height: 1.2em; font-size: .84rem; margin-top: .2rem; }
+.save-status-info { color: var(--text-dim); }
+.save-status-error {
+  color: #b5341a;
+  background: #fdecea; border: 1px solid #f5c2ba;
+  padding: .4rem .6rem; border-radius: var(--radius);
+}
+.save-overwrite-field { margin-top: .4rem; }
+.save-overwrite-label {
+  display: flex; align-items: center; gap: .45rem;
+  font-weight: 500; font-size: .86rem; cursor: pointer;
+}
+.save-overwrite-label input[type="checkbox"] { margin: 0; }
+.save-field input:disabled { background: var(--bg); color: var(--text-dim); }
+
+/* ── Edit modal (Proposer / Reviewer) ────────────────── */
+.modal-edit-content .modal-body { padding: .9rem 1rem .6rem; }
+.edit-instruction-wrap { display: flex; flex-direction: column; gap: .3rem; }
+.edit-instruction-wrap label {
+  font-size: .82rem; font-weight: 600; color: var(--text);
+}
+#edit-instruction {
+  font-family: inherit; font-size: .88rem; line-height: 1.45;
+  padding: .55rem .7rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  outline: none; resize: vertical; min-height: 80px;
+  background: var(--surface);
+}
+#edit-instruction:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+.edit-hint {
+  font-size: .74rem; color: var(--text-dim);
+}
+.edit-hint kbd {
+  font-family: ui-monospace, monospace; font-size: .72rem;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 3px; padding: 0 .3rem;
+}
+.edit-status { margin-top: .6rem; min-height: 1.2em; }
+.edit-status-loading {
+  color: var(--text-dim); font-size: .84rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.edit-loading-dots {
+  display: inline-flex; gap: .25rem; align-items: center;
+}
+.edit-status-error {
+  color: #b5341a; font-size: .84rem;
+  background: #fdecea; border: 1px solid #f5c2ba;
+  padding: .4rem .6rem; border-radius: var(--radius);
+}
+.edit-status-ok {
+  color: #1a6a3a; font-size: .78rem;
+}
+.edit-preview { margin-top: .55rem; }
+.edit-prop-heading {
+  font-size: .78rem; color: var(--text-dim); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .03em;
+  margin-bottom: .2rem;
+}
+.edit-prop-heading.edit-prop-promote {
+  color: #1a6a3a;
+}
+.edit-prop-promote-ref {
+  margin: .15rem 0 .35rem;
+  font-size: .82rem;
+  color: var(--text-dim);
+}
+.edit-prop-promote-ref em {
+  color: var(--text); font-style: normal; font-weight: 500;
+}
+.edit-prop-body {
+  font-size: .92rem; line-height: 1.5;
+  padding: .65rem .8rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.edit-prop-body .kw { color: var(--text-dim); font-weight: 600; }
+.edit-prop-body .inline-id { color: var(--text-dim); font-size: .82rem; }
+/* ASPIC- view below the NL preview: compact, monospaced, same colour
+   palette as the Show ASPIC- modal so the syntax reads identically. */
+.edit-prop-aspic-label {
+  margin-top: .5rem;
+  font-size: .72rem; color: var(--text-dim); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .03em;
+}
+.edit-prop-aspic {
+  margin: .25rem 0 0;
+  padding: .5rem .65rem;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .82rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: #f7f8fa;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.edit-prop-meta {
+  margin-top: .35rem; font-size: .76rem; color: var(--text-dim);
+}
+.edit-issues-heading {
+  margin-top: .7rem; font-size: .78rem; color: var(--text-dim);
+  font-weight: 600;
+}
+.edit-issues {
+  margin: .3rem 0 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.edit-issue {
+  display: flex; gap: .45rem; align-items: flex-start;
+  font-size: .82rem; line-height: 1.4;
+  padding: .4rem .55rem;
+  border-radius: var(--radius);
+}
+.edit-issue-icon { flex-shrink: 0; }
+.edit-issue-blocker { background: #fdecea; border: 1px solid #f5c2ba; color: #7a1a10; }
+.edit-issue-warning { background: #fef5e5; border: 1px solid #f3d48a; color: #6e4a10; }
+.edit-issue-note    { background: #eef3f8; border: 1px solid #c9d8e8; color: #2a4a6a; }
+
+.modal-footer {
+  padding: .6rem 1rem;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: flex-end; gap: .45rem;
+}
+
+/* Modify button on rule cards -- inherits .btn .btn-small styling. */
+.btn-rule-modify { flex-shrink: 0; }
+
+/* ── Show ASPIC- modal ────────────────────────────────── */
+.aspic-header-actions { display: flex; align-items: center; gap: .45rem; }
+.aspic-pre {
+  margin: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .82rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: #f7f8fa;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .9rem 1rem;
+  overflow: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+.aspic-comment { color: #8a8f98; font-style: italic; }
+.aspic-arrow { color: #0b67d0; font-weight: 600; }
+.aspic-name { color: #0a7a40; }
+.aspic-negation { color: #b5341a; font-weight: 600; }
+#aspic-copy-btn.copied { background: var(--accent); color: #fff; border-color: var(--accent); }
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .7rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.modal-title { font-weight: 600; font-size: .92rem; }
+.modal-close {
+  font-size: 1.3rem; line-height: 1; cursor: pointer;
+  background: none; border: none; color: var(--text-dim);
+  padding: .2rem .4rem; border-radius: var(--radius);
+}
+.modal-close:hover { background: var(--bg); }
+.modal-body { padding: 1rem; overflow-y: auto; flex: 1; }
+
+/* ── View AF: button in conclusions header ─────────────── */
+.conclusions-title {
+  display: inline-flex; align-items: center; gap: .45rem;
+}
+.btn-view-af {
+  font-size: .7rem;
+  font-weight: 500;
+  padding: .15rem .5rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── View AF modal ──────────────────────────────────────── */
+.af-legend {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: .35rem .75rem;
+  font-size: .78rem;
+  color: var(--text-dim);
+  padding: .35rem .5rem .7rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: .5rem;
+}
+.af-legend .af-swatch {
+  display: inline-block;
+  width: .85rem; height: .85rem;
+  border-radius: 3px;
+  margin-right: .1rem;
+  vertical-align: middle;
+}
+.af-legend .af-edge-sample {
+  display: inline-flex; align-items: center;
+  margin-right: .1rem;
+}
+.af-legend .af-legend-sep {
+  width: 1px; height: 1rem;
+  background: var(--border);
+  margin: 0 .25rem;
+}
+.af-legend .af-legend-ucnode {
+  display: inline-flex; align-items: center;
+  margin-right: .1rem;
+}
+.af-legend .af-ucnode-sample {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: .1rem .4rem;
+  border: 1px solid #203040;
+  border-radius: 4px;
+  background: #3a7ad0;
+  color: #fff;
+  letter-spacing: .01em;
+}
+.af-legend .af-ucnode-sample .af-ucnode-x {
+  font-size: .95rem;
+  font-weight: 800;
+  margin-right: .08rem;
+}
+.af-legend .af-legend-note {
+  color: var(--text-dim); font-style: italic;
+  flex-basis: 100%;
+  font-size: .72rem;
+  margin-top: .3rem;
+}
+.af-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  padding: 0 .3rem .4rem;
+}
+.af-scope-control {
+  display: flex; align-items: center; gap: .3rem;
+}
+.af-control-label {
+  font-size: .72rem; color: var(--text-dim);
+}
+.af-scope-btn {
+  font-size: .7rem; font-weight: 500;
+  padding: .2rem .55rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all .12s;
+}
+.af-scope-btn:hover:not(.active) {
+  background: var(--bg); color: var(--text);
+}
+.af-scope-btn.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent-light);
+  font-weight: 600;
+}
+.af-zoom-controls {
+  display: flex; align-items: center; gap: .3rem;
+}
+.af-zoom-controls .btn {
+  padding: .15rem .5rem;
+  font-size: .78rem;
+  min-width: 2.1rem;
+  justify-content: center;
+}
+.af-zoom-readout {
+  font-size: .72rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  margin-left: .25rem;
+}
+
+.af-svg-scroll {
+  overflow: auto;
+  /* Fixed height so the scroll viewport doesn't collapse when the user
+     zooms out (SVG shrinks within the container rather than pulling the
+     modal in with it). Scrollbars appear when the SVG is larger. */
+  height: 68vh;
+  width: 100%;
+  background: #fafbfc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .4rem;
+}
+.af-svg-scroll svg {
+  display: block;
+  /* Centre small diagrams horizontally in the scroll area. */
+  margin: 0 auto;
+}
+.af-svg-scroll g[data-af-rule] rect {
+  transition: filter .12s;
+}
+.af-svg-scroll g[data-af-rule]:hover rect {
+  filter: brightness(1.08);
+}
+.af-svg-scroll g.af-node {
+  cursor: default;
+}
+
+.af-tooltip {
+  position: fixed;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  padding: .5rem .65rem;
+  font-size: .8rem;
+  line-height: 1.4;
+  max-width: 320px;
+  pointer-events: none;
+  z-index: 10000;
+}
+.af-tooltip-claim {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .3rem;
+}
+.af-tooltip-meta {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .72rem;
+}
+.af-tooltip-status {
+  display: inline-block;
+  padding: .08rem .4rem;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: .62rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.af-tooltip-status.status-accepted  { background: #dce8f7; color: #1d4f8c; border: 1px solid #3a7ad0; }
+.af-tooltip-status.status-rejected  { background: #fae5cf; color: #7a3f10; border: 1px solid #e08a3a; }
+.af-tooltip-status.status-undecided { background: #fbf1c8; color: #5a4500; border: 1px solid #c0a93a; }
+.af-tooltip-argid {
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── Game view: main flex layout with minimap sidebar ── */
+.game-main {
+  display: flex;
+  gap: .9rem;
+  align-items: flex-start;
+}
+.game-main-left { flex: 1; min-width: 0; }
+.game-main-right { flex-shrink: 0; position: sticky; top: 0; }
+
+.game-minimap {
+  padding: .45rem .5rem .5rem;
+  background: #f6f7f9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-height: 70vh;
+  overflow: auto;
+}
+.game-minimap-header {
+  font-size: .6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-dim);
+  margin-bottom: .35rem;
+}
+.game-minimap svg { display: block; }
+.game-minimap circle {
+  transition: r .1s, filter .12s;
+}
+.game-minimap circle:hover {
+  filter: brightness(1.12);
+}
+
+/* ── Game tree: inline collapse caret in topbar ───────── */
+.game-node-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .5rem;
+}
+.game-topbar-caret {
+  font-size: .68rem; font-weight: 600; line-height: 1;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  padding: .15rem .45rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .12s, border-color .12s;
+}
+.game-topbar-caret:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Game rationale banner (rejected-via-strict) ──────── */
+.game-rationale {
+  background: var(--accent-light);
+  border: 1px solid #c8d6ea;
+  border-radius: var(--radius);
+  padding: .55rem .75rem;
+  margin-bottom: .8rem;
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.game-rationale p { margin: 0; }
+.game-rationale p + p { margin-top: .35rem; }
+.game-rationale strong { color: var(--tag-rejected); }
+
+/* ── Preference-suppressed counter-attackers block ─────── */
+.game-pref-disclosure {
+  margin-top: .5rem;
+  padding: .4rem .6rem;
+  background: var(--accent-light);
+  border: 1px solid #c8d6ea;
+  border-radius: var(--radius);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+.game-pref-lead {
+  color: var(--text);
+  margin-bottom: .25rem;
+}
+.game-pref-list {
+  list-style: disc;
+  margin: 0 0 0 1.2rem;
+  color: var(--text-dim);
+}
+.game-pref-list li { margin-bottom: .15rem; }
+.game-pref-list .kw { font-weight: 700; color: #4a4a5a; }
+
+/* ── Game Explorer ────────────────────────────────────── */
+.game-tree {
+  margin-bottom: .8rem;
+}
+.game-node {
+  margin-bottom: .4rem;
+}
+.game-node-inner {
+  display: flex; flex-direction: column;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow .12s;
+}
+.game-node-active > .game-node-inner {
+  position: relative;
+  z-index: 1;
+  /* The inner card is followed by sibling panels (.game-supports,
+     .game-node-res-reason, .game-children) that paint over the bottom
+     of an outside box-shadow. A fresh stacking context here lifts the
+     shadow above those siblings so the ring is visible on all sides. */
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 5px var(--accent-light);
+}
+/* Resolved nodes keep their status badge and (for undec/cycle) the
+   dashed border to signal label; no opacity dim -- the dim read as
+   "disabled" and obscured rejected/accepted text even when the verdict
+   was what the user came to see. */
+.game-node-undecided > .game-node-inner { border-style: dashed; }
+.game-node-cycle > .game-node-inner { border-style: dashed; }
+.game-node-topbar {
+  padding: .25rem .6rem;
+  font-size: .7rem; font-weight: 600;
+  color: #fff;
+}
+.game-bar-htb { background: #5a7a8a; }
+.game-bar-cb { background: #8a7050; }
+.game-bar-concede { background: var(--tag-accepted); }
+.game-bar-retract { background: var(--tag-rejected); }
+.game-bar-cycle { background: var(--tag-undecided-bg); color: var(--tag-undecided); }
+.game-node-content {
+  padding: .35rem .6rem;
+}
+.game-node-claim {
+  font-size: .84rem; font-weight: 500;
+}
+.game-node-rule {
+  font-size: .76rem; color: var(--text-dim);
+  margin-top: .2rem; line-height: 1.4;
+}
+.game-node-rule .kw {
+  font-weight: 700; color: #4a4a5a;
+}
+.game-node-detail {
+  font-size: .76rem; color: var(--text-dim);
+  margin-top: .15rem; font-style: italic;
+}
+.game-node-id {
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  font-size: .7rem; font-weight: 600; color: var(--text-dim);
+}
+.game-node-dim { color: var(--text-dim); font-size: .78rem; }
+.game-node-status {
+  display: flex; justify-content: flex-end;
+  padding: .2rem .6rem .3rem;
+}
+.game-node-res-reason {
+  font-size: .72rem; font-style: italic; color: var(--text-dim);
+  padding: .1rem .6rem .3rem;
+}
+.game-children {
+  padding-left: 1.5rem;
+  position: relative;
+}
+/* Tree connector lines */
+.game-children::before {
+  content: '';
+  position: absolute;
+  left: .6rem; top: 0; bottom: .7rem;
+  width: 1.5px;
+  background: #aab0b8;
+}
+.game-children > .game-node,
+.game-children > .game-resolution-text {
+  position: relative;
+}
+.game-children > .game-node::before,
+.game-children > .game-resolution-text::before {
+  content: '';
+  position: absolute;
+  left: -.9rem; top: .9rem;
+  width: .7rem; height: 1.5px;
+  background: #aab0b8;
+}
+
+
+/* ── Game Supports (collapsible sub-arguments) ───────── */
+.game-supports {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.game-supports-toggle {
+  padding: .25rem .6rem;
+  font-size: .72rem; font-weight: 600; color: var(--text-dim);
+  cursor: pointer; user-select: none;
+  transition: color .12s;
+}
+.game-supports-toggle:hover { color: var(--accent); }
+.game-supports-arrow {
+  font-size: .6rem; margin-right: .2rem;
+}
+.game-supports-list {
+  padding: .2rem .6rem .4rem;
+  display: flex; flex-direction: column; gap: .25rem;
+}
+.game-support-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .3rem .5rem;
+  font-size: .76rem; line-height: 1.45;
+}
+.game-support-label {
+  font-weight: 600; color: var(--text);
+  margin-bottom: .15rem;
+}
+.game-support-rules {
+  color: var(--text-dim);
+}
+.game-support-rules .kw { font-weight: 700; color: #4a4a5a; }
+.game-support-facts {
+  font-size: .72rem; color: var(--text-dim);
+  margin-top: .25rem; padding-top: .2rem;
+  border-top: 1px dashed var(--border);
+  line-height: 1.5;
+}
+
+/* ── Game Attack Info (on CB nodes) ──────────────────── */
+.game-attack-info {
+  font-size: .74rem; color: var(--accent);
+  font-weight: 600; margin-bottom: .25rem;
+  padding: .15rem .3rem;
+  background: var(--accent-light);
+  border-radius: calc(var(--radius) / 2);
+}
+.game-attack-type {
+  font-weight: 400; color: var(--text-dim);
+}
+
+/* ── Game Moves Panel ────────────────────────────────── */
+.game-moves {
+  border-top: 1px solid var(--border);
+  padding-top: .6rem;
+}
+.game-moves-header {
+  font-size: .76rem; font-weight: 600; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .04em;
+  margin-bottom: .4rem;
+}
+.game-moves-empty {
+  font-size: .82rem; color: var(--text-dim);
+  padding: .3rem 0;
+}
+.game-move-card {
+  display: flex; align-items: stretch; gap: 0;
+  margin-bottom: .3rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow .12s, border-color .12s;
+}
+.game-move-card:hover {
+  box-shadow: var(--shadow-lg); border-color: var(--accent);
+}
+.game-move-type {
+  width: 12rem; flex-shrink: 0;
+  display: flex; align-items: center;
+  padding: .35rem .5rem;
+  font-size: .68rem; font-weight: 600;
+  color: #fff;
+}
+.game-move-label {
+  flex: 1; padding: .35rem .5rem;
+  font-size: .82rem;
+}
+.game-other-branches {
+  border-top: 1px solid var(--border);
+  margin-top: .5rem; padding-top: .4rem;
+}
+.game-move-other {
+  opacity: .65;
+}
+.game-move-other:hover { opacity: 1; }
+
+/* ── Preferences / Conflicts View ─────────────────────── */
+.pref-conflict-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .6rem .8rem;
+  margin-bottom: .6rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.pref-conflict-question {
+  font-size: .88rem; font-weight: 600;
+  margin-bottom: .5rem; color: var(--text);
+}
+.pref-conflict-sides {
+  display: flex; gap: .5rem; align-items: stretch;
+  margin-bottom: .5rem;
+}
+.pref-side {
+  flex: 1; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: .4rem .5rem;
+  transition: border-color .12s, background .12s;
+}
+/* .pref-side-stronger used to colour the winning side in the Conflicts
+   view; removed because the radio-button selection already indicates
+   which rule is stronger and the card-level tint was visually noisy. */
+.pref-side-label {
+  font-size: .76rem; font-weight: 600; color: var(--text);
+  margin-bottom: .3rem;
+}
+.pref-rule {
+  font-size: .74rem; color: var(--text-dim);
+  margin-bottom: .2rem; line-height: 1.4;
+}
+.pref-rule .kw { font-weight: 700; color: #4a4a5a; }
+.pref-vs {
+  display: flex; align-items: center; justify-content: center;
+  font-size: .72rem; font-weight: 600; color: var(--text-dim);
+  flex-shrink: 0; padding: 0 .2rem;
+}
+.pref-control {
+  display: flex; gap: .8rem; align-items: center;
+  padding: .4rem .3rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: .4rem;
+}
+.pref-option {
+  display: flex; align-items: center; gap: .25rem;
+  font-size: .74rem; color: var(--text);
+  cursor: pointer;
+}
+.pref-option input[type="radio"] {
+  accent-color: var(--accent);
+}
+.pref-note {
+  font-size: .72rem; color: var(--text-dim);
+  font-style: italic; line-height: 1.4;
+}
+
+/* ── Fact Impact Items ────────────────────────────────── */
+.fact-impact-item {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: .35rem .5rem;
+  font-size: .82rem;
+}
+
+/* ── Chat Action Cards (Modify / New Rule) ───────────── */
+.chat-action-card {
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.chat-action-header {
+  font-size: .8rem; font-weight: 600;
+  padding: .35rem .6rem;
+  background: var(--accent-light); color: var(--accent);
+}
+.chat-action-current,
+.chat-action-original,
+.chat-action-revised,
+.chat-action-change,
+.chat-action-details,
+.chat-action-impact {
+  padding: .3rem .6rem;
+  font-size: .8rem; line-height: 1.45;
+}
+.chat-action-current { border-bottom: 1px solid var(--border); }
+.chat-action-diff {
+  border-bottom: 1px solid var(--border);
+}
+.chat-action-original {
+  color: var(--text-dim);
+}
+.chat-action-revised {
+  background: #f8f8f0;
+}
+.chat-action-change {
+  font-size: .76rem; color: var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+.chat-action-details {
+  font-size: .78rem;
+  border-bottom: 1px solid var(--border);
+}
+.chat-action-impact {
+  font-size: .78rem; color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+}
+.chat-action-input {
+  padding: .4rem .6rem;
+}
+.chat-action-textarea {
+  width: 100%; font-size: .84rem;
+  font-family: inherit; line-height: 1.4;
+  padding: .4rem .5rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  outline: none; resize: vertical;
+}
+.chat-action-textarea:focus {
+  border-color: var(--accent);
+}
+.chat-action-buttons {
+  padding: .4rem .6rem;
+  display: flex; gap: .3rem;
+}
+.chat-action-card .kw { font-weight: 700; color: #4a4a5a; }
+
+/* ── Placeholder ─────────────────────────────────────── */
+.placeholder-msg {
+  text-align: center; color: var(--text-dim);
+  padding: 2rem; font-size: .85rem;
+}

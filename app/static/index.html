@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABDA-NL — Argumentation Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="app-title">ABDA-NL</span>
+      <span class="sep">&gt;</span>
+      <span class="scenario-name" id="scenario-name">Loading...</span>
+      <span class="modified-indicator" id="modified-indicator" hidden></span>
+    </div>
+    <div class="topbar-right">
+      <select class="scenario-select" id="scenario-select"></select>
+      <label class="compact-switch" title="Compact view: flat list with category badges instead of category headers">
+        <input type="checkbox" id="compact-toggle" checked onchange="toggleCompactView()">
+        <span class="compact-switch-slider"></span>
+        <span class="compact-switch-label">Compact</span>
+      </label>
+      <button class="btn" id="aspic-btn" onclick="openAspicModal()" title="Show the current scenario as ASPIC- syntax">Show ASPIC-</button>
+      <button class="btn" id="reset-btn" onclick="resetToBaseline()">Reset</button>
+      <button class="btn btn-primary" id="save-btn" onclick="openSaveModal()" title="Save the current state as a new scenario">Save</button>
+    </div>
+  </div>
+
+  <!-- Two-Panel Layout -->
+  <div class="main-area">
+
+    <!-- Left Panel -->
+    <div class="left-panel" id="left-panel">
+
+      <!-- Top Section: Conclusions + Facts side by side -->
+      <div class="top-section" id="top-section">
+        <div class="conclusions-panel" id="conclusions-panel">
+          <div class="panel-header conclusions-header-row">
+            <span class="conclusions-title">
+              Conclusions
+              <button class="btn btn-small btn-view-af" id="view-af-btn" onclick="openAFModal()" title="View the argumentation framework as a graph">View Graph</button>
+            </span>
+            <div class="concl-filters">
+              <button class="concl-filter active" data-filter="key" onclick="switchConclusionFilter('key')">Key</button>
+              <button class="concl-filter" data-filter="accepted" onclick="switchConclusionFilter('accepted')">Accepted</button>
+              <button class="concl-filter" data-filter="rejected" onclick="switchConclusionFilter('rejected')">Rejected</button>
+              <button class="concl-filter" data-filter="undecided" onclick="switchConclusionFilter('undecided')">Undecided</button>
+              <button class="concl-filter" data-filter="absent" onclick="switchConclusionFilter('absent')">Absent</button>
+              <button class="concl-filter" data-filter="all" onclick="switchConclusionFilter('all')">All</button>
+            </div>
+          </div>
+          <div class="conclusions-list" id="conclusions-list"></div>
+        </div>
+        <div class="v-resize-handle" id="v-resize-top" title="Drag to resize"></div>
+        <div class="facts-panel" id="facts-panel">
+          <div class="panel-header facts-header-row">
+            <span>Facts &amp; Assumptions</span>
+          </div>
+          <div class="facts-filter-bar">
+            <button class="facts-filter active" data-filter="facts" onclick="switchFactsFilter('facts')">Facts</button>
+            <button class="facts-filter" data-filter="assumptions" onclick="switchFactsFilter('assumptions')">Assumptions</button>
+            <button class="facts-filter" data-filter="modified" onclick="switchFactsFilter('modified')">Modified</button>
+            <button class="facts-filter" data-filter="suspended" onclick="switchFactsFilter('suspended')">Suspended</button>
+            <div class="toolbar-spacer"></div>
+            <button class="btn btn-small btn-primary llm-only" onclick="openEditModal('add-fact')" title="Add a new fact via natural-language instruction">+ Fact</button>
+            <button class="btn btn-small btn-primary llm-only" onclick="openEditModal('add-assumption')" title="Add a new assumption via natural-language instruction">+ Assumption</button>
+          </div>
+          <div class="facts-list" id="facts-list"></div>
+        </div>
+      </div>
+
+      <div class="h-resize-handle" id="h-resize-left" title="Drag to resize"></div>
+
+      <!-- Bottom Section: Rules -->
+      <div class="rules-section" id="rules-section">
+        <div class="panel-header">Rules</div>
+        <div class="rules-toolbar">
+          <button class="btn btn-small btn-primary llm-only" onclick="openEditModal('add-rule')" title="Add a new rule via natural-language instruction">+ New Rule</button>
+          <div class="kb-search">
+            <input type="text" id="kb-search-input" placeholder="Search rules..." oninput="filterKB(this.value)">
+          </div>
+          <div class="kb-tabs">
+            <button class="kb-tab active" data-tab="all" onclick="switchKBTab('all')">All Rules</button>
+            <button class="kb-tab" data-tab="conflicts" onclick="switchKBTab('conflicts')" title="Show rebut and undercut conflicts; set preferences">Conflicts</button>
+            <button class="kb-tab" data-tab="modified" onclick="switchKBTab('modified')">Modified</button>
+            <button class="kb-tab" data-tab="suspended" onclick="switchKBTab('suspended')">Suspended</button>
+          </div>
+          <div class="toolbar-spacer"></div>
+        </div>
+        <div class="kb-content" id="kb-content"></div>
+      </div>
+    </div>
+
+    <div class="v-resize-handle main-resize llm-only" id="resize-handle" title="Drag to resize"></div>
+
+    <!-- Right Panel: Chat -->
+    <div class="right-panel llm-only" id="right-panel">
+      <div class="panel-header">Chat &amp; Exploration</div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="h-resize-handle" id="h-resize-chat" title="Drag to resize"></div>
+      <div class="chat-input-area" id="chat-input-area">
+        <textarea id="chat-input" rows="4" placeholder="Ask about the case, a rule, or a conclusion..."
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMessage();}"></textarea>
+        <button class="btn btn-primary" id="chat-send-btn" onclick="sendChatMessage()">Ask</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Explorer modal (opened from the Explain button on a conclusion) -->
+  <div class="modal-backdrop" id="modal-game" onclick="if(event.target===this)closeModal('modal-game')">
+    <div class="modal-content modal-game-content">
+      <div class="modal-header">
+        <span class="modal-title" id="game-modal-title">Explain</span>
+        <button class="modal-close" onclick="closeModal('modal-game')">&times;</button>
+      </div>
+      <div class="modal-body" id="game-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- View-AF modal: layered graph of the abstract argumentation framework -->
+  <div class="modal-backdrop" id="modal-af" onclick="if(event.target===this)closeModal('modal-af')">
+    <div class="modal-content modal-af-content">
+      <div class="modal-header">
+        <span class="modal-title">Abstract Argumentation Framework</span>
+        <button class="modal-close" onclick="closeModal('modal-af')">&times;</button>
+      </div>
+      <div class="modal-body" id="af-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Edit modal: Propose / Refine / Apply for add-rule, modify-rule, add-fact, add-assumption -->
+  <div class="modal-backdrop" id="modal-edit" onclick="if(event.target===this)closeEditModal()">
+    <div class="modal-content modal-edit-content">
+      <div class="modal-header">
+        <span class="modal-title" id="edit-modal-title">Edit</span>
+        <button class="modal-close" onclick="closeEditModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="edit-instruction-wrap">
+          <label for="edit-instruction" id="edit-instruction-label">Describe the edit you want:</label>
+          <textarea id="edit-instruction" rows="4"
+            placeholder="e.g. 'Add a rule saying that if the patient has low bone density then long-term PPI elevates fracture risk.'"
+            onkeydown="if(event.key==='Enter'&&(event.metaKey||event.ctrlKey)){event.preventDefault();sendPropose();}"></textarea>
+          <div class="edit-hint">Press <kbd>Cmd/Ctrl</kbd>+<kbd>Enter</kbd> to propose.</div>
+        </div>
+        <div class="edit-status" id="edit-status"></div>
+        <div class="edit-preview" id="edit-preview"></div>
+      </div>
+      <div class="modal-footer edit-footer" id="edit-footer">
+        <button class="btn" id="edit-cancel-btn" onclick="closeEditModal()">Cancel</button>
+        <button class="btn btn-primary" id="edit-propose-btn" onclick="sendPropose()">Propose</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save-as-new-scenario modal -->
+  <div class="modal-backdrop" id="modal-save" onclick="if(event.target===this)closeModal('modal-save')">
+    <div class="modal-content modal-save-content">
+      <div class="modal-header">
+        <span class="modal-title">Save as new scenario</span>
+        <button class="modal-close" onclick="closeModal('modal-save')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="save-field">
+          <label for="save-title">Scenario title</label>
+          <input type="text" id="save-title" placeholder="e.g. 'Popov with equity extension'" oninput="onSaveTitleInput()">
+          <div class="save-hint">The human-readable name shown in the scenario switcher.</div>
+        </div>
+        <div class="save-field">
+          <label for="save-id">Scenario id</label>
+          <input type="text" id="save-id" placeholder="e.g. popov_with_equity" oninput="onSaveIdInput()">
+          <div class="save-hint">Used as the directory name. Letters, digits, and underscores only; starts with a letter or underscore.</div>
+        </div>
+        <div class="save-field save-overwrite-field">
+          <label class="save-overwrite-label">
+            <input type="checkbox" id="save-overwrite-source" onchange="onSaveOverwriteToggle()">
+            <span>Overwrite the current scenario</span>
+          </label>
+          <div class="save-hint">Replace the current scenario's file with your edits. The regression snapshot (<code>expected_labels.yaml</code>) is preserved.</div>
+        </div>
+        <div class="save-status" id="save-status"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeModal('modal-save')">Cancel</button>
+        <button class="btn btn-primary" id="save-submit-btn" onclick="submitSave(false)">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save-overwrite-source confirm modal: explicit yes/no before wiping current scenario -->
+  <div class="modal-backdrop" id="modal-save-overwrite-confirm" onclick="if(event.target===this)closeModal('modal-save-overwrite-confirm')">
+    <div class="modal-content modal-save-collision-content">
+      <div class="modal-header">
+        <span class="modal-title">Overwrite the current scenario?</span>
+        <button class="modal-close" onclick="closeModal('modal-save-overwrite-confirm')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="save-overwrite-confirm-body">This will replace the current scenario's <code>scenario.yaml</code> with your edits. The regression snapshot is preserved, but the original rule text will be gone.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeModal('modal-save-overwrite-confirm')">Cancel</button>
+        <button class="btn btn-primary" onclick="onSaveOverwriteConfirm()">Overwrite</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save-collision modal: target id already exists; confirm overwrite -->
+  <div class="modal-backdrop" id="modal-save-collision" onclick="if(event.target===this)closeModal('modal-save-collision')">
+    <div class="modal-content modal-save-collision-content">
+      <div class="modal-header">
+        <span class="modal-title">Scenario already exists</span>
+        <button class="modal-close" onclick="closeModal('modal-save-collision')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="save-collision-body">A scenario with that id already exists.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="onSaveCollisionCancel()">Cancel</button>
+        <button class="btn" onclick="onSaveCollisionRename()">Rename</button>
+        <button class="btn btn-primary" onclick="onSaveCollisionOverwrite()">Overwrite</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suspend-impact modal: preview conclusion-label changes before committing a toggle -->
+  <div class="modal-backdrop" id="modal-suspend-impact" onclick="if(event.target===this)cancelSuspendImpact()">
+    <div class="modal-content modal-suspend-impact-content">
+      <div class="modal-header">
+        <span class="modal-title" id="suspend-impact-title">Preview change</span>
+        <button class="modal-close" onclick="cancelSuspendImpact()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="suspend-impact-summary" id="suspend-impact-summary"></div>
+        <div class="suspend-impact-section-label">Impact on conclusions:</div>
+        <div class="suspend-impact-list" id="suspend-impact-list"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="cancelSuspendImpact()">Cancel</button>
+        <button class="btn btn-primary" id="suspend-impact-apply-btn" onclick="applySuspendImpact()">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show-ASPIC- modal: current scenario rendered as ASPIC- syntax -->
+  <div class="modal-backdrop" id="modal-aspic" onclick="if(event.target===this)closeModal('modal-aspic')">
+    <div class="modal-content modal-aspic-content">
+      <div class="modal-header">
+        <span class="modal-title">ASPIC- Rules</span>
+        <div class="aspic-header-actions">
+          <button class="btn btn-small" id="aspic-copy-btn" onclick="copyAspicToClipboard()">Copy</button>
+          <button class="modal-close" onclick="closeModal('modal-aspic')">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body"><pre class="aspic-pre" id="aspic-pre"></pre></div>
+    </div>
+  </div>
+
+  <script src="vendor/dagre.min.js"></script>
+  <script src="vendor/marked.min.js"></script>
+  <script src="vendor/purify.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
