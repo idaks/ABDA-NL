@@ -1,0 +1,2260 @@
+{
+  "arguments": [
+    {
+      "conclusion": "-popov_right_to_poss",
+      "conclusion_nl": "Popov does not have a (full) right to possession",
+      "id": "a1",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a5"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "stopped_motion",
+        "strict_mc3",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a68",
+        "a69"
+      ],
+      "top_rule": "strict_mc3"
+    },
+    {
+      "conclusion": "-hayashi_no_return",
+      "conclusion_nl": "Hayashi has to return the baseball",
+      "id": "a2",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a5"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "rp",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a68",
+        "a69"
+      ],
+      "top_rule": "rp"
+    },
+    {
+      "conclusion": "-popov_has_poss",
+      "conclusion_nl": "Popov does not have possession of the baseball",
+      "id": "a3",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a7"
+      ],
+      "rules_used": [
+        "ball_hit_stands",
+        "cs1_r2",
+        "cs1_r4",
+        "cs1_valid",
+        "hayashi_retrieved",
+        "r2",
+        "r2_fan_expectations",
+        "r4",
+        "r4_fan_expectations",
+        "strict_poss_exclusive",
+        "v3_r2",
+        "v3_r4"
+      ],
+      "sub_arguments": [
+        "a6",
+        "a7",
+        "a15",
+        "a16",
+        "a38",
+        "a39",
+        "a41",
+        "a46",
+        "a55",
+        "a56",
+        "a61"
+      ],
+      "top_rule": "strict_poss_exclusive"
+    },
+    {
+      "conclusion": "popov_preposs_interest",
+      "conclusion_nl": "Popov has a legally cognizable pre-possessory interest in the baseball",
+      "id": "a4",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a10",
+        "a23",
+        "a6",
+        "a24"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1"
+      ],
+      "sub_arguments": [
+        "a6",
+        "a10",
+        "a15",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a68",
+        "a69"
+      ],
+      "top_rule": "mc1"
+    },
+    {
+      "conclusion": "popov_qual_right",
+      "conclusion_nl": "Popov has a qualified right to possession of the baseball",
+      "id": "a5",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a11",
+        "a4"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a68",
+        "a69"
+      ],
+      "top_rule": "mc2"
+    },
+    {
+      "conclusion": "abandoned_property",
+      "conclusion_nl": "the baseball is abandoned property",
+      "id": "a6",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a15",
+        "a41"
+      ],
+      "rules_used": [
+        "ball_hit_stands",
+        "cs1_r2",
+        "cs1_valid",
+        "r2",
+        "r2_fan_expectations",
+        "v3_r2"
+      ],
+      "sub_arguments": [
+        "a15",
+        "a38",
+        "a41",
+        "a55",
+        "a61"
+      ],
+      "top_rule": "r2"
+    },
+    {
+      "conclusion": "hayashi_has_poss",
+      "conclusion_nl": "Hayashi has possession of the baseball",
+      "id": "a7",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a16",
+        "a46",
+        "a6"
+      ],
+      "rules_used": [
+        "ball_hit_stands",
+        "cs1_r2",
+        "cs1_r4",
+        "cs1_valid",
+        "hayashi_retrieved",
+        "r2",
+        "r2_fan_expectations",
+        "r4",
+        "r4_fan_expectations",
+        "v3_r2",
+        "v3_r4"
+      ],
+      "sub_arguments": [
+        "a6",
+        "a15",
+        "a16",
+        "a38",
+        "a39",
+        "a41",
+        "a46",
+        "a55",
+        "a56",
+        "a61"
+      ],
+      "top_rule": "r4"
+    },
+    {
+      "conclusion": "hayashi_no_return",
+      "conclusion_nl": "Hayashi does not have to return the baseball",
+      "id": "a8",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a36",
+        "a3",
+        "a1"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_r4",
+        "cs1_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "hayashi_retrieved",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "metropolitan_case",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r1",
+        "r2",
+        "r2_fan_expectations",
+        "r4",
+        "r4_fan_expectations",
+        "stopped_motion",
+        "strict_mc3",
+        "strict_poss_exclusive",
+        "v1",
+        "v3_r2",
+        "v3_r4",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a1",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a10",
+        "a11",
+        "a15",
+        "a16",
+        "a23",
+        "a24",
+        "a36",
+        "a38",
+        "a39",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a46",
+        "a47",
+        "a48",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a56",
+        "a57",
+        "a61",
+        "a68",
+        "a69"
+      ],
+      "top_rule": "r1"
+    },
+    {
+      "conclusion": "hayashi_no_return",
+      "conclusion_nl": "Hayashi does not have to return the baseball",
+      "id": "a9",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a31"
+      ],
+      "rules_used": [
+        "cs10",
+        "cs10_valid",
+        "hayashi_nonattacker",
+        "hayashi_retrieved",
+        "mc5a",
+        "mc5a_valid",
+        "popov_lost_contact",
+        "rh"
+      ],
+      "sub_arguments": [
+        "a14",
+        "a31",
+        "a45",
+        "a46",
+        "a53",
+        "a60",
+        "a73"
+      ],
+      "top_rule": "rh"
+    },
+    {
+      "conclusion": "mc1_valid",
+      "conclusion_nl": "significant steps plus abandoned property plus interrupted effort gives pre-possessory interest (MC1)",
+      "id": "a10",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a40",
+        "a47",
+        "a43"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "court_adopts_mc2",
+        "mc_promotes_fairness",
+        "v4_mc1"
+      ],
+      "sub_arguments": [
+        "a40",
+        "a43",
+        "a47"
+      ],
+      "top_rule": "v4_mc1"
+    },
+    {
+      "conclusion": "mc2_valid",
+      "conclusion_nl": "pre-possessory interest gives a qualified right (MC2)",
+      "id": "a11",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a40",
+        "a47",
+        "a43"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "court_adopts_mc2",
+        "mc_promotes_fairness",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a40",
+        "a43",
+        "a47"
+      ],
+      "top_rule": "v4_mc2"
+    },
+    {
+      "conclusion": "popov_has_poss",
+      "conclusion_nl": "Popov has possession of the baseball",
+      "id": "a12",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a59",
+        "a27",
+        "a51"
+      ],
+      "rules_used": [
+        "bb1a",
+        "bb1a_valid",
+        "cs2",
+        "cs2_valid",
+        "cs7",
+        "cs7_valid",
+        "g1a",
+        "g1a_valid",
+        "g2a",
+        "g2a_valid",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "popov_testimony_control",
+        "wt1"
+      ],
+      "sub_arguments": [
+        "a17",
+        "a22",
+        "a25",
+        "a27",
+        "a37",
+        "a49",
+        "a51",
+        "a53",
+        "a54",
+        "a59",
+        "a62",
+        "a67",
+        "a70",
+        "a71"
+      ],
+      "top_rule": "bb1a"
+    },
+    {
+      "conclusion": "popov_has_poss",
+      "conclusion_nl": "Popov has possession of the baseball",
+      "id": "a13",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a59",
+        "a28",
+        "a51"
+      ],
+      "rules_used": [
+        "ball_in_glove",
+        "bb1a",
+        "bb1a_valid",
+        "cs4",
+        "cs4_valid",
+        "cs7",
+        "cs7_valid",
+        "g1a",
+        "g1a_valid",
+        "g2a",
+        "g2a_valid",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "stopped_motion"
+      ],
+      "sub_arguments": [
+        "a19",
+        "a22",
+        "a26",
+        "a28",
+        "a42",
+        "a49",
+        "a51",
+        "a53",
+        "a57",
+        "a59",
+        "a64",
+        "a67",
+        "a70",
+        "a71"
+      ],
+      "top_rule": "bb1a"
+    },
+    {
+      "conclusion": "hayashi_no_wrong",
+      "conclusion_nl": "Hayashi did nothing wrong when achieving control of the baseball",
+      "id": "a14",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a60",
+        "a45",
+        "a53"
+      ],
+      "rules_used": [
+        "cs10",
+        "cs10_valid",
+        "hayashi_nonattacker",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a45",
+        "a53",
+        "a60"
+      ],
+      "top_rule": "cs10"
+    },
+    {
+      "conclusion": "r2_valid",
+      "conclusion_nl": "the hit-into-stands-is-abandoned rule applies here (r2)",
+      "id": "a15",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a61",
+        "a38"
+      ],
+      "rules_used": [
+        "cs1_r2",
+        "cs1_valid",
+        "r2_fan_expectations",
+        "v3_r2"
+      ],
+      "sub_arguments": [
+        "a38",
+        "a55",
+        "a61"
+      ],
+      "top_rule": "v3_r2"
+    },
+    {
+      "conclusion": "r4_valid",
+      "conclusion_nl": "the retriever-takes-abandoned rule applies here (r4)",
+      "id": "a16",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a61",
+        "a39"
+      ],
+      "rules_used": [
+        "cs1_r4",
+        "cs1_valid",
+        "r4_fan_expectations",
+        "v3_r4"
+      ],
+      "sub_arguments": [
+        "a39",
+        "a56",
+        "a61"
+      ],
+      "top_rule": "v3_r4"
+    },
+    {
+      "conclusion": "popov_would_have_control",
+      "conclusion_nl": "Popov would have had complete control of the baseball if not attacked",
+      "id": "a17",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a62",
+        "a37"
+      ],
+      "rules_used": [
+        "cs2",
+        "cs2_valid",
+        "popov_testimony_control",
+        "wt1"
+      ],
+      "sub_arguments": [
+        "a37",
+        "a54",
+        "a62"
+      ],
+      "top_rule": "cs2"
+    },
+    {
+      "conclusion": "-wt1",
+      "conclusion_nl": "Popov's control-testimony doesn't stand on its own (wt1)",
+      "id": "a18",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a63",
+        "a58"
+      ],
+      "rules_used": [
+        "cs3",
+        "cs3_valid",
+        "testimony_inconsistent"
+      ],
+      "sub_arguments": [
+        "a58",
+        "a63"
+      ],
+      "top_rule": "cs3"
+    },
+    {
+      "conclusion": "popov_would_have_control",
+      "conclusion_nl": "Popov would have had complete control of the baseball if not attacked",
+      "id": "a19",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a64",
+        "a57",
+        "a42"
+      ],
+      "rules_used": [
+        "ball_in_glove",
+        "cs4",
+        "cs4_valid",
+        "stopped_motion"
+      ],
+      "sub_arguments": [
+        "a42",
+        "a57",
+        "a64"
+      ],
+      "top_rule": "cs4"
+    },
+    {
+      "conclusion": "-cs4",
+      "conclusion_nl": "the stopped-in-glove-implies-would-have-control inference is blocked here (cs4)",
+      "id": "a20",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a65",
+        "a50",
+        "a53"
+      ],
+      "rules_used": [
+        "cs5",
+        "cs5_valid",
+        "popov_in_motion",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a50",
+        "a53",
+        "a65"
+      ],
+      "top_rule": "cs5"
+    },
+    {
+      "conclusion": "popov_legit_claim",
+      "conclusion_nl": "Popov has a legitimate claim to the baseball",
+      "id": "a21",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a66",
+        "a5"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs6",
+        "cs6_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a66",
+        "a68",
+        "a69"
+      ],
+      "top_rule": "cs6"
+    },
+    {
+      "conclusion": "popov_invol_lost",
+      "conclusion_nl": "Popov involuntarily lost control of the baseball",
+      "id": "a22",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a67",
+        "a49",
+        "a53"
+      ],
+      "rules_used": [
+        "cs7",
+        "cs7_valid",
+        "mob_attacked_popov",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a49",
+        "a53",
+        "a67"
+      ],
+      "top_rule": "cs7"
+    },
+    {
+      "conclusion": "popov_signif_steps",
+      "conclusion_nl": "Popov undertook significant but incomplete steps to achieve possession",
+      "id": "a23",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a68",
+        "a57",
+        "a42",
+        "a51"
+      ],
+      "rules_used": [
+        "ball_in_glove",
+        "cs8",
+        "cs8_valid",
+        "popov_intended_control",
+        "stopped_motion"
+      ],
+      "sub_arguments": [
+        "a42",
+        "a51",
+        "a57",
+        "a68"
+      ],
+      "top_rule": "cs8"
+    },
+    {
+      "conclusion": "popov_effort_interrupted",
+      "conclusion_nl": "Popov's effort was interrupted by unlawful acts of others",
+      "id": "a24",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a69",
+        "a49",
+        "a53"
+      ],
+      "rules_used": [
+        "cs9",
+        "cs9_valid",
+        "mob_attacked_popov",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a49",
+        "a53",
+        "a69"
+      ],
+      "top_rule": "cs9"
+    },
+    {
+      "conclusion": "popov_caught_ball",
+      "conclusion_nl": "Popov caught the baseball",
+      "id": "a25",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a70",
+        "a22",
+        "a17"
+      ],
+      "rules_used": [
+        "cs2",
+        "cs2_valid",
+        "cs7",
+        "cs7_valid",
+        "g1a",
+        "g1a_valid",
+        "mob_attacked_popov",
+        "popov_lost_contact",
+        "popov_testimony_control",
+        "wt1"
+      ],
+      "sub_arguments": [
+        "a17",
+        "a22",
+        "a37",
+        "a49",
+        "a53",
+        "a54",
+        "a62",
+        "a67",
+        "a70"
+      ],
+      "top_rule": "g1a"
+    },
+    {
+      "conclusion": "popov_caught_ball",
+      "conclusion_nl": "Popov caught the baseball",
+      "id": "a26",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a70",
+        "a22",
+        "a19"
+      ],
+      "rules_used": [
+        "ball_in_glove",
+        "cs4",
+        "cs4_valid",
+        "cs7",
+        "cs7_valid",
+        "g1a",
+        "g1a_valid",
+        "mob_attacked_popov",
+        "popov_lost_contact",
+        "stopped_motion"
+      ],
+      "sub_arguments": [
+        "a19",
+        "a22",
+        "a42",
+        "a49",
+        "a53",
+        "a57",
+        "a64",
+        "a67",
+        "a70"
+      ],
+      "top_rule": "g1a"
+    },
+    {
+      "conclusion": "popov_phys_control",
+      "conclusion_nl": "Popov had physical control over the baseball",
+      "id": "a27",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a71",
+        "a25"
+      ],
+      "rules_used": [
+        "cs2",
+        "cs2_valid",
+        "cs7",
+        "cs7_valid",
+        "g1a",
+        "g1a_valid",
+        "g2a",
+        "g2a_valid",
+        "mob_attacked_popov",
+        "popov_lost_contact",
+        "popov_testimony_control",
+        "wt1"
+      ],
+      "sub_arguments": [
+        "a17",
+        "a22",
+        "a25",
+        "a37",
+        "a49",
+        "a53",
+        "a54",
+        "a62",
+        "a67",
+        "a70",
+        "a71"
+      ],
+      "top_rule": "g2a"
+    },
+    {
+      "conclusion": "popov_phys_control",
+      "conclusion_nl": "Popov had physical control over the baseball",
+      "id": "a28",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a71",
+        "a26"
+      ],
+      "rules_used": [
+        "ball_in_glove",
+        "cs4",
+        "cs4_valid",
+        "cs7",
+        "cs7_valid",
+        "g1a",
+        "g1a_valid",
+        "g2a",
+        "g2a_valid",
+        "mob_attacked_popov",
+        "popov_lost_contact",
+        "stopped_motion"
+      ],
+      "sub_arguments": [
+        "a19",
+        "a22",
+        "a26",
+        "a42",
+        "a49",
+        "a53",
+        "a57",
+        "a64",
+        "a67",
+        "a70",
+        "a71"
+      ],
+      "top_rule": "g2a"
+    },
+    {
+      "conclusion": "rh_not_balance",
+      "conclusion_nl": "the pro-Hayashi decision rule doesn't balance all interests (rh)",
+      "id": "a29",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a72",
+        "a21"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs6",
+        "cs6_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc4_rh",
+        "mc4_valid",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a21",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a66",
+        "a68",
+        "a69",
+        "a72"
+      ],
+      "top_rule": "mc4_rh"
+    },
+    {
+      "conclusion": "rp_not_balance",
+      "conclusion_nl": "the pro-Popov decision rule doesn't balance all interests (rp)",
+      "id": "a30",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a72",
+        "a31"
+      ],
+      "rules_used": [
+        "cs10",
+        "cs10_valid",
+        "hayashi_nonattacker",
+        "hayashi_retrieved",
+        "mc4_rp",
+        "mc4_valid",
+        "mc5a",
+        "mc5a_valid",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a14",
+        "a31",
+        "a45",
+        "a46",
+        "a53",
+        "a60",
+        "a72",
+        "a73"
+      ],
+      "top_rule": "mc4_rp"
+    },
+    {
+      "conclusion": "hayashi_legit_claim",
+      "conclusion_nl": "Hayashi has a legitimate claim to the baseball",
+      "id": "a31",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a73",
+        "a46",
+        "a14"
+      ],
+      "rules_used": [
+        "cs10",
+        "cs10_valid",
+        "hayashi_nonattacker",
+        "hayashi_retrieved",
+        "mc5a",
+        "mc5a_valid",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a14",
+        "a45",
+        "a46",
+        "a53",
+        "a60",
+        "a73"
+      ],
+      "top_rule": "mc5a"
+    },
+    {
+      "conclusion": "-rp",
+      "conclusion_nl": "the pro-Popov decision rule is set aside (rp)",
+      "id": "a32",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a74",
+        "a30",
+        "a44"
+      ],
+      "rules_used": [
+        "cs10",
+        "cs10_valid",
+        "hayashi_is_defendant",
+        "hayashi_nonattacker",
+        "hayashi_retrieved",
+        "mc4_rp",
+        "mc4_valid",
+        "mc5a",
+        "mc5a_valid",
+        "mc6",
+        "mc6_valid",
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [
+        "a14",
+        "a30",
+        "a31",
+        "a44",
+        "a45",
+        "a46",
+        "a53",
+        "a60",
+        "a72",
+        "a73",
+        "a74"
+      ],
+      "top_rule": "mc6"
+    },
+    {
+      "conclusion": "-rh",
+      "conclusion_nl": "the pro-Hayashi decision rule is set aside (rh)",
+      "id": "a33",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a75",
+        "a29",
+        "a52"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs6",
+        "cs6_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc4_rh",
+        "mc4_valid",
+        "mc7",
+        "mc7_valid",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_is_plaintiff",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a21",
+        "a23",
+        "a24",
+        "a29",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a52",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a66",
+        "a68",
+        "a69",
+        "a72",
+        "a75"
+      ],
+      "top_rule": "mc7"
+    },
+    {
+      "conclusion": "-r4",
+      "conclusion_nl": "the retriever-takes-abandoned rule doesn't apply here (r4)",
+      "id": "a34",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a76",
+        "a35"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs7",
+        "cs7_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "r5",
+        "r6",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2",
+        "v5_valid",
+        "v6_valid"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a22",
+        "a23",
+        "a24",
+        "a35",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a67",
+        "a68",
+        "a69",
+        "a76",
+        "a77"
+      ],
+      "top_rule": "r5"
+    },
+    {
+      "conclusion": "ball_not_loose",
+      "conclusion_nl": "the ball was not loose when Hayashi retrieved it",
+      "id": "a35",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a77",
+        "a5",
+        "a22"
+      ],
+      "rules_used": [
+        "action_in_equity",
+        "ball_hit_stands",
+        "ball_in_glove",
+        "court_adopts_mc2",
+        "cs1_r2",
+        "cs1_valid",
+        "cs7",
+        "cs7_valid",
+        "cs8",
+        "cs8_valid",
+        "cs9",
+        "cs9_valid",
+        "mc1",
+        "mc2",
+        "mc_promotes_fairness",
+        "mob_attacked_popov",
+        "popov_intended_control",
+        "popov_lost_contact",
+        "r2",
+        "r2_fan_expectations",
+        "r6",
+        "stopped_motion",
+        "v3_r2",
+        "v4_mc1",
+        "v4_mc2",
+        "v6_valid"
+      ],
+      "sub_arguments": [
+        "a4",
+        "a5",
+        "a6",
+        "a10",
+        "a11",
+        "a15",
+        "a22",
+        "a23",
+        "a24",
+        "a38",
+        "a40",
+        "a41",
+        "a42",
+        "a43",
+        "a47",
+        "a49",
+        "a51",
+        "a53",
+        "a55",
+        "a57",
+        "a61",
+        "a67",
+        "a68",
+        "a69",
+        "a77"
+      ],
+      "top_rule": "r6"
+    },
+    {
+      "conclusion": "r1_valid",
+      "conclusion_nl": "the finder-wins principle applies here (r1)",
+      "id": "a36",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a48"
+      ],
+      "rules_used": [
+        "metropolitan_case",
+        "v1"
+      ],
+      "sub_arguments": [
+        "a48"
+      ],
+      "top_rule": "v1"
+    },
+    {
+      "conclusion": "popov_had_full_control",
+      "conclusion_nl": "Popov had full control when he was attacked",
+      "id": "a37",
+      "is_fact": false,
+      "label": "out",
+      "min_max": 2,
+      "premises": [
+        "a54"
+      ],
+      "rules_used": [
+        "popov_testimony_control",
+        "wt1"
+      ],
+      "sub_arguments": [
+        "a54"
+      ],
+      "top_rule": "wt1"
+    },
+    {
+      "conclusion": "r2_confirms",
+      "conclusion_nl": "baseball practice backs the hit-into-stands rule (r2)",
+      "id": "a38",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a55"
+      ],
+      "rules_used": [
+        "cs1_r2",
+        "r2_fan_expectations"
+      ],
+      "sub_arguments": [
+        "a55"
+      ],
+      "top_rule": "cs1_r2"
+    },
+    {
+      "conclusion": "r4_confirms",
+      "conclusion_nl": "baseball practice backs the retriever-takes-abandoned rule (r4)",
+      "id": "a39",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [
+        "a56"
+      ],
+      "rules_used": [
+        "cs1_r4",
+        "r4_fan_expectations"
+      ],
+      "sub_arguments": [
+        "a56"
+      ],
+      "top_rule": "cs1_r4"
+    },
+    {
+      "conclusion": "action_in_equity",
+      "conclusion_nl": "Popov's conversion claim is an action in equity",
+      "id": "a40",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "action_in_equity"
+      ],
+      "sub_arguments": [],
+      "top_rule": "action_in_equity"
+    },
+    {
+      "conclusion": "ball_hit_stands",
+      "conclusion_nl": "the baseball was hit into the stands",
+      "id": "a41",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "ball_hit_stands"
+      ],
+      "sub_arguments": [],
+      "top_rule": "ball_hit_stands"
+    },
+    {
+      "conclusion": "ball_in_glove",
+      "conclusion_nl": "the baseball was in the glove of Popov",
+      "id": "a42",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "ball_in_glove"
+      ],
+      "sub_arguments": [],
+      "top_rule": "ball_in_glove"
+    },
+    {
+      "conclusion": "court_adopts_mc2",
+      "conclusion_nl": "the court adopts MC2 to decide Popov's conversion claim",
+      "id": "a43",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "court_adopts_mc2"
+      ],
+      "sub_arguments": [],
+      "top_rule": "court_adopts_mc2"
+    },
+    {
+      "conclusion": "hayashi_is_defendant",
+      "conclusion_nl": "Hayashi is the defendant in the conversion action",
+      "id": "a44",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "hayashi_is_defendant"
+      ],
+      "sub_arguments": [],
+      "top_rule": "hayashi_is_defendant"
+    },
+    {
+      "conclusion": "hayashi_nonattacker",
+      "conclusion_nl": "Hayashi did not attack Popov",
+      "id": "a45",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "hayashi_nonattacker"
+      ],
+      "sub_arguments": [],
+      "top_rule": "hayashi_nonattacker"
+    },
+    {
+      "conclusion": "hayashi_retrieved",
+      "conclusion_nl": "Hayashi retrieved the baseball",
+      "id": "a46",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "hayashi_retrieved"
+      ],
+      "sub_arguments": [],
+      "top_rule": "hayashi_retrieved"
+    },
+    {
+      "conclusion": "mc_promotes_fairness",
+      "conclusion_nl": "the MC rules promote fundamental fairness",
+      "id": "a47",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "mc_promotes_fairness"
+      ],
+      "sub_arguments": [],
+      "top_rule": "mc_promotes_fairness"
+    },
+    {
+      "conclusion": "metropolitan_case",
+      "conclusion_nl": "rule r1 was used in Metropolitan Life Insurance Co. v. SF Bank",
+      "id": "a48",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "metropolitan_case"
+      ],
+      "sub_arguments": [],
+      "top_rule": "metropolitan_case"
+    },
+    {
+      "conclusion": "mob_attacked_popov",
+      "conclusion_nl": "an out-of-control mob of unknown persons illegally attacked Popov",
+      "id": "a49",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "mob_attacked_popov"
+      ],
+      "sub_arguments": [],
+      "top_rule": "mob_attacked_popov"
+    },
+    {
+      "conclusion": "popov_in_motion",
+      "conclusion_nl": "Popov was in motion",
+      "id": "a50",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "popov_in_motion"
+      ],
+      "sub_arguments": [],
+      "top_rule": "popov_in_motion"
+    },
+    {
+      "conclusion": "popov_intended_control",
+      "conclusion_nl": "Popov intended to control the baseball",
+      "id": "a51",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "popov_intended_control"
+      ],
+      "sub_arguments": [],
+      "top_rule": "popov_intended_control"
+    },
+    {
+      "conclusion": "popov_is_plaintiff",
+      "conclusion_nl": "Popov is the plaintiff in the conversion action",
+      "id": "a52",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "popov_is_plaintiff"
+      ],
+      "sub_arguments": [],
+      "top_rule": "popov_is_plaintiff"
+    },
+    {
+      "conclusion": "popov_lost_contact",
+      "conclusion_nl": "Popov lost contact with the baseball during the violent attack",
+      "id": "a53",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "popov_lost_contact"
+      ],
+      "sub_arguments": [],
+      "top_rule": "popov_lost_contact"
+    },
+    {
+      "conclusion": "popov_testimony_control",
+      "conclusion_nl": "Popov testified that he had full control of the baseball when he was attacked",
+      "id": "a54",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "popov_testimony_control"
+      ],
+      "sub_arguments": [],
+      "top_rule": "popov_testimony_control"
+    },
+    {
+      "conclusion": "r2_fan_expectations",
+      "conclusion_nl": "rule r2 confirms the longstanding expectations of baseball fans",
+      "id": "a55",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "r2_fan_expectations"
+      ],
+      "sub_arguments": [],
+      "top_rule": "r2_fan_expectations"
+    },
+    {
+      "conclusion": "r4_fan_expectations",
+      "conclusion_nl": "rule r4 confirms the longstanding expectations of baseball fans",
+      "id": "a56",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "r4_fan_expectations"
+      ],
+      "sub_arguments": [],
+      "top_rule": "r4_fan_expectations"
+    },
+    {
+      "conclusion": "stopped_motion",
+      "conclusion_nl": "Popov stopped the forward motion of the baseball",
+      "id": "a57",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "stopped_motion"
+      ],
+      "sub_arguments": [],
+      "top_rule": "stopped_motion"
+    },
+    {
+      "conclusion": "testimony_inconsistent",
+      "conclusion_nl": "Popov's testimony is inconsistent, ambiguous, and unconvincing",
+      "id": "a58",
+      "is_fact": true,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "testimony_inconsistent"
+      ],
+      "sub_arguments": [],
+      "top_rule": "testimony_inconsistent"
+    },
+    {
+      "conclusion": "bb1a_valid",
+      "conclusion_nl": "physical control plus intent implies possession (BB1a)",
+      "id": "a59",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "bb1a_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "bb1a_valid"
+    },
+    {
+      "conclusion": "cs10_valid",
+      "conclusion_nl": "a non-attacker who didn't cause the loss did no wrong (cs10)",
+      "id": "a60",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs10_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs10_valid"
+    },
+    {
+      "conclusion": "cs1_valid",
+      "conclusion_nl": "practice validates rules (cs1)",
+      "id": "a61",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs1_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs1_valid"
+    },
+    {
+      "conclusion": "cs2_valid",
+      "conclusion_nl": "full control persists absent loss (cs2)",
+      "id": "a62",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs2_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs2_valid"
+    },
+    {
+      "conclusion": "cs3_valid",
+      "conclusion_nl": "inconsistent testimony is unreliable (cs3)",
+      "id": "a63",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs3_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs3_valid"
+    },
+    {
+      "conclusion": "cs4_valid",
+      "conclusion_nl": "a stopped-in-glove ball implies would-have-control (cs4)",
+      "id": "a64",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs4_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs4_valid"
+    },
+    {
+      "conclusion": "cs5_valid",
+      "conclusion_nl": "motion with loss of contact negates cs4 (cs5)",
+      "id": "a65",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs5_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs5_valid"
+    },
+    {
+      "conclusion": "cs6_valid",
+      "conclusion_nl": "a qualified right gives a legitimate claim (cs6)",
+      "id": "a66",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs6_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs6_valid"
+    },
+    {
+      "conclusion": "cs7_valid",
+      "conclusion_nl": "a mob attack causes involuntary loss (cs7)",
+      "id": "a67",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs7_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs7_valid"
+    },
+    {
+      "conclusion": "cs8_valid",
+      "conclusion_nl": "stopping in glove with intent is a significant step (cs8)",
+      "id": "a68",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs8_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs8_valid"
+    },
+    {
+      "conclusion": "cs9_valid",
+      "conclusion_nl": "an unlawful attack with loss of contact is an interrupted effort (cs9)",
+      "id": "a69",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "cs9_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "cs9_valid"
+    },
+    {
+      "conclusion": "g1a_valid",
+      "conclusion_nl": "involuntary loss plus would-have-control implies a catch (G1a')",
+      "id": "a70",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "g1a_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "g1a_valid"
+    },
+    {
+      "conclusion": "g2a_valid",
+      "conclusion_nl": "catching the ball establishes physical control (G2a)",
+      "id": "a71",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "g2a_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "g2a_valid"
+    },
+    {
+      "conclusion": "mc4_valid",
+      "conclusion_nl": "a one-sided decision rule doesn't balance all interests (MC4)",
+      "id": "a72",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "mc4_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "mc4_valid"
+    },
+    {
+      "conclusion": "mc5a_valid",
+      "conclusion_nl": "retriever without wrong has a legitimate claim (MC5a)",
+      "id": "a73",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "mc5a_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "mc5a_valid"
+    },
+    {
+      "conclusion": "mc6_valid",
+      "conclusion_nl": "the pro-defendant balance undercut (MC6)",
+      "id": "a74",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "mc6_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "mc6_valid"
+    },
+    {
+      "conclusion": "mc7_valid",
+      "conclusion_nl": "the pro-plaintiff balance undercut (MC7)",
+      "id": "a75",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "mc7_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "mc7_valid"
+    },
+    {
+      "conclusion": "v5_valid",
+      "conclusion_nl": "the ball-not-loose inference is sound (r5)",
+      "id": "a76",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "v5_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "v5_valid"
+    },
+    {
+      "conclusion": "v6_valid",
+      "conclusion_nl": "the qualified-right-plus-involuntary-loss inference is sound (r6)",
+      "id": "a77",
+      "is_fact": false,
+      "label": "in",
+      "min_max": 1,
+      "premises": [],
+      "rules_used": [
+        "v6_valid"
+      ],
+      "sub_arguments": [],
+      "top_rule": "v6_valid"
+    }
+  ],
+  "attacks": [
+    {
+      "from": "a12",
+      "to": "a3",
+      "type": "rebut"
+    },
+    {
+      "from": "a12",
+      "to": "a8",
+      "type": "rebut"
+    },
+    {
+      "from": "a13",
+      "to": "a3",
+      "type": "rebut"
+    },
+    {
+      "from": "a13",
+      "to": "a8",
+      "type": "rebut"
+    },
+    {
+      "from": "a18",
+      "to": "a12",
+      "type": "undercut"
+    },
+    {
+      "from": "a18",
+      "to": "a17",
+      "type": "undercut"
+    },
+    {
+      "from": "a18",
+      "to": "a25",
+      "type": "undercut"
+    },
+    {
+      "from": "a18",
+      "to": "a27",
+      "type": "undercut"
+    },
+    {
+      "from": "a18",
+      "to": "a37",
+      "type": "undercut"
+    },
+    {
+      "from": "a2",
+      "to": "a8",
+      "type": "rebut"
+    },
+    {
+      "from": "a2",
+      "to": "a9",
+      "type": "rebut"
+    },
+    {
+      "from": "a20",
+      "to": "a13",
+      "type": "undercut"
+    },
+    {
+      "from": "a20",
+      "to": "a19",
+      "type": "undercut"
+    },
+    {
+      "from": "a20",
+      "to": "a26",
+      "type": "undercut"
+    },
+    {
+      "from": "a20",
+      "to": "a28",
+      "type": "undercut"
+    },
+    {
+      "from": "a3",
+      "to": "a12",
+      "type": "rebut"
+    },
+    {
+      "from": "a3",
+      "to": "a13",
+      "type": "rebut"
+    },
+    {
+      "from": "a32",
+      "to": "a2",
+      "type": "undercut"
+    },
+    {
+      "from": "a33",
+      "to": "a9",
+      "type": "undercut"
+    },
+    {
+      "from": "a34",
+      "to": "a3",
+      "type": "undercut"
+    },
+    {
+      "from": "a34",
+      "to": "a7",
+      "type": "undercut"
+    },
+    {
+      "from": "a34",
+      "to": "a8",
+      "type": "undercut"
+    },
+    {
+      "from": "a8",
+      "to": "a2",
+      "type": "rebut"
+    },
+    {
+      "from": "a9",
+      "to": "a2",
+      "type": "rebut"
+    }
+  ],
+  "labels_by_proposition": {
+    "abandoned_property": "accepted",
+    "action_in_equity": "accepted",
+    "ball_hit_stands": "accepted",
+    "ball_in_glove": "accepted",
+    "ball_not_loose": "accepted",
+    "bb1a_valid": "accepted",
+    "court_adopts_mc2": "accepted",
+    "cs10_valid": "accepted",
+    "cs1_valid": "accepted",
+    "cs2_valid": "accepted",
+    "cs3_valid": "accepted",
+    "cs4_valid": "accepted",
+    "cs5_valid": "accepted",
+    "cs6_valid": "accepted",
+    "cs7_valid": "accepted",
+    "cs8_valid": "accepted",
+    "cs9_valid": "accepted",
+    "equal_division": "absent",
+    "equity_compromise_open": "absent",
+    "g1a_valid": "accepted",
+    "g2a_valid": "accepted",
+    "hayashi_has_poss": "rejected",
+    "hayashi_is_defendant": "accepted",
+    "hayashi_legit_claim": "accepted",
+    "hayashi_no_return": "rejected",
+    "hayashi_no_wrong": "accepted",
+    "hayashi_nonattacker": "accepted",
+    "hayashi_retrieved": "accepted",
+    "mc1_valid": "accepted",
+    "mc2_valid": "accepted",
+    "mc4_valid": "accepted",
+    "mc5a_valid": "accepted",
+    "mc6_valid": "accepted",
+    "mc7_valid": "accepted",
+    "mc_promotes_fairness": "accepted",
+    "metropolitan_case": "accepted",
+    "mob_attacked_popov": "accepted",
+    "popov_caught_ball": "rejected",
+    "popov_effort_interrupted": "accepted",
+    "popov_had_full_control": "rejected",
+    "popov_has_poss": "rejected",
+    "popov_in_motion": "accepted",
+    "popov_intended_control": "accepted",
+    "popov_invol_lost": "accepted",
+    "popov_is_plaintiff": "accepted",
+    "popov_legit_claim": "accepted",
+    "popov_lost_contact": "accepted",
+    "popov_phys_control": "rejected",
+    "popov_preposs_interest": "accepted",
+    "popov_qual_right": "accepted",
+    "popov_right_to_poss": "rejected",
+    "popov_signif_steps": "accepted",
+    "popov_testimony_control": "accepted",
+    "popov_would_have_control": "rejected",
+    "r1_valid": "accepted",
+    "r2_confirms": "accepted",
+    "r2_fan_expectations": "accepted",
+    "r2_valid": "accepted",
+    "r4_confirms": "accepted",
+    "r4_fan_expectations": "accepted",
+    "r4_valid": "accepted",
+    "rh_not_balance": "accepted",
+    "rp_not_balance": "accepted",
+    "stopped_motion": "accepted",
+    "testimony_inconsistent": "accepted",
+    "v5_valid": "accepted",
+    "v6_valid": "accepted"
+  }
+}
