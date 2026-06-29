@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://abda-nl.local/schemas/scenario.schema.json",
+  "title": "ABDA-NL Scenario Manifest",
+  "description": "Schema for scenario.yaml files authored under examples/<scenario>/. Schema-level checks cover shape and patterns only; reference integrity and AF build are verified downstream by validate_scenario.",
+  "type": "object",
+  "required": ["title", "conclusions", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "facts": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/fact" }
+    },
+    "assumptions": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/assumption" }
+    },
+    "propositions": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/proposition" }
+    },
+    "conclusions": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/proposition" }
+    },
+    "rules": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/rule" }
+    },
+    "corpus": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+    },
+    "literal": {
+      "description": "A proposition or rule-name reference, optionally negated with a leading '-'.",
+      "type": "string",
+      "pattern": "^-?[A-Za-z_][A-Za-z0-9_]*$"
+    },
+    "block": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "fact": {
+      "type": "object",
+      "required": ["description"],
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "negated_description": { "type": "string", "minLength": 1 },
+        "category": { "type": "string" },
+        "source": { "type": "string" }
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "required": ["description"],
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "negated_description": { "type": "string", "minLength": 1 },
+        "category": { "type": "string" },
+        "source": { "type": "string" },
+        "active": { "type": "boolean" },
+        "block": { "$ref": "#/$defs/block" }
+      }
+    },
+    "proposition": {
+      "type": "object",
+      "required": ["description"],
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "negated_description": { "type": "string", "minLength": 1 },
+        "category": { "type": "string" }
+      }
+    },
+    "rule": {
+      "oneOf": [
+        { "$ref": "#/$defs/strict_rule" },
+        { "$ref": "#/$defs/defeasible_rule" }
+      ]
+    },
+    "strict_rule": {
+      "type": "object",
+      "required": ["type", "premises", "conclusion"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "strict" },
+        "premises": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/literal" }
+        },
+        "conclusion": { "$ref": "#/$defs/literal" },
+        "negated_description": {
+          "description": "NL rendering of the undercut literal '-<rule_id>'. Used by the UI when this rule is undercut.",
+          "type": "string",
+          "minLength": 1
+        },
+        "category": { "type": "string" },
+        "source": { "type": "string" },
+        "block": { "$ref": "#/$defs/block" }
+      }
+    },
+    "defeasible_rule": {
+      "type": "object",
+      "required": ["type", "premises", "conclusion"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "defeasible" },
+        "premises": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/literal" }
+        },
+        "conclusion": { "$ref": "#/$defs/literal" },
+        "negated_description": {
+          "description": "NL rendering of the undercut literal '-<rule_id>'. Used by the UI when this rule is undercut.",
+          "type": "string",
+          "minLength": 1
+        },
+        "category": { "type": "string" },
+        "source": { "type": "string" },
+        "block": { "$ref": "#/$defs/block" },
+        "active": { "type": "boolean" }
+      }
+    }
+  }
+}
