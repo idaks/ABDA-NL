@@ -1,0 +1,42 @@
+COGENT Trial Summary
+Bhatt DL et al., "Clopidogrel with or without Omeprazole in Coronary
+Artery Disease," New England Journal of Medicine, 2010.
+(Paraphrased summary.)
+
+Design
+
+Double-blind, randomized, placebo-controlled trial of 3,761 patients
+receiving dual antiplatelet therapy (aspirin plus clopidogrel)
+randomized to receive omeprazole 20 mg daily or placebo. Primary
+endpoint was a composite of cardiovascular death, non-fatal
+myocardial infarction, coronary revascularization, or ischemic
+stroke.
+
+Results
+
+- Cardiovascular event rate: 4.9% (omeprazole) vs 5.7% (placebo);
+  hazard ratio 0.99 (95% CI 0.68-1.44), not statistically
+  significant.
+- Gastrointestinal bleeding: 1.1% (omeprazole) vs 2.9% (placebo);
+  hazard ratio 0.34, significant reduction.
+- Trial was terminated early for financial reasons before reaching
+  planned enrollment, limiting power for rare cardiovascular events.
+
+Interpretation and Subsequent Work
+
+COGENT is frequently cited as evidence that PPI-clopidogrel
+interaction is not clinically meaningful. Subsequent pharmacokinetic
+studies have distinguished between PPIs: pantoprazole shows minimal
+CYP2C19 inhibition compared with omeprazole and esomeprazole, and
+is generally preferred when concomitant PPI therapy is clinically
+necessary.
+
+Formulary Implication
+
+When the underlying GI indication is compelling (e.g., Barrett's
+esophagus), substituting pantoprazole addresses the ACC/AHA concern
+without discontinuing acid suppression. This substitution is
+commonly accepted by cardiology-GI coordinating committees.
+
+(Source: paraphrased from Bhatt DL et al., NEJM 363:1909-1917, 2010
+and subsequent pharmacologic literature. Illustrative only.)

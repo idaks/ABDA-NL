@@ -1,0 +1,71 @@
+{{Short description|California court case involving scope of ownership}}
+{{Use American English|date=September 2025}}
+{{Use mdy dates|date=September 2023}}
+{{Infobox court case
+|Litigants= Popov v. Hayashi
+|ArgueDate=
+|ArgueYear=
+|court              = [[California Superior Court]]
+|image              = Great Seal of California.svg
+|DecideDate= December 18, 2002
+|DecideYear= 
+|FullName= Alex Popov v. Patrick Hayashi
+|Citations= 
+|Prior=  
+|Subsequent= 
+|Holding= 
+|ChiefJudge= 
+|AssociateJudges= 
+|Plurality=  
+|JoinPlurality=  
+|Concurrence= 
+|JoinConcurrence=
+|Concurrence/Dissent=  
+|Concurrence/Dissent2=  
+|JoinConcurrence/Dissent2=  
+|Dissent=  
+|JoinDissent=
+|LawsApplied=
+}}
+'''''Popov v. Hayashi'' (WL 31833731 Ca. Sup. Ct. 2002)''' was a [[California Superior Court]] case involving [[Property law|scope of ownership]] between parties and [[Conversion (law)|conversion]] regarding a valuable baseball acquired at a [[Major League Baseball]] game.  The question present in this case is who has ownership of an item when one acquired it legally, but lost it due to the criminal act of another third party, allowing the other person to, by all standards, acquire the item legally.<ref name=press>{{cite web| title =Property: Popov v. Hayashi| work =Invisible College Press| url =http://www.invispress.com/law/property/popov.html}}</ref><ref name=4law>{{cite web| title =Summary of Popov v. Hayashi (2002), 2002 2002 WL 31833731| work =4 Law School| url =http://www.4lawschool.com/property/pop.shtml}}</ref><ref name=linx>{{cite web| title =Popov v. Hayashi – Case Brief Summary| work =Lawnix| url =http://www.lawnix.com/cases/popov-hayashi.html}}</ref><ref name=case>{{cite web| title =Popov v Hayashi, 2002 WL 31833731, (Cal Superior Ct) | work =Casebrief.me| url =http://casebrief.me/casebriefs/popov-v-hayashi/}}</ref>
+
+==Background==
+On October 7, 2001, the last game of the [[2001 Major League Baseball season]], the [[San Francisco Giants]] faced the [[Los Angeles Dodgers]] at San Francisco's [[Pacific Bell Park]].<ref>{{cite web| url=https://www.baseball-reference.com/boxes/SFN/SFN200110070.shtml |title=Los Angeles Dodgers at San Francisco Giants Box Score, October 7, 2001 |website=Baseball Reference |access-date=September 26, 2022}}</ref> Giants slugger [[Barry Bonds]] was trying to add to [[List of milestone home runs by Barry Bonds|his single season home run record]] he had set two days before.<ref>{{Cite news|url=https://www.nytimes.com/2001/10/08/opinion/a-welcome-distraction.html|title=A Welcome Distraction|date=October 8, 2001|newspaper=[[The New York Times]]|issn=0362-4331|access-date=January 25, 2017}}</ref> If Bonds hit a home run, the record-setting ball would have considerable value, estimated to be as high as $1.5 million.<ref>{{Cite web |last=Bean |first=Matt |date=June 26, 2003 |title='Million-dollar' Bonds ball sells for $450,000 |url=http://www.cnn.com/2003/LAW/06/26/ctv.bonds.baseball/ |archive-url=https://web.archive.org/web/20221021163323/http://www.cnn.com/2003/LAW/06/26/ctv.bonds.baseball/ |archive-date=2022-10-21 |access-date=January 25, 2017 |website=[[CNN.com]]}}</ref> When he hit it, it flew into the stands and plaintiff Alex Popov was there to catch it.  The ball entered his glove but he was immediately attacked by a large group of individuals, causing him to drop the ball and fall to the ground underneath a pile of persons.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+At that same time, defendant Patrick Hayashi was also knocked over by the same group of wrongdoers.  While on the ground the ball rolled towards him and he picked it up claiming it as his own.  He did not wrong Popov in any way and had acquired the ball legally.  Popov believed the ball was rightfully his and, when Hayashi refused, took the case to court.  The whole event was videotaped allowing all parties to view it.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+==Case==
+Popov sued Hayashi for conversion, believing that once it had touched his glove the baseball became his and although Hayashi came about it legally, he still had the duty to return it to its rightful owner.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+Before the baseball was hit, it was considered property of MLB and after it was hit was considered intentionally abandoned property.  Under this theory, whoever comes into possession of it first is the rightful owner.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+However, Hayashi had come by the ball lawfully as well. In fact, if Popov had dropped the ball without having been attacked by the group of wrongdoers, it would have still been considered abandoned property that would be acquired by whoever successfully grasped it first.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+The court considered that legal possession in this instance requires successfully attaining it and the intent to possess. Popov did both of these and so, upon his losing it, it was considered his property.  However, simultaneously, the court considered that his loss of it cancelled his possession of it and therefore Hayashi was in legal possession. But simply giving Hayashi the rights to it would be unfair as well, because Popov would likely have been in possession of it if he had not been attacked by the wrongdoers.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+==Decision==
+The court eventually concluded that both parties had rights to the ball and neither could be deprived of it lawfully, and the best solution was an [[Division of property|equitable division]].  The two of them would sell the ball and split the proceeds evenly.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+For this decision the court set a new precedent of qualified pre-possessory interest allowing for both Popov to claim his property had been converted and it was still his, while also allowing Hayashi legal rights over the ball.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+==Significance==
+This was such an unusual case in property law since if any of the facts were slightly different it would have completely changed the decision of the case and given complete ownership to one party over the other.  If Popov had not been attacked and dropped the ball on his own accord, Hayashi would have been the legal owner.  Conversely, if Hayashi had been one of the wrongdoers he would have committed wrongful conversion and the ball would legally be Popov’s property.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+This case sets a precedent for similar scenarios where simple conversion of rightful property is not easy to determine.  In cases where rightful ownership cannot be distinguished between parties, it is acceptable and reasonable to split the ownership evenly.<ref name=linx/><ref name=press/><ref name=case/><ref name=4law/>
+
+== See also ==
+
+* [[Baseball law]]
+* [[Up for Grabs (film)|''Up for Grabs'']], a film based on this incident central to this case
+
+==References==
+{{Reflist}}
+
+{{United States tort case law}}
+
+[[Category:United States property case law| ]]
+[[Category:United States tort case law]]
+[[Category:Personal property law of the United States]]
+[[Category:2002 in United States case law]]
+[[Category:Major League Baseball litigation]]
+[[Category:California state case law]]
+[[Category:2002 in baseball]]

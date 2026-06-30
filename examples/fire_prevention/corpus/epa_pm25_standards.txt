@@ -1,0 +1,44 @@
+EPA PM2.5 Air-Quality Standards and Prescribed Fire
+Paraphrased regulatory summary
+
+National Ambient Air Quality Standards (NAAQS)
+
+Under the Clean Air Act, the U.S. Environmental Protection Agency
+sets National Ambient Air Quality Standards for six criteria
+pollutants. For fine particulate matter (PM2.5), the current 24-hour
+standard is 35 micrograms per cubic meter (annual 9 micrograms per
+cubic meter as of the 2024 revision).
+
+Prescribed Fire Under the SIP Framework
+
+States implement NAAQS through State Implementation Plans (SIPs).
+Prescribed fire is addressed via Smoke Management Programs (SMPs)
+that specify:
+
+- Required burn-day smoke-dispersion forecasts.
+- Notification and coordination requirements with air-quality
+  authorities.
+- Burn-day go/no-go criteria keyed to predicted 24-hour PM2.5 at
+  specified receptor locations.
+
+Forecast Exceedance
+
+Under most state SMPs, if the burn-day dispersion forecast
+predicts 24-hour PM2.5 exceedance of the NAAQS threshold at a
+populated-area receptor, the burn permit is withheld for that day
+regardless of ecological or programmatic justification. This is a
+categorical constraint, not a balancing test. Managers may
+reschedule the burn to a day with a more favorable forecast.
+
+Distinguishing the Strict Constraint from Balancing
+
+The PM2.5 exceedance rule is an example of a regulatory constraint
+that is not subject to trade-off: it is not that the ecological
+benefit must be sufficiently large to justify a near-exceedance
+day; it is that exceedance days are off-limits regardless. For
+formal modeling, this is captured as a strict rule, distinct from
+the balancing that characterizes most other burn-day judgments.
+
+(Source: paraphrased summary of EPA PM2.5 NAAQS framework and state
+Smoke Management Program conventions. Illustrative only; consult
+current federal and state regulations for operational decisions.)

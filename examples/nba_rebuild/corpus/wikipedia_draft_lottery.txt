@@ -1,0 +1,69 @@
+NBA draft lottery -- Wikipedia (paraphrased excerpts)
+
+The NBA draft lottery is an annual event held by the National
+Basketball Association, in which the teams that missed the
+previous season's playoffs participate in a weighted random
+drawing to determine the order of the first fourteen picks in
+that year's NBA draft. The lottery has been used since 1985 and
+has been modified several times since, most notably by the 2019
+flattening reform and the introduction of the play-in tournament.
+
+Purpose and rationale
+
+The lottery was introduced to reduce the incentive for
+non-playoff teams to lose games intentionally to secure a higher
+draft pick. Before 1985, the worst team in the league was
+guaranteed the top pick, an arrangement widely seen as creating
+perverse incentives during the latter portion of the season.
+
+Weighting and the 2019 reform
+
+Lottery odds have been weighted since inception to give worse
+teams better odds of higher picks, but the specific weighting
+has changed over time. From 1994 to 2018, the worst team had a
+25.0% chance of the first overall pick. Effective with the 2019
+draft, the NBA flattened the odds so that the three worst teams
+each share a 14.0% probability of the top pick, and the odds
+curve falls more gradually across the remainder of the lottery.
+
+The flattening was motivated by persistent concerns about "late-
+season tanking" -- teams deliberately losing games to drop in
+the standings. Under the pre-2019 weighting, a team could
+meaningfully improve its expected draft position by securing the
+league's worst record; under the flattened weighting, a bottom-3
+finish yields the same top-pick odds, so losing beyond that
+threshold does not meaningfully improve expected pick position.
+
+Effect on team behavior
+
+Analysts have reached mixed conclusions about the effectiveness
+of the 2019 reform. Most public analysis treats the reform as
+having weakened but not eliminated the tanking incentive: it
+remains rational to miss the playoffs in order to secure any
+lottery position, but the marginal value of the last ten or
+fifteen losses of a tank is close to zero under the new odds
+structure.
+
+Play-in tournament
+
+The play-in tournament, introduced for the 2020-21 season,
+provides seeds 7 through 10 in each conference with a chance to
+qualify for the main playoffs through a short mini-bracket. The
+play-in partially addresses tanking incentives from the opposite
+direction: teams on the fringe of the playoff picture are given
+a competitive reason to continue pursuing wins late in the
+season.
+
+Collective bargaining and future changes
+
+Draft lottery mechanics are set forth in the NBA Collective
+Bargaining Agreement. The 2023 CBA retained the 2019 odds and
+added the second apron and associated roster-construction
+restrictions, which further constrain the "spend big to compete
+around a veteran core" rebuild path. Future CBA negotiations may
+further adjust lottery odds or introduce additional
+anti-tanking measures.
+
+(Source: paraphrased from the Wikipedia article "NBA draft
+lottery." Illustrative educational summary; consult the official
+NBA rulebook for exact lottery procedures.)

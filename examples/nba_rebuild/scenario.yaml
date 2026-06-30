@@ -1,0 +1,229 @@
+title: NBA Rebuild
+description: >
+  A non-contending NBA front office is weighing whether to tank this
+  season, compete-and-develop, or stack veteran talent. The scenario
+  shows three interacting arguments for tanking (classic rebuild,
+  pick value, talent dilution under expansion) against a development-
+  first objection, with the 2019 lottery flattening as an undercut on
+  the pick-value inference and the 2023 second apron as a strict rule
+  forbidding veteran-stacking. The Process-era retrospective
+  additionally undercuts the classic-rebuild pattern. At baseline the
+  memo's recommendation to preserve first-round flexibility is
+  accepted against a live stack-vets proposal; tank is rejected;
+  lottery_math is undecided. Toggle over_apron on to flip stack_vets
+  to rejected via strict rule. Toggle expansion_pending on to flip
+  tank from rejected to undecided as talent-dilution reinstates the
+  pick-value argument at a strength equal to the development line.
+
+facts:
+  non_contender:
+    description: the team is not a realistic championship contender this season
+    category: team-status
+  young_core:
+    description: the team rosters promising under-25 players in core rotation roles
+    category: team-status
+  top5_draft:
+    description: the upcoming draft has a consensus top-5 prospect
+    category: draft
+  below_apron:
+    description: the team payroll is currently below the second-apron threshold
+    category: league-rule
+  has_firsts:
+    description: the team controls two or more tradeable future first-round picks
+    category: assets
+  flat_2019:
+    description: the 2019 CBA flattened top-3 lottery odds to 14 percent each
+    category: league-rule
+    source: NBA 2019 CBA
+  apron_categorical:
+    description: the 2023 CBA second-apron provisions categorically restrict salary aggregation
+    category: league-rule
+    source: NBA 2023 CBA, second-apron provisions
+  process_cautionary:
+    description: the 76ers Process retrospective reads as a cautionary template rather than a replicable one
+    category: historical-analysis
+    source: the_process_retrospective.txt
+
+assumptions:
+  over_apron:
+    description: the team payroll is currently above the second-apron threshold
+    negated_description: the team is not above the second-apron threshold
+    category: league-rule
+    active: false
+    block: 1
+  expansion_pending:
+    description: expansion to two new franchises is under serious discussion
+    negated_description: expansion is not imminent
+    category: league-landscape
+    source: nba_expansion_analysis.txt
+    active: false
+    block: 3
+
+propositions: {}
+
+conclusions:
+  tank:
+    description: the team should pursue a tanking posture this season
+    negated_description: the team should not pursue a tanking posture this season
+    category: strategy
+  stack_vets:
+    description: the team should aggregate salary to acquire veteran stars
+    negated_description: the team should not aggregate salary to acquire veteran stars
+    category: roster-construction
+  dev_first:
+    description: protecting young-core development is the governing priority
+    negated_description: young-core development is not the governing priority
+    category: development
+  classic_rebuild:
+    description: the team profile fits the historically standard rebuild pattern
+    negated_description: the team profile does not fit the standard rebuild pattern
+    category: rebuild-logic
+  pick_premium:
+    description: a high lottery pick in this draft is worth meaningfully more than a middle first
+    negated_description: a high lottery pick in this draft is not worth meaningfully more than a middle first
+    category: pick-value
+  lottery_math:
+    description: even under flattened odds, dropping to bottom-3 materially improves expected pick
+    negated_description: under flattened odds, tanking does not materially improve expected pick
+    category: pick-value
+  talent_dilution:
+    description: league expansion will dilute cornerstone talent, raising pick value
+    negated_description: league expansion will not materially dilute cornerstone talent
+    category: league-landscape
+  preserve_flex:
+    description: the front office should preserve future firsts and second-apron flexibility
+    negated_description: the front office should not prioritise preserving flex
+    category: strategy
+
+rules:
+  r_apron_strict:
+    type: strict
+    premises: [over_apron]
+    conclusion: -stack_vets
+    category: CBA
+    source: NBA 2023 CBA second-apron provisions categorically forbid salary aggregation
+
+  r_classic:
+    type: defeasible
+    premises: [non_contender, top5_draft]
+    conclusion: classic_rebuild
+    category: rebuild-logic
+    negated_description: the classic-rebuild-fit inference does not apply here
+    source: standard non-contender plus top-5 prospect implies rebuild fit
+    block: 1
+  r_tank_classic:
+    type: defeasible
+    premises: [classic_rebuild]
+    conclusion: tank
+    category: rebuild-logic
+    source: the classic rebuild pattern recommends a tanking posture
+    block: 1
+
+  r_pick_value:
+    type: defeasible
+    premises: [non_contender, top5_draft]
+    conclusion: pick_premium
+    category: pick-value
+    negated_description: the draft-odds-to-pick-premium inference does not apply under the flattened lottery
+    source: high draft quality plus a bad team implies a premium on the lottery pick
+    block: 1
+
+  r_dilution:
+    type: defeasible
+    premises: [expansion_pending]
+    conclusion: talent_dilution
+    category: league-landscape
+    source: nba_expansion_analysis.txt; adding two franchises dilutes cornerstone talent
+    block: 3
+  r_pick_via_dilution:
+    type: defeasible
+    premises: [talent_dilution]
+    conclusion: pick_premium
+    category: league-landscape
+    source: dilution raises pick value independently of lottery-odds mechanics
+    block: 3
+
+  r_tank_pick:
+    type: defeasible
+    premises: [pick_premium]
+    conclusion: tank
+    category: pick-value
+    source: a real pick premium supports a tanking posture
+    block: 3
+
+  r_dev:
+    type: defeasible
+    premises: [young_core, non_contender]
+    conclusion: dev_first
+    category: development
+    source: a young core on a non-contender makes development the governing priority
+    block: 3
+  r_dev_tank:
+    type: defeasible
+    premises: [dev_first]
+    conclusion: -tank
+    category: development
+    source: development priority rejects a tanking posture
+    block: 3
+
+  r_stack:
+    type: defeasible
+    premises: [has_firsts, young_core, non_contender]
+    conclusion: stack_vets
+    category: roster-construction
+    source: a non-contender with young talent and tradeable firsts can compress the window by stacking vets
+    block: 1
+  r_preserve:
+    type: defeasible
+    premises: [apron_categorical, below_apron, has_firsts]
+    conclusion: preserve_flex
+    category: strategy
+    source: front_office_memo.txt; memo recommends preserving future firsts and apron flexibility
+    block: 3
+  r_preserve_vs_stack:
+    type: defeasible
+    premises: [preserve_flex]
+    conclusion: -stack_vets
+    category: strategy
+    source: preserving flex entails not stacking vets this cycle
+    block: 3
+
+  r_flat_undercut:
+    type: defeasible
+    premises: [flat_2019]
+    conclusion: -r_pick_value
+    category: league-rule
+    source: the 2019 lottery flattening undercuts the strong-draft-to-pick-premium inference
+    block: 3
+  r_process_undercut:
+    type: defeasible
+    premises: [process_cautionary]
+    conclusion: -r_classic
+    category: historical-analysis
+    source: the Process retrospective undercuts the default classic-rebuild-fit inference
+    block: 3
+
+  r_lottery_pro:
+    type: defeasible
+    premises: [flat_2019, non_contender]
+    conclusion: lottery_math
+    category: pick-value
+    source: even under flattened odds, bottom-3 materially improves expected pick
+    block: 1
+  r_lottery_con:
+    type: defeasible
+    premises: [flat_2019]
+    conclusion: -lottery_math
+    category: league-rule
+    source: post-2019 analyst consensus; flattening erases the material bottom-3 premium
+    block: 1
+
+corpus:
+  - wikipedia_draft_lottery.txt
+  - lottery_reform_2019.txt
+  - cba_second_apron.txt
+  - young_core_development.txt
+  - analyst_tanking_piece.txt
+  - the_process_retrospective.txt
+  - front_office_memo.txt
+  - nba_expansion_analysis.txt

@@ -1,0 +1,39 @@
+Home kitchen inventory and usage notes
+
+Small-appliance inventory (current)
+
+- Countertop air fryer (5 L basket model), acquired in the 2024
+  kitchen refresh. Located on the counter next to the toaster.
+  In regular use for reheating takeaway and roasting vegetables.
+- Microwave oven, 900 W. Used for reheating liquids and
+  non-breaded leftovers.
+- Full-size electric oven with convection mode. Slow to preheat
+  (~10 minutes), so rarely used for small reheating jobs.
+- Toaster, single-purpose.
+- No deep fryer on the premises.
+
+Usage pattern for takeaway reheating
+
+When takeaway arrives from a fried-chicken restaurant, the
+default protocol has been to transfer the pieces from the
+takeaway box into the air fryer basket for 3-5 minutes at 180 C.
+This consistently restores an audible crust and drives off the
+condensation that accumulates in the box during transit. The
+protocol has been tested with orders from three different chains
+over the last year; all produced an acceptable result.
+
+Constraints
+
+The air fryer is a shared resource. When it is mid-cycle on
+another item (e.g. reheating sides), the reheat protocol is
+unavailable until the current cycle completes. For the purposes
+of this scenario, assume the air fryer is free and operational
+at the time the order arrives.
+
+Rationale for recording this
+
+This note exists because the argument for ordering fried chicken
+to-go rests on the assumption that crispiness can be restored at
+home. If the air fryer is absent, broken, or occupied, that
+premise fails and the to-go option loses its main supporting
+argument.

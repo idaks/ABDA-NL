@@ -1,0 +1,49 @@
+NBA Draft Lottery Reform (2019)
+Paraphrased public explanation
+
+Background
+
+Prior to 2019 the NBA draft lottery weighted odds steeply toward
+the worst record in the league. The worst team had a 25.0%
+probability of the #1 overall pick; the second-worst 19.9%; the
+third-worst 15.6%; and so on. In practice this structure rewarded
+the late-season losing streaks that came to be known as "tanking."
+
+2019 Reform
+
+Following league and owner discussion about competitive integrity,
+the lottery odds were flattened beginning with the 2019 draft:
+
+- The three worst teams now share identical 14.0% odds at the
+  #1 overall pick.
+- The odds curve falls more gradually through the rest of the
+  lottery, so positions 4 through 14 have less steeply weighted
+  expected returns.
+- The first four picks are determined by the lottery; positions
+  5-14 follow in reverse order of standings.
+
+Effect on the Tanking Argument
+
+The classic tanking calculation -- "guarantee yourself a top-3
+chance by having the league's worst record" -- no longer holds.
+Once a team is in the bottom-3 band, further losing does not
+improve its #1-pick odds. The expected pick-position gain from
+moving from third-worst to worst is now much smaller than it was
+pre-reform.
+
+Publicly stated league objective: reduce the incentive to pursue
+season-long losing while preserving a lottery mechanism for
+competitive-balance rebuilding.
+
+Analyst Consensus
+
+Most public draft-strategy analysis treats the 2019 reform as
+having materially weakened, though not eliminated, the tanking
+incentive. The pick-value argument survives in the sense that
+lottery participation still beats a playoff floor; it has been
+substantially weakened in the sense that the marginal value of
+the last 10-15 losses is close to zero.
+
+(Source: paraphrased from public NBA announcements and widely
+reported draft-odds analyses. Illustrative only; see the official
+NBA rulebook for exact lottery procedures.)

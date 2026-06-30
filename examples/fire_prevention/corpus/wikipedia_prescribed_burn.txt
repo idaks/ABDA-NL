@@ -1,0 +1,76 @@
+Controlled burn -- Wikipedia (paraphrased excerpts)
+
+A controlled burn, also called prescribed burn or prescribed fire,
+is the deliberate application of fire to a vegetated landscape
+under specified environmental and operational conditions to
+achieve land-management objectives. Controlled burns are used to
+reduce accumulated fuel loads, restore fire-adapted ecosystems,
+maintain specific habitat conditions, and achieve cultural or
+agricultural purposes.
+
+History
+
+Indigenous peoples across North America, Australia, and other
+fire-adapted landscapes have cultivated ecosystems with fire for
+thousands of years. Cultural burning practices shaped forest
+structure, grassland composition, and wildlife habitat in many
+regions prior to European colonization.
+
+Federal and state fire-suppression policy in the twentieth
+century -- exemplified by the U.S. "10 AM policy" of the 1930s
+and analogous approaches elsewhere -- removed fire from many of
+these landscapes. The cumulative effect has been a significant
+transformation of forest structure, with consequences that
+contemporary fire science increasingly links to the severity of
+recent wildfires.
+
+Ecological objectives
+
+In dry mixed-conifer and ponderosa-pine forests, prescribed fire
+is used to reduce surface and ladder fuels, maintain open forest
+conditions, promote regeneration of fire-adapted species, and
+reduce the probability of high-severity crown fire during
+subsequent wildfires. Treatment effects have been studied
+extensively; tree mortality in post-treatment wildfire events is
+typically 30-70% lower than in untreated matched controls.
+
+Operational planning
+
+Prescribed burns require a formal burn plan specifying objectives,
+fuel and weather prescriptions, ignition patterns, smoke
+management, resource staging, and contingency procedures. Go /
+no-go criteria are evaluated on the day of the burn.
+
+Smoke management and air quality
+
+Smoke from prescribed burns affects air quality downwind of the
+burn unit. In the United States, smoke management is addressed
+through Smoke Management Programs under State Implementation
+Plans. Most state programs include burn-day PM2.5 forecasts at
+populated-area receptors, with a go / no-go criterion tied to the
+federal National Ambient Air Quality Standards (NAAQS).
+
+Tradeoffs
+
+The short-term air-quality impacts of prescribed burns are often
+compared against the likely long-term air-quality impacts of the
+wildfires that prescribed burning is intended to mitigate.
+High-severity wildfires in fuel-rich forests produce substantially
+larger smoke emissions, over longer periods, with less control
+over exposure than prescribed burns conducted under favorable
+conditions. The accumulating consensus in fire science is that
+reintroducing fire through carefully planned prescribed burns and
+managed wildfires is preferable to continued exclusion.
+
+Cultural burning and contemporary partnerships
+
+Growing recognition of Indigenous fire stewardship has led to
+formal partnerships between federal and state land-management
+agencies and Tribal Nations in many regions. These partnerships
+range from consultation on burn planning to tribal leadership of
+prescribed-fire operations on homelands and adjacent public
+lands.
+
+(Source: paraphrased from the Wikipedia article "Controlled burn."
+Illustrative educational summary; not a substitute for primary
+literature or operational guidance.)

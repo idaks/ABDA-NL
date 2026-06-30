@@ -1,0 +1,59 @@
+[Example P&T Committee Protocol -- illustrative composite]
+
+Hospital Pharmacy & Therapeutics Committee
+PPI Continuation Review Protocol (Revised)
+
+Purpose
+
+This protocol guides the review of continued proton pump inhibitor
+therapy in hospitalized and ambulatory patients. It is intended
+to support, not replace, individual clinical judgment.
+
+Review Triggers
+
+A formal review is triggered when any of the following apply to a
+patient on chronic PPI therapy:
+
+1. Recent cardiac stent placement with concurrent clopidogrel
+2. New or worsened osteoporosis, recent fragility fracture, or
+   initiation of bisphosphonate therapy
+3. Patient age >= 75 with no documented ongoing GI indication
+4. Medication reconciliation on admission showing PPI without a
+   documented indication in the chart
+
+Review Process
+
+The reviewing pharmacist performs the following steps:
+
+1. Confirm indication. Is there a current indication meeting AGA
+   criteria (Barrett's esophagus, erosive esophagitis grade C or
+   D, Zollinger-Ellison syndrome, recurrent bleeding peptic ulcer
+   disease, high-dose chronic NSAID therapy with prior ulcer)?
+   If not, proceed to deprescribing consultation.
+
+2. Check drug-interaction profile. If the patient is on
+   clopidogrel post-PCI, review the specific PPI prescribed.
+   Omeprazole or esomeprazole on clopidogrel triggers a cardiology
+   consultation and a recommendation to switch to pantoprazole
+   unless contraindicated.
+
+3. Check bone-health risk. If the patient has documented
+   osteoporosis, recent fragility fracture, low BMD on recent
+   DEXA, or chronic corticosteroid exposure, include a note in
+   the review for the primary team about long-term PPI risk.
+   Lowest effective dose is recommended.
+
+4. Document. The review note specifies which guideline(s) drove
+   each recommendation so that the primary team and any
+   downstream reviewers can follow the reasoning.
+
+Complex Cases
+
+Cases involving all three triggers (indication present, clopidogrel
+interaction, bone-health concern) are escalated to the P&T
+committee for formal review. The committee records the priority
+ordering it applied and the rationale, to support consistency
+across cases.
+
+(Illustrative composite of hospital PPI-review protocols. Not a
+real institution's document.)

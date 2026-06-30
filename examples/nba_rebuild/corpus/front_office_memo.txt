@@ -1,0 +1,66 @@
+[Example internal memo being used as the scenario's framing document
+-- illustrative composite, not a real team's document.]
+
+TO: Basketball Operations
+FROM: Assistant GM, Strategy
+RE: Season Approach -- Recommendation
+
+Summary
+
+The following is a recommendation for our strategic posture for
+the upcoming season, written as a framing document for the
+basketball-operations meeting next week.
+
+Team Context
+
+- We are not a realistic contender this year. Playoff projection
+  models place us in the 25-35 win range under normal rotation.
+- Our under-25 rotation -- three players drafted in the last
+  three cycles plus one young international signing -- is
+  universally graded as a top-5 league-wide young core.
+- The upcoming draft is consensus-strong, with clear top-5 talent
+  and credible first-round depth.
+- We are below the second apron and have two future first-round
+  picks available to trade if needed.
+
+Options Under Consideration
+
+1. *Compete.* Play our rotation to win, give heavy minutes to
+   the young core in meaningful games, accept that the pick will
+   likely fall in the 8-12 range. Prioritize development.
+
+2. *Tank.* Sit or minutes-cap veterans in the second half, target
+   a bottom-3 record, accept short-term competitive cost for
+   better lottery odds.
+
+3. *Veteran stack.* Use future firsts plus salary aggregation to
+   acquire one or two veteran stars to accelerate the competitive
+   window. (Flagged: would move us over the second apron; see
+   CBA memo on construction restrictions.)
+
+Key Judgments
+
+The 2019 lottery reform substantially weakens the case for
+full-season tanking. Moving from a bottom-6 record to a bottom-3
+record no longer delivers a large expected pick-position gain;
+the last 10 losses of a tank are close to pick-neutral.
+
+The development cost of a tank year for a top-5 young core is
+difficult to price but is credibly large. Public career-arc work
+supports competitive exposure as a positive factor for players in
+our core's age range.
+
+The veteran-stack path is structurally limited by the CBA second
+apron. Our modeling suggests we cannot execute a two-star
+acquisition without crossing the apron, which then forecloses the
+construction tools we would rely on the following year.
+
+Recommendation
+
+Option 1 (compete). Specifically: play the young core meaningful
+minutes, trade veterans on expiring contracts only if value is
+clearly above replacement, and preserve future first-round
+flexibility. Accept a pick in the 8-12 range as the expected
+outcome. Reassess at the trade deadline.
+
+(Illustrative composite. Not a real team's internal document.)

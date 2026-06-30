@@ -1,0 +1,51 @@
+NBA Collective Bargaining Agreement (2023) -- Second Apron Summary
+Paraphrased public explanation
+
+Cap Structure
+
+The CBA ratified in 2023 introduced a "second apron" above the
+luxury tax threshold. Teams with team salary above the second
+apron face substantially more restrictive rules than traditional
+tax-paying teams.
+
+Key Second-Apron Restrictions
+
+Teams over the second apron are subject to several categorical
+prohibitions, including:
+
+- *No taxpayer mid-level exception.* Teams over the second apron
+  cannot sign free agents using the taxpayer MLE.
+- *No salary aggregation in trades.* Matching-salary rules that
+  allow combining multiple outgoing salaries to acquire a larger
+  incoming salary do not apply; each outgoing contract must match
+  within permitted bands individually.
+- *No sign-and-trade acquisitions.* Second-apron teams cannot
+  acquire players via sign-and-trade.
+- *Frozen future first-round picks.* First-round picks seven
+  years out are frozen while the team is over the second apron,
+  and can be further demoted if the team remains over the apron
+  in subsequent seasons.
+
+Implication for Strategy
+
+These restrictions are categorical, not balancing tests. A team
+that has already crossed the second apron cannot evaluate a
+stacking-veterans strategy as a trade-off against future
+flexibility; the relevant roster tools are simply unavailable.
+
+For formal modeling, this is naturally represented as a strict
+rule: over-second-apron status forecloses certain construction
+moves regardless of the ordinary competitive case for them.
+
+Strategic Consequence for Rebuilds
+
+The second-apron rules have significantly raised the cost of the
+"spend big" rebuild path for teams that would need to stack
+veterans via the tools above. For rebuilding teams below the
+apron the restrictions do not bind directly, but the rules shape
+the ceiling of what contending teams can do and therefore the
+market for veteran talent.
+
+(Source: paraphrased from publicly reported summaries of the 2023
+NBA CBA. Illustrative only; consult the official CBA document for
+exact language.)

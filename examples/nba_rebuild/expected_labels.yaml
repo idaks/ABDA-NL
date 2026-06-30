@@ -1,0 +1,23 @@
+# Expected AF labels for this scenario.
+# validate_scenario checks that the computed labels match these.
+# Regenerate with: python -m app.cli.validate_scenario <dir> --update-snapshot
+
+propositions:
+  apron_categorical: accepted
+  below_apron: accepted
+  classic_rebuild: rejected
+  dev_first: accepted
+  expansion_pending: absent
+  flat_2019: accepted
+  has_firsts: accepted
+  lottery_math: undecided
+  non_contender: accepted
+  over_apron: absent
+  pick_premium: rejected
+  preserve_flex: accepted
+  process_cautionary: accepted
+  stack_vets: rejected
+  talent_dilution: absent
+  tank: rejected
+  top5_draft: accepted
+  young_core: accepted

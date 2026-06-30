@@ -1,0 +1,543 @@
+title: "Popov v. Hayashi"
+description: >
+  A property-law dispute over the Barry Bonds 73rd home-run
+  baseball (San Francisco, 2001). Popov stopped the ball's motion
+  and had it in his glove; a mob attacked him; Hayashi retrieved
+  the loose ball. Encoding follows Prakken (2012), Figures 2-5:
+  Hayashi's possession argument (overruled), Popov's possession
+  argument (overruled), both parties' legitimate-claim arguments
+  (justified), and Figure 5 one-sided decision rules (both
+  overruled). The case was ultimately resolved by equitable
+  division. An optional equity-compromise extension (gated by the
+  `equity_compromise_open` assumption, inactive by default) adds
+  the real-world fairness question Prakken's formalism leaves
+  open -- toggling it on produces a two-rule rebut cycle that
+  labels `equal_division` undecided.
+
+facts:
+  # --- Material facts (video-tape evidence, p.64) ---
+  stopped_motion:
+    description: Popov stopped the forward motion of the baseball
+    category: evidence
+  ball_in_glove:
+    description: the baseball was in the glove of Popov
+    category: evidence
+  popov_in_motion:
+    description: Popov was in motion
+    category: evidence
+  mob_attacked_popov:
+    description: an out-of-control mob of unknown persons illegally attacked Popov
+    category: evidence
+  hayashi_nonattacker:
+    description: Hayashi did not attack Popov
+    category: evidence
+  popov_lost_contact:
+    description: Popov lost contact with the baseball during the violent attack
+    category: evidence
+  hayashi_retrieved:
+    description: Hayashi retrieved the baseball
+    category: evidence
+  popov_intended_control:
+    description: Popov intended to control the baseball
+    category: evidence
+  ball_hit_stands:
+    description: the baseball was hit into the stands
+    category: evidence
+
+  # --- Evidence facts (p.69-70) ---
+  popov_testimony_control:
+    description: Popov testified that he had full control of the baseball when he was attacked
+    category: evidence
+  testimony_inconsistent:
+    description: Popov's testimony is inconsistent, ambiguous, and unconvincing
+    category: evidence
+
+  # --- Legal facts (p.65) ---
+  metropolitan_case:
+    description: rule r1 was used in Metropolitan Life Insurance Co. v. SF Bank
+    category: context
+    source: Metropolitan Life Ins. Co. v. SF Bank
+  r2_fan_expectations:
+    description: rule r2 confirms the longstanding expectations of baseball fans
+    category: context
+  r4_fan_expectations:
+    description: rule r4 confirms the longstanding expectations of baseball fans
+    category: context
+
+  # --- Procedural and contextual facts ---
+  action_in_equity:
+    description: Popov's conversion claim is an action in equity
+    category: context
+  court_adopts_mc2:
+    description: the court adopts MC2 to decide Popov's conversion claim
+    category: context
+  mc_promotes_fairness:
+    description: the MC rules promote fundamental fairness
+    category: context
+  popov_is_plaintiff:
+    description: Popov is the plaintiff in the conversion action
+    category: context
+  hayashi_is_defendant:
+    description: Hayashi is the defendant in the conversion action
+    category: context
+
+assumptions:
+  # --- Inference-validity assumptions ---
+  v5_valid:
+    description: the ball-not-loose inference is sound (r5)
+    category: hayashi-possession
+    block: 1
+  v6_valid:
+    description: the qualified-right-plus-involuntary-loss inference is sound (r6)
+    category: hayashi-possession
+    block: 1
+
+  # --- Commonsense assumptions ---
+  cs1_valid:
+    description: practice validates rules (cs1)
+    category: rule-basis
+    block: 1
+  cs2_valid:
+    description: full control persists absent loss (cs2)
+    category: popov-possession
+    block: 1
+  cs3_valid:
+    description: inconsistent testimony is unreliable (cs3)
+    category: popov-possession
+    block: 1
+  cs4_valid:
+    description: a stopped-in-glove ball implies would-have-control (cs4)
+    category: popov-possession
+    block: 1
+  cs5_valid:
+    description: motion with loss of contact negates cs4 (cs5)
+    category: popov-possession
+    block: 1
+  cs6_valid:
+    description: a qualified right gives a legitimate claim (cs6)
+    category: legitimacy
+    block: 1
+  cs7_valid:
+    description: a mob attack causes involuntary loss (cs7)
+    category: hayashi-possession
+    block: 1
+  cs8_valid:
+    description: stopping in glove with intent is a significant step (cs8)
+    category: legitimacy
+    block: 1
+  cs9_valid:
+    description: an unlawful attack with loss of contact is an interrupted effort (cs9)
+    category: legitimacy
+    block: 1
+  cs10_valid:
+    description: a non-attacker who didn't cause the loss did no wrong (cs10)
+    category: legitimacy
+    block: 1
+
+  # --- Doctrinal assumptions ---
+  mc5a_valid:
+    description: retriever without wrong has a legitimate claim (MC5a)
+    category: legitimacy
+    block: 1
+  bb1a_valid:
+    description: physical control plus intent implies possession (BB1a)
+    category: popov-possession
+    source: Bernhardt & Brown
+    block: 1
+  g2a_valid:
+    description: catching the ball establishes physical control (G2a)
+    category: popov-possession
+    source: Gray
+    block: 1
+  g1a_valid:
+    description: involuntary loss plus would-have-control implies a catch (G1a')
+    category: popov-possession
+    source: Gray
+    block: 1
+  mc4_valid:
+    description: a one-sided decision rule doesn't balance all interests (MC4)
+    category: decision
+    block: 1
+  mc6_valid:
+    description: the pro-defendant balance undercut (MC6)
+    category: decision
+    block: 1
+  mc7_valid:
+    description: the pro-plaintiff balance undercut (MC7)
+    category: decision
+    block: 1
+
+  # --- Equity-compromise extension (inactive by default) ---
+  equity_compromise_open:
+    description: the court is exercising its equitable power to divide the proceeds between the parties
+    negated_description: the court is not exercising its equitable power to divide the proceeds
+    category: equity
+    active: false
+    block: 1
+
+propositions:
+  # --- Figure 2: Hayashi's possession argument (overruled) ---
+  abandoned_property:
+    description: the baseball is abandoned property
+    category: hayashi-possession
+  ball_not_loose:
+    description: the ball was not loose when Hayashi retrieved it
+    category: hayashi-possession
+  popov_invol_lost:
+    description: Popov involuntarily lost control of the baseball
+    category: hayashi-possession
+
+  # --- Figure 4: both parties' legitimate claims ---
+  popov_signif_steps:
+    description: Popov undertook significant but incomplete steps to achieve possession
+    category: legitimacy
+  popov_effort_interrupted:
+    description: Popov's effort was interrupted by unlawful acts of others
+    category: legitimacy
+  popov_preposs_interest:
+    description: Popov has a legally cognizable pre-possessory interest in the baseball
+    category: legitimacy
+  hayashi_no_wrong:
+    description: Hayashi did nothing wrong when achieving control of the baseball
+    category: legitimacy
+
+  # --- Figure 3: Popov's possession argument (overruled) ---
+  popov_phys_control:
+    description: Popov had physical control over the baseball
+    category: popov-possession
+  popov_caught_ball:
+    description: Popov caught the baseball
+    category: popov-possession
+  popov_had_full_control:
+    description: Popov had full control when he was attacked
+    category: popov-possession
+  popov_would_have_control:
+    description: Popov would have had complete control of the baseball if not attacked
+    category: popov-possession
+
+  # --- Figure 5: one-sided decision rules (both overruled) ---
+  rp_not_balance:
+    description: the pro-Popov decision rule doesn't balance all interests (rp)
+    category: decision
+  rh_not_balance:
+    description: the pro-Hayashi decision rule doesn't balance all interests (rh)
+    category: decision
+
+  # --- Validity propositions derived via validity-chain rules ---
+  r1_valid:
+    description: the finder-wins principle applies here (r1)
+    category: rule-basis
+  r2_valid:
+    description: the hit-into-stands-is-abandoned rule applies here (r2)
+    category: rule-basis
+  r4_valid:
+    description: the retriever-takes-abandoned rule applies here (r4)
+    category: rule-basis
+  r2_confirms:
+    description: baseball practice backs the hit-into-stands rule (r2)
+    category: rule-basis
+  r4_confirms:
+    description: baseball practice backs the retriever-takes-abandoned rule (r4)
+    category: rule-basis
+  mc1_valid:
+    description: significant steps plus abandoned property plus interrupted effort gives pre-possessory interest (MC1)
+    category: rule-basis
+  mc2_valid:
+    description: pre-possessory interest gives a qualified right (MC2)
+    category: rule-basis
+
+conclusions:
+  hayashi_no_return:
+    description: Hayashi does not have to return the baseball
+    negated_description: Hayashi has to return the baseball
+    category: decision
+  popov_has_poss:
+    description: Popov has possession of the baseball
+    negated_description: Popov does not have possession of the baseball
+    category: popov-possession
+  hayashi_has_poss:
+    description: Hayashi has possession of the baseball
+    negated_description: Hayashi does not have possession of the baseball
+    category: hayashi-possession
+  popov_right_to_poss:
+    description: Popov has a (full) right to possession
+    negated_description: Popov does not have a (full) right to possession
+    category: popov-possession
+  popov_qual_right:
+    description: Popov has a qualified right to possession of the baseball
+    negated_description: Popov does not have a qualified right to possession of the baseball
+    category: legitimacy
+  popov_legit_claim:
+    description: Popov has a legitimate claim to the baseball
+    negated_description: Popov does not have a legitimate claim to the baseball
+    category: legitimacy
+  hayashi_legit_claim:
+    description: Hayashi has a legitimate claim to the baseball
+    negated_description: Hayashi does not have a legitimate claim to the baseball
+    category: legitimacy
+  equal_division:
+    description: the ball's proceeds should be divided equally between Popov and Hayashi
+    negated_description: the ball's proceeds should not be divided equally between Popov and Hayashi
+    category: equity
+
+rules:
+  # --- Strict axioms ---
+  strict_poss_exclusive:
+    category: axiom
+    source: Prakken 2012
+    type: strict
+    premises: [hayashi_has_poss]
+    conclusion: -popov_has_poss
+  strict_mc3:
+    category: axiom
+    source: Prakken 2012
+    type: strict
+    premises: [popov_qual_right]
+    conclusion: -popov_right_to_poss
+
+  # --- Figure 2: Hayashi's possession argument ---
+  r1:
+    category: hayashi-possession
+    source: Metropolitan Life Ins. Co. v. SF Bank
+    type: defeasible
+    premises: [r1_valid, -popov_has_poss, -popov_right_to_poss]
+    conclusion: hayashi_no_return
+    block: 1
+  r2:
+    category: hayashi-possession
+    type: defeasible
+    premises: [r2_valid, ball_hit_stands]
+    conclusion: abandoned_property
+    block: 1
+  r4:
+    category: hayashi-possession
+    type: defeasible
+    negated_description: the retriever-takes-abandoned rule doesn't apply here (r4)
+    premises: [r4_valid, hayashi_retrieved, abandoned_property]
+    conclusion: hayashi_has_poss
+    block: 1
+  r5:
+    category: hayashi-possession
+    type: defeasible
+    premises: [v5_valid, ball_not_loose]
+    conclusion: -r4
+    block: 1
+  r6:
+    category: hayashi-possession
+    type: defeasible
+    premises: [v6_valid, popov_qual_right, popov_invol_lost]
+    conclusion: ball_not_loose
+    block: 1
+  cs7:
+    category: hayashi-possession
+    type: defeasible
+    premises: [cs7_valid, mob_attacked_popov, popov_lost_contact]
+    conclusion: popov_invol_lost
+    block: 1
+
+  # --- Figure 4: both parties' legitimate claims ---
+  cs8:
+    category: legitimacy
+    type: defeasible
+    premises: [cs8_valid, stopped_motion, ball_in_glove, popov_intended_control]
+    conclusion: popov_signif_steps
+    block: 1
+  cs9:
+    category: legitimacy
+    type: defeasible
+    premises: [cs9_valid, mob_attacked_popov, popov_lost_contact]
+    conclusion: popov_effort_interrupted
+    block: 1
+  mc1:
+    category: legitimacy
+    type: defeasible
+    premises: [mc1_valid, popov_signif_steps, abandoned_property, popov_effort_interrupted]
+    conclusion: popov_preposs_interest
+    block: 1
+  mc2:
+    category: legitimacy
+    type: defeasible
+    premises: [mc2_valid, popov_preposs_interest]
+    conclusion: popov_qual_right
+    block: 1
+  cs6:
+    category: legitimacy
+    type: defeasible
+    premises: [cs6_valid, popov_qual_right]
+    conclusion: popov_legit_claim
+    block: 1
+  mc5a:
+    category: legitimacy
+    type: defeasible
+    premises: [mc5a_valid, hayashi_retrieved, hayashi_no_wrong]
+    conclusion: hayashi_legit_claim
+    block: 1
+  cs10:
+    category: legitimacy
+    type: defeasible
+    premises: [cs10_valid, hayashi_nonattacker, popov_lost_contact]
+    conclusion: hayashi_no_wrong
+    block: 1
+
+  # --- Figure 3: Popov's possession argument ---
+  bb1a:
+    category: popov-possession
+    source: Bernhardt & Brown
+    type: defeasible
+    premises: [bb1a_valid, popov_phys_control, popov_intended_control]
+    conclusion: popov_has_poss
+    block: 1
+  g2a:
+    category: popov-possession
+    source: Gray
+    type: defeasible
+    premises: [g2a_valid, popov_caught_ball]
+    conclusion: popov_phys_control
+    block: 1
+  g1a:
+    category: popov-possession
+    source: Gray
+    type: defeasible
+    premises: [g1a_valid, popov_invol_lost, popov_would_have_control]
+    conclusion: popov_caught_ball
+    block: 1
+  wt1:
+    category: popov-possession
+    type: defeasible
+    negated_description: Popov's control-testimony doesn't stand on its own (wt1)
+    premises: [popov_testimony_control]
+    conclusion: popov_had_full_control
+    block: 1
+  cs2:
+    category: popov-possession
+    type: defeasible
+    premises: [cs2_valid, popov_had_full_control]
+    conclusion: popov_would_have_control
+    block: 1
+  cs3:
+    category: popov-possession
+    type: defeasible
+    premises: [cs3_valid, testimony_inconsistent]
+    conclusion: -wt1
+    block: 1
+  cs4:
+    category: popov-possession
+    type: defeasible
+    negated_description: the stopped-in-glove-implies-would-have-control inference is blocked here (cs4)
+    premises: [cs4_valid, stopped_motion, ball_in_glove]
+    conclusion: popov_would_have_control
+    block: 1
+  cs5:
+    category: popov-possession
+    type: defeasible
+    premises: [cs5_valid, popov_in_motion, popov_lost_contact]
+    conclusion: -cs4
+    block: 1
+
+  # --- Figure 5: one-sided decision rules ---
+  rp:
+    category: decision
+    type: defeasible
+    negated_description: the pro-Popov decision rule is set aside (rp)
+    premises: [popov_qual_right]
+    conclusion: -hayashi_no_return
+    block: 1
+  rh:
+    category: decision
+    type: defeasible
+    negated_description: the pro-Hayashi decision rule is set aside (rh)
+    premises: [hayashi_legit_claim]
+    conclusion: hayashi_no_return
+    block: 1
+  mc4_rp:
+    category: decision
+    type: defeasible
+    premises: [mc4_valid, hayashi_legit_claim]
+    conclusion: rp_not_balance
+    block: 1
+  mc4_rh:
+    category: decision
+    type: defeasible
+    premises: [mc4_valid, popov_legit_claim]
+    conclusion: rh_not_balance
+    block: 1
+  mc6:
+    category: decision
+    type: defeasible
+    premises: [mc6_valid, rp_not_balance, hayashi_is_defendant]
+    conclusion: -rp
+    block: 1
+  mc7:
+    category: decision
+    type: defeasible
+    premises: [mc7_valid, rh_not_balance, popov_is_plaintiff]
+    conclusion: -rh
+    block: 1
+
+  # --- Validity chains ---
+  v1:
+    category: rule-basis
+    type: defeasible
+    premises: [metropolitan_case]
+    conclusion: r1_valid
+    block: 1
+  cs1_r2:
+    category: rule-basis
+    type: defeasible
+    premises: [r2_fan_expectations]
+    conclusion: r2_confirms
+    block: 1
+  v3_r2:
+    category: rule-basis
+    type: defeasible
+    premises: [cs1_valid, r2_confirms]
+    conclusion: r2_valid
+    block: 1
+  cs1_r4:
+    category: rule-basis
+    type: defeasible
+    premises: [r4_fan_expectations]
+    conclusion: r4_confirms
+    block: 1
+  v3_r4:
+    category: rule-basis
+    type: defeasible
+    premises: [cs1_valid, r4_confirms]
+    conclusion: r4_valid
+    block: 1
+  v4_mc1:
+    category: rule-basis
+    type: defeasible
+    premises: [action_in_equity, mc_promotes_fairness, court_adopts_mc2]
+    conclusion: mc1_valid
+    block: 1
+  v4_mc2:
+    category: rule-basis
+    type: defeasible
+    premises: [action_in_equity, mc_promotes_fairness, court_adopts_mc2]
+    conclusion: mc2_valid
+    block: 1
+
+  # --- Equity-compromise extension rules (fire only when
+  # equity_compromise_open is toggled active). Both at block 1,
+  # same strength; grounded labels both undec on activation.
+  eq_equal:
+    category: equity
+    source: equitable-division doctrine
+    type: defeasible
+    premises: [equity_compromise_open, popov_legit_claim, hayashi_legit_claim]
+    conclusion: equal_division
+    block: 1
+  eq_unequal:
+    category: equity
+    source: pre-possessory-interest doctrine
+    type: defeasible
+    premises: [equity_compromise_open, popov_preposs_interest]
+    conclusion: -equal_division
+    block: 1
+
+corpus:
+  - wikipedia_popov_v_hayashi.txt
+  - popov_v_hayashi_ruling.pdf
+  - stoklas_modern_day_pierson_v_post_2003.pdf
+  - villanova_5050_ball_analysis_2024.txt

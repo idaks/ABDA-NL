@@ -1,0 +1,78 @@
+[Illustrative public-analyst piece -- paraphrased composite]
+
+The Math Behind Tanking Just Keeps Getting Worse
+
+Front-office strategy column (paraphrased)
+
+Once a year, when some nominally competitive team decides in
+February to "play the kids" and announce that they're done trying
+to win, everyone writes the same column: here's what tanking
+costs you, here's what it might get you, here's whether the
+math works. We're going to do it one more time, because the math
+has gotten meaningfully worse for tanking teams, and the
+commentary hasn't caught up.
+
+The pre-2019 lottery
+
+For most of my adult life, tanking math was straightforward.
+The worst team got a 25% shot at the top pick. The second-worst
+got 19.9%. The margin for moving yourself from third-worst to
+worst was real -- roughly nine percentage points of top-pick
+probability, and a locked-in top-4 pick. If you were running a
+rebuild, getting to the bottom of the standings was worth
+something.
+
+The 2019 flattening
+
+The 2019 reform changed that math. The three worst records now
+share 14% top-pick odds, identically. The fourth-worst drops to
+12.5%. The odds curve is much flatter across the rest of the
+lottery than it used to be. In expected-pick-position terms, the
+tanking math flipped from a real gradient to something very
+close to a flat line once you cross the bottom-3 threshold.
+
+What this means in practice
+
+Once you're in the bottom-3 band, the marginal value of your
+last ten or fifteen losses is effectively zero. You're not
+improving your expected pick. You're just losing.
+
+Meanwhile, those last ten or fifteen losses are being absorbed
+by your young players. Your 22-year-old is playing 35 minutes a
+night in games that don't matter, in environments that reward
+all the wrong habits, on a team that's been told the games
+aren't serious. There is no public career-arc evidence that this
+helps him become a better version of himself.
+
+When tanking still makes sense
+
+Full tanking -- sit the vets, minutes-cap the stars, run lineups
+designed to lose -- can still make sense for teams with:
+
+- No young core worth protecting.
+- A roster full of expiring veterans where you'd prefer draft
+  capital.
+- A team budget that makes paying luxury tax untenable for a
+  team that isn't contending.
+
+In those cases, the 2019 reform doesn't change the basic logic.
+You're not choosing between a number-one pick and a number-
+three pick; you're choosing between lottery participation and
+the play-in. That choice still favors the lottery.
+
+When it doesn't
+
+For teams with a top-5 young core already on the roster, the
+math has changed decisively. Compete hard, accept the pick
+position you end up with, keep your young players in
+environments that build good habits. You are not going to catch
+up in the lottery by tanking. You might give back years of
+development.
+
+The biggest front-office mistake of the next five years will be
+a team that tanks because that's what it "looks like" rebuilding
+teams do, ignoring that the rules changed and their roster is no
+longer the kind where tanking is the right move.
+
+(Illustrative paraphrase of public NBA strategy commentary. Not a
+real column.)

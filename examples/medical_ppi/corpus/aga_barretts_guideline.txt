@@ -1,0 +1,37 @@
+American Gastroenterological Association — Clinical Practice Update
+Management of Barrett's Esophagus (2022, paraphrased excerpts)
+
+Background
+
+Barrett's esophagus (BE) is a metaplastic condition in which the
+normal squamous epithelium of the distal esophagus is replaced by
+intestinalized columnar epithelium. It is a precursor to esophageal
+adenocarcinoma (EAC). The annual progression rate from non-dysplastic
+BE to EAC is low (~0.1-0.3%) but non-trivial in aggregate.
+
+Recommendation 7: Long-Term Acid Suppression
+
+Patients with Barrett's esophagus should be maintained on long-term
+proton pump inhibitor (PPI) therapy at the lowest effective dose.
+Acid suppression reduces intra-esophageal acid exposure and is
+associated with reduced rates of progression to high-grade dysplasia
+and EAC. Observational data (including the AspECT trial, 2018) and
+mechanistic studies support this recommendation.
+
+Evidence Grade: A (strong recommendation, moderate-to-high quality
+evidence).
+
+Comment
+
+The panel notes that in patients with competing indications --
+particularly concurrent antiplatelet therapy following percutaneous
+coronary intervention, or elevated fracture risk -- the benefit of
+ongoing PPI therapy must be balanced against these specific risks on
+an individualized basis. Discontinuation is not routinely advised
+solely on the basis of long-term use; BE surveillance and acid
+suppression remain standard of care.
+
+(Source: paraphrased from AGA Clinical Practice Update on Endoscopic
+Eradication Therapy of Barrett's Esophagus and Related Neoplasia,
+Gastroenterology, 2022. This excerpt is illustrative and is not
+intended for clinical use.)

@@ -1,0 +1,52 @@
+Short guide: why takeaway fried chicken loses crispiness
+
+Starting condition
+
+Fried chicken leaves the fryer with a crust whose surface has
+been dehydrated by contact with hot oil. The crust's crispiness
+is a function of how dry that outer layer is and how porous the
+breading has become during frying.
+
+Transport environment
+
+Takeaway fried chicken is placed, still hot, into a closed
+container -- a box, a bucket, a clamshell, or a paper bag lined
+with foil. Inside that container:
+
+1. The meat continues to release water vapour as it cools.
+2. The air inside the container quickly reaches a high relative
+   humidity because the container is sealed or near-sealed.
+3. Water vapour condenses on the inside of the lid and on the
+   breading itself, which is cooler than the meat.
+4. The breading reabsorbs moisture from the saturated air and
+   from direct contact with condensate on the box surface.
+
+Result
+
+By the time the chicken is unboxed (typically 10-30 minutes
+after leaving the restaurant), the crust has softened
+measurably. The degree of softening is proportional to the
+transport duration and to how tightly sealed the packaging is.
+This softening is mechanical and chemical, not bacterial -- the
+food is still safe to eat; it is simply no longer crispy.
+
+Restoration options
+
+A short reheat in a dry, high-temperature environment reverses
+most of this moisture reabsorption. The standard options are:
+
+- Air fryer: 3-5 minutes at 180-200 C. Effective because the
+  high-velocity hot air strips the reabsorbed moisture from the
+  breading surface.
+- Conventional oven: 8-12 minutes at 200 C on a wire rack.
+  Effective but slow to preheat.
+- Microwave: not recommended. Microwaving the chicken heats the
+  water in the breading and drives it further into the crust,
+  making the softening worse.
+
+Implication for the ordering decision
+
+If a suitable reheating device is available at home, ordering
+to-go is roughly equivalent to dining in from a texture
+perspective. If no reheating device is available, to-go
+strictly loses on crispiness.

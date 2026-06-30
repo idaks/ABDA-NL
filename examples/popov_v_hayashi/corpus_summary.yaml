@@ -1,0 +1,45 @@
+# Hand-curated corpus snippets for the Popov v. Hayashi scenario.
+#
+# Each passage must be a verbatim substring of the raw corpus file
+# named in its section (whitespace and typography normalisation are
+# tolerated).
+
+sources:
+  - filename: popov_v_hayashi_ruling.pdf
+    passages:
+      - "Mr. Popov intended at all times to establish and maintain possession of the ball."
+      - "He was tackled and thrown to the ground while still in the process of"
+      - "The videotape clearly establishes that this was an out of control mob, engaged in violent, illegal behavior."
+      - "Mr. Hayashi was standing near Mr. Popov when the ball came into the stands. He, like Mr. Popov, was involuntarily forced to the ground. He committed no wrongful act."
+      - "Perhaps the most critical factual finding of all is one that cannot be made. We will never know if Mr. Popov would have been able to retain control of the ball had the crowd not interfered with his efforts to do so."
+      - "A person who catches a baseball that enters the stands is its owner. A ball is caught if the person has achieved complete control of the ball at the point in time that the momentum of the ball and the momentum of the fan while attempting to catch the ball ceases."
+      - "The central tenant of Gray's Rule is that the actor must retain control of the ball after incidental contact with people and things."
+      - "Mr. Popov has not established by a preponderance of the evidence that he would have retained control of the ball after all momentum ceased and after any incidental contact with people or objects. Consequently, he did not achieve full possession."
+      - "As a matter of fundamental fairness, Mr. Popov should have had the opportunity to try to complete his catch unimpeded by unlawful activity."
+      - "Where an actor undertakes significant but incomplete steps to achieve possession of a piece of abandoned personal property and the effort is interrupted by the unlawful acts of others, the actor has a legally cognizable pre-possessory interest in the property."
+      - "Mr. Hayashi was not a wrongdoer. He was a victim of the same bandits that attacked Mr. Popov."
+      - "Both men have a superior claim to the ball as against all the world. Each man has a claim of equal dignity as to the other."
+      - "The principle at work here is that where more than one party has a valid claim to a single piece of property, the court will recognize an undivided interest in the property in proportion to the strength of the claim."
+      - "The court therefore declares that both plaintiff and defendant have an equal and undivided interest in the ball."
+
+  - filename: wikipedia_popov_v_hayashi.txt
+    passages:
+      - "Before the baseball was hit, it was considered property of MLB and after it was hit was considered intentionally abandoned property."
+      - "The court considered that legal possession in this instance requires successfully attaining it and the intent to possess."
+      - "The court eventually concluded that both parties had rights to the ball and neither could be deprived of it lawfully, and the best solution was an [[Division of property|equitable division]]."
+      - "For this decision the court set a new precedent of qualified pre-possessory interest allowing for both Popov to claim his property had been converted and it was still his, while also allowing Hayashi legal rights over the ball."
+      - "If Popov had not been attacked and dropped the ball on his own accord, Hayashi would have been the legal owner."
+      - "This case sets a precedent for similar scenarios where simple conversion of rightful property is not easy to determine."
+
+  - filename: stoklas_modern_day_pierson_v_post_2003.pdf
+    passages:
+      - "California Superior Court Judge Kevin McCarthy declared that both"
+      - "an individual gains a pre-possessory interest in property if that individual \"undertakes"
+      - "A pre-possessory interest arises when \"an actor undertakes significant but incomplete"
+
+  - filename: villanova_5050_ball_analysis_2024.txt
+    passages:
+      - "Popov's position: Temporary possession through control before mob"
+      - "Hayashi's counter: Popov never actually caught the ball; Hayashi"
+      - "The judge ordered an equitable 50/50 split and auction, establishing"
+      - "The author suggests the court will likely follow Popov v. Hayashi,"

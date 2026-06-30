@@ -1,0 +1,220 @@
+title: PPI Therapy
+description: >
+  A hospital Pharmacy and Therapeutics committee is reviewing whether
+  to continue long-term proton pump inhibitor therapy for a patient
+  with three overlapping conditions. Barrett's esophagus (AGA Grade A)
+  pulls toward continuation; clopidogrel plus a recent coronary stent
+  (ACC/AHA Grade B) flags a CYP2C19-mediated drug interaction; low
+  bone mineral density (Endocrine Grade C) flags fracture risk. The
+  recommendation to continue sits undecided between the BE and the
+  cardiac line; BE as an indication is accepted against a defeated
+  deprescribing default; stopping the PPI outright is rejected under
+  the Endocrine Society's GI-indication carve-out. Toggling "PPI is
+  pantoprazole" undercuts the middle link of the cardiac chain and
+  flips both the cardiac-risk intermediate and the final recommendation.
+
+facts:
+  barretts:
+    description: the patient has biopsy-confirmed Barrett's esophagus
+    category: GI
+  clopidogrel:
+    description: the patient is on clopidogrel
+    category: cardiac
+  recent_pci:
+    description: the patient had a recent percutaneous coronary intervention
+    category: cardiac
+  postmenop:
+    description: the patient is postmenopausal
+    category: bone
+  low_bmd:
+    description: the patient has documented low bone mineral density on recent DEXA
+    category: bone
+  on_ppi:
+    description: the patient is currently on a chronic PPI
+    category: GI
+
+assumptions:
+  ppi_is_panto:
+    description: the specific PPI prescribed is pantoprazole (CYP2C19-sparing)
+    negated_description: the PPI is not pantoprazole
+    category: GI
+    source: formulary record; toggle on to test the pantoprazole case
+    active: false
+    block: 1
+  cogent_applies:
+    description: the COGENT trial is treated as decisive against the PPI-clopidogrel DDI
+    negated_description: COGENT is not treated as decisive here
+    category: cardiac
+    source: minority cardiology reading; toggle on for the COGENT-dominant case
+    active: false
+    block: 1
+
+propositions:
+  needs_cyp2c19:
+    description: clopidogrel requires hepatic CYP2C19 activation to its active metabolite
+    negated_description: clopidogrel does not require CYP2C19 activation here
+    category: cardiac
+  long_term_ppi:
+    description: the patient is on chronic long-term PPI therapy
+    negated_description: the patient is not on chronic long-term PPI therapy
+    category: GI
+
+conclusions:
+  continue_ppi:
+    description: the patient should continue long-term PPI therapy
+    negated_description: the patient should discontinue long-term PPI therapy
+    category: GI
+  cardiac_risk:
+    description: the patient faces a clinically meaningful PPI-clopidogrel interaction
+    negated_description: no clinically meaningful PPI-clopidogrel interaction here
+    category: cardiac
+  bone_risk:
+    description: long-term PPI materially elevates this patient's fracture risk
+    negated_description: PPI does not materially elevate this patient's fracture risk
+    category: bone
+  be_indication:
+    description: Barrett's esophagus is a compelling ongoing indication for chronic acid suppression
+    negated_description: Barrett's is not a compelling indication here
+    category: GI
+  switch_panto:
+    description: substitute pantoprazole to mitigate the cardiac interaction
+    negated_description: do not substitute pantoprazole
+    category: GI
+  escalate:
+    description: the case meets the complex-case threshold and must be escalated to full P and T
+    negated_description: the case does not require P and T escalation
+    category: procedural
+  deprescribe_now:
+    description: discontinue the PPI at this visit without substitution
+    negated_description: do not deprescribe the PPI at this visit
+    category: GI
+
+rules:
+  on_ppi_is_chronic:
+    type: strict
+    premises: [on_ppi]
+    conclusion: long_term_ppi
+    category: GI
+    source: scenario stipulation; the patient has been on PPI chronically
+
+  aga_rec7:
+    type: defeasible
+    premises: [barretts]
+    conclusion: be_indication
+    category: AGA
+    source: AGA 2022 Rec 7 (Grade A); BE is a compelling indication for chronic acid suppression
+    block: 3
+  deprescribe_default:
+    type: defeasible
+    premises: [long_term_ppi]
+    conclusion: -be_indication
+    category: protocol
+    source: long-term PPI without documented indication is a deprescribing trigger
+    block: 1
+  continue_if_be:
+    type: defeasible
+    premises: [barretts, on_ppi]
+    conclusion: continue_ppi
+    category: AGA
+    source: AGA Rec 7 operational reading; continue chronic acid suppression in confirmed BE
+    block: 2
+
+  clop_needs_cyp2c19:
+    type: defeasible
+    premises: [clopidogrel, recent_pci]
+    conclusion: needs_cyp2c19
+    category: cardiac
+    source: pharmacology; clopidogrel is a prodrug requiring CYP2C19 activation
+    block: 2
+  ppi_blocks_cyp2c19:
+    type: defeasible
+    premises: [needs_cyp2c19, on_ppi]
+    conclusion: cardiac_risk
+    category: ACC/AHA
+    negated_description: the generic PPI-inhibits-CYP2C19 inference does not apply to this PPI
+    source: ACC/AHA 2021; CYP2C19-inhibiting PPIs reduce clopidogrel active-metabolite levels
+    block: 2
+  acc_aha_avoid:
+    type: defeasible
+    premises: [cardiac_risk]
+    conclusion: -continue_ppi
+    category: ACC/AHA
+    source: ACC/AHA 2021; avoid PPI co-prescription when the interaction is clinically meaningful
+    block: 2
+  panto_spares:
+    type: defeasible
+    premises: [ppi_is_panto]
+    conclusion: -ppi_blocks_cyp2c19
+    category: pharmacology
+    source: pantoprazole is CYP2C19-sparing; the generic class inference does not apply
+    block: 2
+  cogent:
+    type: defeasible
+    premises: [cogent_applies]
+    conclusion: -ppi_blocks_cyp2c19
+    category: cardiac
+    source: COGENT trial (minority reading); no excess cardiac events in the PPI arm
+    block: 2
+
+  endo_bone:
+    type: defeasible
+    premises: [postmenop, low_bmd]
+    conclusion: bone_risk
+    category: Endocrine
+    source: Endocrine Society 2019 (Grade C); postmenopausal low BMD raises PPI fracture risk
+    block: 2
+  bone_avoid:
+    type: defeasible
+    premises: [bone_risk]
+    conclusion: -continue_ppi
+    category: Endocrine
+    negated_description: the Endocrine avoid-PPI-on-bone inference does not apply when a clear GI indication exists
+    source: Endocrine Society 2019; avoid long-term PPI where fracture risk is elevated
+    block: 2
+  specificity_be:
+    type: defeasible
+    premises: [barretts]
+    conclusion: -bone_avoid
+    category: AGA
+    source: Endocrine 2019 GI-indication carve-out; continuation remains appropriate where a clear GI indication exists
+    block: 3
+
+  bone_urges_stop:
+    type: defeasible
+    premises: [bone_risk]
+    conclusion: deprescribe_now
+    category: bone
+    source: precautionary bone-line argument for stopping without substitution
+    block: 1
+  no_abrupt_stop:
+    type: defeasible
+    premises: [barretts]
+    conclusion: -deprescribe_now
+    category: AGA
+    source: AGA 2022; BE maintenance therapy should not be discontinued abruptly
+    block: 3
+
+  switch_if_cardiac:
+    type: defeasible
+    premises: [cardiac_risk]
+    conclusion: switch_panto
+    category: GI
+    source: pharmacy recommendation; substitute a CYP2C19-sparing PPI when the DDI fires
+    block: 2
+
+  complex_case:
+    type: defeasible
+    premises: [barretts, clopidogrel, postmenop, low_bmd]
+    conclusion: escalate
+    category: procedural
+    source: formulary protocol; GI plus cardiac plus bone meets the complex-case threshold
+    block: 2
+
+corpus:
+  - wikipedia_ppi.txt
+  - aga_barretts_guideline.txt
+  - acc_aha_antiplatelet.txt
+  - endocrine_ppi_bone.txt
+  - cogent_trial.txt
+  - barretts_surveillance_review.txt
+  - formulary_committee_protocol.txt

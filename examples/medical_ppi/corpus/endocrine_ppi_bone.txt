@@ -1,0 +1,36 @@
+Endocrine Society — Position Statement on Long-Term PPI Use and
+Bone Health (2019, paraphrased excerpts)
+
+Summary
+
+Long-term proton pump inhibitor (PPI) use has been associated in
+observational studies with modest increases in hip, wrist, and
+spine fracture risk. The mechanism is incompletely understood but
+likely involves reduced calcium absorption in an acidic-dependent
+step and possible osteoclast modulation.
+
+Key Findings
+
+- Meta-analyses of observational studies report hazard ratios for
+  hip fracture in the range of 1.2-1.4 among chronic PPI users.
+- The effect size is small relative to established osteoporosis
+  risk factors (age, prior fracture, corticosteroid exposure,
+  low BMD).
+- Randomized evidence is limited; residual confounding is a
+  plausible alternative explanation.
+
+Recommendation
+
+In patients with elevated fracture risk (postmenopausal women with
+low BMD, prior fragility fracture, or systemic corticosteroid use),
+clinicians should periodically reassess the indication for long-term
+PPI therapy. Continuation remains appropriate where a clear
+gastrointestinal indication exists (e.g., Barrett's esophagus,
+Zollinger-Ellison syndrome, bleeding peptic ulcer history).
+
+Evidence Grade: C (conditional recommendation, low-to-moderate
+quality observational evidence).
+
+(Source: paraphrased from Endocrine Society position statements on
+medications affecting bone metabolism. Illustrative only, not for
+clinical use.)

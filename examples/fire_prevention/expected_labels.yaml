@@ -1,0 +1,23 @@
+# Expected AF labels for this scenario.
+# validate_scenario checks that the computed labels match these.
+# Regenerate with: python -m app.cli.validate_scenario <dir> --update-snapshot
+
+propositions:
+  community_downwind: accepted
+  conduct_burn: undecided
+  cultural_history: accepted
+  dry_conditions: accepted
+  eco_benefit: accepted
+  elevated_risk: accepted
+  forecast_exceed: absent
+  good_fire: accepted
+  heavy_fuels: accepted
+  legal_today: accepted
+  postpone_burn: accepted
+  recent_burn: absent
+  sensitive_pop: accepted
+  short_interval: rejected
+  smoke_harm: accepted
+  smp_permit: accepted
+  tribal_partner: accepted
+  wui_unit: accepted

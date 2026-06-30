@@ -1,0 +1,50 @@
+Fire Ecology Synthesis: Fuel Treatment in Dry Forests
+Paraphrased narrative review
+
+Background
+
+Western North American dry mixed-conifer and ponderosa-pine forests
+evolved under frequent low- to moderate-intensity fire regimes. A
+century of fire exclusion has produced stand structures with heavy
+surface and ladder fuel loads, closed canopies, and a shift toward
+fire-intolerant species composition. Contemporary wildfires in
+these systems increasingly exhibit high-severity crown fire
+behavior that is outside the historical range of variability.
+
+Treatment Effects
+
+Prescribed burning and mechanical thinning followed by prescribed
+burning have been extensively studied as fuel-reduction treatments.
+Representative findings from multi-site syntheses (USFS Joint Fire
+Science Program and peer-reviewed literature):
+
+- Treated stands exhibit substantially lower crown-fire potential
+  than untreated stands under comparable weather conditions.
+- Severity reductions in post-treatment wildfire events are robust
+  across fuel types, with effect sizes typically in the range of
+  30-70% reduction in tree mortality relative to matched untreated
+  controls.
+- Burn-only treatments restore understory heterogeneity and can
+  improve habitat conditions for fire-adapted species.
+
+Treatment Cycle
+
+Fuel response rates vary by site, but a commonly recommended
+interval for maintenance burns in dry-forest systems is roughly
+every 5-15 years, matching historical fire-return intervals derived
+from dendrochronology. Treatments applied at intervals shorter than
+the fuel-recovery window produce diminishing marginal ecological
+benefit; longer intervals allow fuel re-accumulation and restore
+wildfire risk.
+
+Implication for This Decision
+
+For units with documented heavy fuel loading and no treatment
+within the last fuel-return interval, the fire-ecology case for
+prescribed burning is strong. Units recently treated -- within the
+past roughly five years -- are poor candidates for immediate
+re-treatment on ecological grounds.
+
+(Source: paraphrased synthesis of USFS Joint Fire Science Program
+reports and peer-reviewed fire-ecology literature. Illustrative
+only; not a substitute for site-specific ecological assessment.)

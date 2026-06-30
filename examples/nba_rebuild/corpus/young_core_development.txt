@@ -1,0 +1,51 @@
+Young-Core Development: Competitive Context and Growth
+Paraphrased analytical summary
+
+Framing
+
+A recurring debate in front-office strategy is whether young
+players develop faster on a losing team with abundant minutes and
+usage, or on a winning team with meaningful stakes and veteran
+peers. The answer is neither universal nor settled, but publicly
+available career-arc analysis supports some regularities.
+
+Patterns Observed in Career-Arc Analysis
+
+- Role players and rotation pieces tend to consolidate skills
+  faster in higher-stakes environments where on/off splits and
+  lineup fit matter. Losing environments can reinforce
+  inefficient habits (hero ball, low-effort defense) that are
+  hard to unlearn later.
+
+- Primary creators (future number-one options) show more
+  variance. Some have flourished with high-usage green light on
+  losing teams; others have stagnated until paired with a stable
+  veteran structure.
+
+- The strongest predictor of multi-year improvement in public
+  data is playoff exposure before age 25. Teams that reach the
+  postseason with young cores intact tend to see accelerated
+  development curves relative to teams that defer competitive
+  exposure.
+
+Tension with Tanking
+
+A pure tanking season places the entire roster, including the
+young core, in a losing environment. The development cost is
+real even if difficult to price precisely. Front offices that
+have publicly prioritized development over pick capital (examples
+in recent memory include teams that explicitly refused to tank
+despite public analyst pressure) cite this development cost as a
+primary factor.
+
+Recommendation Pattern in Public Analysis
+
+For teams with a promising young core already in place, recent
+public analytics have generally favored "compete hard, accept
+where the pick falls" over explicit tanking. The pick-value gain
+from tanking is bounded above by current lottery odds structure;
+the development cost is unbounded below in principle.
+
+(Source: paraphrased synthesis of publicly available career-arc
+analyses and front-office reporting. Illustrative only; not tied
+to any specific team's internal evaluation.)

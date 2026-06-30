@@ -1,0 +1,67 @@
+Proton-pump inhibitor -- Wikipedia (paraphrased excerpts)
+
+Proton-pump inhibitors (PPIs) are a class of medications that
+reduce stomach acid production by irreversibly inhibiting the
+hydrogen/potassium ATPase proton pump on the luminal surface of
+gastric parietal cells. PPIs are among the most widely prescribed
+medications in the world.
+
+Members of the class
+
+Commonly prescribed PPIs include:
+- Omeprazole (Prilosec)
+- Esomeprazole (Nexium)
+- Lansoprazole (Prevacid)
+- Pantoprazole (Protonix)
+- Rabeprazole (Aciphex)
+- Dexlansoprazole (Dexilant)
+
+Members differ in CYP450 metabolism and drug-interaction profiles.
+Omeprazole and esomeprazole are notable CYP2C19 inhibitors;
+pantoprazole has comparatively minimal CYP2C19 activity.
+
+Clinical uses
+
+PPIs are first-line therapy for gastroesophageal reflux disease
+(GERD), peptic ulcer disease, Barrett's esophagus surveillance,
+Zollinger-Ellison syndrome, and stress-ulcer prophylaxis in
+critically ill patients. They are also used as part of eradication
+regimens for Helicobacter pylori infection.
+
+Adverse effects and safety considerations
+
+Long-term use has been associated with a range of potential
+adverse outcomes, though causal relationships are not always
+established. Reported associations include:
+
+- Fracture risk: modestly increased risk of hip, wrist, and spine
+  fracture in observational studies of long-term users, with
+  hazard ratios generally in the 1.2-1.4 range.
+- Bone mineral density: the mechanism is debated; hypotheses
+  include reduced calcium absorption and osteoclast modulation.
+- Clostridioides difficile infection: small absolute increase in
+  risk.
+- Community-acquired pneumonia: inconsistent evidence.
+- Clopidogrel interaction: omeprazole and esomeprazole reduce the
+  conversion of clopidogrel to its active metabolite via CYP2C19
+  inhibition. The clinical significance has been debated; the
+  COGENT trial (2010) did not detect excess ischemic events with
+  pantoprazole, but pharmacodynamic studies show clear
+  differences between agents.
+- Chronic kidney disease: observational associations reported;
+  mechanism uncertain.
+
+Formulary and deprescribing considerations
+
+Many institutions maintain formal deprescribing protocols for
+long-term PPI users without a clear ongoing indication. Patients
+with compelling indications (Barrett's esophagus, recurrent
+bleeding ulcer history, severe erosive esophagitis, Zollinger-
+Ellison syndrome) generally remain on chronic therapy. Patient-
+specific interactions -- including antiplatelet therapy,
+osteoporosis risk, and polypharmacy considerations -- are
+commonly weighed by pharmacy and therapeutics committees.
+
+(Source: paraphrased from the Wikipedia article "Proton-pump
+inhibitor." Illustrative educational summary; not a substitute for
+primary literature.)

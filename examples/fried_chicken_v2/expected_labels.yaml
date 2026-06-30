@@ -1,0 +1,10 @@
+# Expected AF labels for this scenario.
+# validate_scenario checks that the computed labels match these.
+# Regenerate with: python -m app.cli.validate_scenario <dir> --update-snapshot
+
+propositions:
+  box_transport: accepted
+  crispy: accepted
+  have_airfryer: accepted
+  order_to_go: undecided
+  want_chicken: accepted

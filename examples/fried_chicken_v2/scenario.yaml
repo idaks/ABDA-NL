@@ -1,0 +1,92 @@
+title: Fried Chicken V2
+description: >
+  A minimal four-argument scenario adapted from an ArgBlazer demo,
+  encoded with tiered preference blocks (1 / 2 / 3) and rebut-only
+  (no undercut). The decision is whether to dine in at the
+  restaurant or order to-go and eat at home. Defaults for to-go
+  and dine-in sit at block 1 and rebut each other symmetrically.
+  A "soggy" chain (block 2) contends that to-go chicken will be
+  soggy when eaten and therefore should not be ordered. The
+  air-fryer argument (block 3) positively asserts that the
+  chicken will be crispy when eaten, beating the soggy rule by
+  preference. With the air-fryer assumption active, the air-fryer
+  argument wins on crispy; the soggy chain collapses via its
+  sub-argument; to-go and dine-in remain undecided; crispy is
+  accepted. Suspend the assumption and the soggy chain wins
+  decisively, flipping both crispy and order_to_go to rejected.
+  Preferences on pair 3 actually matter here -- the three-way
+  radio in the Conflicts view genuinely flips crispy's outcome.
+  Contrast with V1, which is preference-free (all block 1) and
+  relies on an undercut from the air-fryer rule to defeat the
+  soggy chain; V1 is the more ArgBlazer-faithful encoding, V2 is
+  the preference-demonstration encoding.
+
+facts:
+  want_chicken:
+    description: we want fried chicken for this meal
+    category: ordering
+  box_transport:
+    description: to-go fried chicken is transported in a closed takeaway box
+    category: transport
+
+assumptions:
+  have_airfryer:
+    description: there is a working air fryer available at home
+    negated_description: there is no working air fryer available at home
+    category: home-kitchen
+    active: true
+    block: 1
+
+conclusions:
+  order_to_go:
+    description: order the fried chicken to-go (and eat at home)
+    negated_description: dine in at the restaurant instead of ordering to-go
+    category: ordering
+  crispy:
+    description: the fried chicken will be crispy when eaten
+    negated_description: the fried chicken will be soggy when eaten
+    category: quality
+
+rules:
+  togo_by_default:
+    type: defeasible
+    premises: [want_chicken]
+    conclusion: order_to_go
+    category: ordering
+    source: default preference for eating at home
+    block: 1
+  dinein_by_default:
+    type: defeasible
+    premises: [want_chicken]
+    conclusion: -order_to_go
+    category: ordering
+    source: default preference for eating at the restaurant
+    block: 1
+  box_softens:
+    type: defeasible
+    premises: [box_transport]
+    conclusion: -crispy
+    category: quality
+    source: without intervention, chicken transported in a closed takeaway box will be soggy by the time it is eaten (steam trapped in the box softens the breading during transit)
+    negated_description: the transport-to-soggy-when-eaten inference does not apply here
+    block: 2
+  avoid_soggy_food:
+    type: defeasible
+    premises: [-crispy]
+    conclusion: -order_to_go
+    category: ordering
+    source: texture-preference principle (don't order food that arrives soggy)
+    block: 2
+  airfryer_makes_crispy:
+    type: defeasible
+    premises: [have_airfryer]
+    conclusion: crispy
+    category: home-kitchen
+    source: air fryer at home positively delivers a crispy result when the food is eaten
+    block: 3
+
+corpus:
+  - wikipedia_air_fryer.txt
+  - wikipedia_fried_chicken_restaurant.txt
+  - home_kitchen_notes.txt
+  - transport_and_crispiness.txt

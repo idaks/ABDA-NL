@@ -1,0 +1,55 @@
+Barrett's Esophagus: Surveillance and Chemoprevention
+Narrative review -- paraphrased synthesis
+
+Background
+
+Barrett's esophagus (BE) is a metaplastic condition in which the
+distal esophagus develops intestinalized columnar epithelium,
+typically as a consequence of chronic gastroesophageal reflux
+disease. BE is the principal precursor lesion for esophageal
+adenocarcinoma (EAC), a cancer with poor survival at late stages.
+
+Progression Rates
+
+Published progression rates vary by dysplasia grade:
+
+- Non-dysplastic BE: approximately 0.1-0.3% per patient-year
+  progression to EAC.
+- Low-grade dysplasia: approximately 0.5-1.0% per patient-year.
+- High-grade dysplasia: substantially higher; most major centers
+  recommend endoscopic eradication therapy.
+
+Chemopreventive Role of Acid Suppression
+
+Long-term PPI therapy reduces esophageal acid exposure and, through
+multiple proposed mechanisms, may reduce the rate of progression
+to dysplasia and cancer. The AspECT trial (Jankowski et al., Lancet
+2018) randomized BE patients to high-dose vs. low-dose esomeprazole
+with or without aspirin and reported a modest composite benefit
+for high-dose esomeprazole combined with aspirin over a median 8.9
+years of follow-up.
+
+Observational evidence has generally supported an inverse
+relationship between PPI adherence and BE progression, although
+residual confounding by indication is difficult to rule out.
+
+Guideline Consensus
+
+Major GI societies (AGA, ACG, BSG) converge on a recommendation
+for long-term PPI therapy in BE patients as part of a broader
+surveillance strategy that includes endoscopic screening at
+intervals determined by dysplasia status.
+
+Interaction with Other Risks
+
+The chemopreventive rationale for PPI therapy in BE does not
+override patient-specific risks. The contemporary consensus is
+that PPI therapy should be maintained unless a specific competing
+risk (clinically significant drug interaction, major contribution
+to fracture risk in a fragile patient) outweighs the cancer-
+reduction benefit. The threshold for that judgment varies among
+clinicians and institutions.
+
+(Source: paraphrased synthesis of Barrett's esophagus surveillance
+literature. Illustrative only; not a substitute for primary
+sources.)

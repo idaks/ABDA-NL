@@ -1,0 +1,32 @@
+American College of Cardiology / American Heart Association
+Focused Update on Antiplatelet Therapy After PCI (2021, paraphrased)
+
+Section 4.3: PPI Co-Administration With Clopidogrel
+
+Clopidogrel is a prodrug that requires hepatic activation via the
+CYP2C19 enzyme. Certain proton pump inhibitors (particularly
+omeprazole and esomeprazole) are potent CYP2C19 inhibitors and may
+reduce the conversion of clopidogrel to its active metabolite,
+decreasing platelet inhibition.
+
+The writing committee recommends:
+
+- In patients receiving clopidogrel after percutaneous coronary
+  intervention (PCI), concomitant use of omeprazole or esomeprazole
+  should be avoided when feasible.
+
+- If acid suppression is clinically necessary, pantoprazole or an
+  H2-receptor antagonist is preferred.
+
+- The evidence base for this recommendation is mixed: the COGENT
+  randomized trial (Bhatt et al., 2010) did not show an excess of
+  ischemic events with pantoprazole + clopidogrel, but was
+  underpowered for rare events. Pharmacodynamic studies consistently
+  show reduced clopidogrel active-metabolite levels with omeprazole.
+
+Evidence Grade: B (moderate recommendation, moderate-quality
+evidence with conflicting trial and pharmacodynamic data).
+
+(Source: paraphrased from ACC/AHA guideline updates on antiplatelet
+therapy. This excerpt is illustrative and is not intended for
+clinical use.)

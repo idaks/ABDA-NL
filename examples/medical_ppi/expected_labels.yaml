@@ -1,0 +1,22 @@
+# Expected AF labels for this scenario.
+# validate_scenario checks that the computed labels match these.
+# Regenerate with: python -m app.cli.validate_scenario <dir> --update-snapshot
+
+propositions:
+  barretts: accepted
+  be_indication: accepted
+  bone_risk: accepted
+  cardiac_risk: accepted
+  clopidogrel: accepted
+  cogent_applies: absent
+  continue_ppi: undecided
+  deprescribe_now: rejected
+  escalate: accepted
+  long_term_ppi: accepted
+  low_bmd: accepted
+  needs_cyp2c19: accepted
+  on_ppi: accepted
+  postmenop: accepted
+  ppi_is_panto: absent
+  recent_pci: accepted
+  switch_panto: accepted
