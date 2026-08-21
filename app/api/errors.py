@@ -11,6 +11,7 @@ from fastapi.responses import JSONResponse
 
 from app.abda_bridge import ArgumentConstructionError
 from app.api.models import ErrorDetail, ErrorResponse
+from app.llm.client import LLMProviderError
 from app.scenario.diff_ops import DiffOpError
 from app.scenario.loader import ScenarioValidationError
 from app.scenario.save import (
@@ -112,6 +113,15 @@ async def _request_validation_handler(
     return _response(422, details)
 
 
+async def _llm_provider_error_handler(
+    request: Request, exc: LLMProviderError
+) -> JSONResponse:
+    return _response(
+        exc.status_code,
+        [ErrorDetail(code=exc.code, path="<root>", message=str(exc))],
+    )
+
+
 def register_exception_handlers(app: FastAPI) -> None:
     app.add_exception_handler(ScenarioValidationError, _scenario_validation_handler)
     app.add_exception_handler(DiffOpError, _diff_op_handler)
@@ -121,3 +131,4 @@ def register_exception_handlers(app: FastAPI) -> None:
     app.add_exception_handler(ScenarioIdCollision, _scenario_id_collision_handler)
     app.add_exception_handler(SaveVerificationFailed, _save_verification_failed_handler)
     app.add_exception_handler(RequestValidationError, _request_validation_handler)
+    app.add_exception_handler(LLMProviderError, _llm_provider_error_handler)

@@ -77,6 +77,8 @@ ABDA_LLM_BACKEND=ollama ABDA_OLLAMA_MODEL=your-model \
 ```
 
 API keys belong only in `.env` or the shell environment. Never commit them.
+The Anthropic organization associated with the key must also have available
+[API usage credits](https://support.claude.com/en/articles/8977456-how-do-i-pay-for-my-claude-api-usage).
 
 ## NCSA Delta
 

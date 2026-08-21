@@ -50,6 +50,64 @@ class ToolCallResponse:
     model: str
 
 
+class LLMProviderError(RuntimeError):
+    """Safe, user-facing description of an upstream LLM failure."""
+
+    def __init__(self, *, code: str, message: str, status_code: int) -> None:
+        super().__init__(message)
+        self.code = code
+        self.status_code = status_code
+
+
+def _provider_error(exc: Exception) -> LLMProviderError:
+    """Map an Anthropic SDK error without exposing its response body."""
+    status = getattr(exc, "status_code", None)
+    if status == 400:
+        return LLMProviderError(
+            code="llm_request_rejected",
+            message=(
+                "Claude rejected the request. Check that the API account has "
+                "usage credits and that ABDA_LLM_MODEL is available to the key."
+            ),
+            status_code=502,
+        )
+    if status == 401:
+        return LLMProviderError(
+            code="llm_authentication_failed",
+            message="Claude authentication failed. Check ANTHROPIC_API_KEY.",
+            status_code=502,
+        )
+    if status == 403:
+        return LLMProviderError(
+            code="llm_access_denied",
+            message=(
+                "Claude denied access. Check the API key permissions and "
+                "ABDA_LLM_MODEL."
+            ),
+            status_code=502,
+        )
+    if status == 404:
+        return LLMProviderError(
+            code="llm_model_not_found",
+            message=(
+                "The configured Claude model or API endpoint was not found. "
+                "Check ABDA_LLM_MODEL."
+            ),
+            status_code=502,
+        )
+    if status == 429:
+        return LLMProviderError(
+            code="llm_rate_limited",
+            message="Claude rate limit reached. Wait briefly and try again.",
+            status_code=503,
+        )
+    return LLMProviderError(
+        code="llm_provider_unavailable",
+        message="Claude is temporarily unavailable. Try again shortly.",
+        status_code=503,
+    )
+
+
 class LLMClient(Protocol):
     """Common interface. Callers pass pre-built system blocks +
     message list."""
@@ -100,6 +158,19 @@ class ClaudeClient:
         self._client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
         self.model = model or _resolve_model()
 
+    def _final_message(self, kwargs: dict[str, Any]) -> Any:
+        try:
+            with self._client.messages.stream(**kwargs) as stream:
+                return stream.get_final_message()
+        except self._anthropic.APIError as exc:
+            status = getattr(exc, "status_code", None)
+            log.warning(
+                "llm_provider_error type=%s status=%s",
+                type(exc).__name__,
+                status,
+            )
+            raise _provider_error(exc) from exc
+
     def complete(
         self,
         *,
@@ -121,8 +192,7 @@ class ClaudeClient:
             kwargs["cache_control"] = {"type": "ephemeral"}
 
         start = time.monotonic()
-        with self._client.messages.stream(**kwargs) as stream:
-            final = stream.get_final_message()
+        final = self._final_message(kwargs)
         latency_ms = int((time.monotonic() - start) * 1000)
 
         text_parts = [b.text for b in final.content if getattr(b, "type", None) == "text"]
@@ -177,8 +247,7 @@ class ClaudeClient:
             kwargs["cache_control"] = {"type": "ephemeral"}
 
         start = time.monotonic()
-        with self._client.messages.stream(**kwargs) as stream:
-            final = stream.get_final_message()
+        final = self._final_message(kwargs)
         latency_ms = int((time.monotonic() - start) * 1000)
 
         # Grab the tool_use block. With tool_choice forced to a

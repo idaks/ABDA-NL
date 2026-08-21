@@ -298,6 +298,41 @@ def test_chat_disabled_returns_503(client: TestClient, monkeypatch):
     assert "ABDA_ENABLE_LLM=1" in resp.json()["detail"]
 
 
+def test_chat_provider_error_returns_actionable_response(client: TestClient, monkeypatch):
+    from app.api import main as main_module
+    from app.llm.client import LLMProviderError
+
+    fake = _FakeLLMClient([])
+
+    def fail(**_kwargs):
+        raise LLMProviderError(
+            code="llm_request_rejected",
+            message=(
+                "Claude rejected the request. Check that the API account has "
+                "usage credits and that ABDA_LLM_MODEL is available to the key."
+            ),
+            status_code=502,
+        )
+
+    fake.complete = fail
+    monkeypatch.setattr(main_module, "ENABLE_LLM", True)
+    monkeypatch.setattr(main_module, "_llm_client", fake)
+
+    resp = client.post(
+        "/chat",
+        json={
+            "scenario_id": "popov_v_hayashi",
+            "diff_ops": [],
+            "messages": [{"role": "user", "content": "Explain."}],
+        },
+    )
+
+    assert resp.status_code == 502
+    error = resp.json()["errors"][0]
+    assert error["code"] == "llm_request_rejected"
+    assert "usage credits" in error["message"]
+
+
 def test_chat_happy_path_returns_message_and_usage(client: TestClient, monkeypatch):
     from app.api import main as main_module
 

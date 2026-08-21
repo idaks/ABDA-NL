@@ -8,6 +8,7 @@ from __future__ import annotations
 import pytest
 
 from app.llm import ClaudeClient, OllamaClient, make_llm_client, resolve_backend
+from app.llm.client import LLMProviderError
 
 
 # --- resolve_backend ---
@@ -93,6 +94,39 @@ def test_make_llm_client_routes_to_claude(monkeypatch):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test-dummy-not-a-real-key")
     client = make_llm_client()
     assert isinstance(client, ClaudeClient)
+
+
+def test_claude_client_wraps_rejected_request_without_raw_body():
+    class FakeAPIError(Exception):
+        status_code = 400
+
+    class FakeAnthropic:
+        APIError = FakeAPIError
+
+    class FailingMessages:
+        def stream(self, **_kwargs):
+            raise FakeAPIError("private upstream response")
+
+    class FailingClient:
+        messages = FailingMessages()
+
+    client = object.__new__(ClaudeClient)
+    client._anthropic = FakeAnthropic
+    client._client = FailingClient()
+    client.model = "test-model"
+
+    with pytest.raises(LLMProviderError) as caught:
+        client.complete(
+            system="system",
+            messages=[{"role": "user", "content": "hello"}],
+            max_tokens=16,
+            cache=False,
+        )
+
+    assert caught.value.status_code == 502
+    assert caught.value.code == "llm_request_rejected"
+    assert "usage credits" in str(caught.value)
+    assert "private upstream response" not in str(caught.value)
 
 
 # --- Preflight: startup-time backend prereq check ---
