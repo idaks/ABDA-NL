@@ -1349,9 +1349,11 @@ def test_unified_editor_raw_validation_stale_save_and_atomic_files(live_browser_
             assert page.evaluate('scenarioLibrary.statements.find(s => s.id === "claim").description') == 'Our claim'
             page.locator('#scenario-rule-text').fill(syntax)
             page.locator('#scenario-mode-guided').click()
+            expect(page.locator('#scenario-mode-guided')).to_have_attribute('aria-pressed', 'true')
             expect(page.locator('#claim-text')).to_have_value('Our claim')
             # A document failure after a valid KB must leave the whole draft intact.
             page.locator('#scenario-tab-file').click()
+            expect(page.locator('#scenario-panel-file')).to_be_visible()
             expect(page.locator('#scenario-file-input')).to_be_enabled()
             page.locator('#scenario-file-input').set_input_files([
                 {'name': 'replacement.json', 'mimeType': 'application/json', 'buffer': b'{"title":"Replacement","rules":{},"conclusions":{}}'},
