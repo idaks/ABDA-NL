@@ -1352,6 +1352,7 @@ def test_unified_editor_raw_validation_stale_save_and_atomic_files(live_browser_
             expect(page.locator('#claim-text')).to_have_value('Our claim')
             # A document failure after a valid KB must leave the whole draft intact.
             page.locator('#scenario-tab-file').click()
+            expect(page.locator('#scenario-file-input')).to_be_enabled()
             page.locator('#scenario-file-input').set_input_files([
                 {'name': 'replacement.json', 'mimeType': 'application/json', 'buffer': b'{"title":"Replacement","rules":{},"conclusions":{}}'},
                 {'name': 'bad.pdf', 'mimeType': 'application/pdf', 'buffer': b'not a PDF'},
