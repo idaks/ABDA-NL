@@ -5,11 +5,17 @@ Container Apps. It uses the same Python entrypoint as local and Delta runs,
 but keeps persistent state in a private PostgreSQL server and exposes only the
 web application over HTTPS.
 
-Current deployment: the [September 6 public release](public-release-20260906.md)
-has completed the initial rollout and public promotion. Routine changes now
+The [September 6 public release](public-release-20260906.md) records the initial
+rollout and public promotion. It is a historical checkpoint. Routine changes now
 use the [authorized Delta CLI session](agent-driven-deployment.md), not a
 manual Cloud Shell handoff after every change. Initial provisioning commands
 below are reference procedures, not required next steps for the live service.
+
+Source releases use `idaks/ABDA-NL:main`; new images are published to
+`ghcr.io/idaks/abda-nl`. See the
+[source and release ownership decision](../decisions/0007-service-repository-ownership-and-promotion.md).
+Publishing an image does not change the live demo. Before any deployment,
+read the current Azure image and settings and verify the new digest.
 
 The initial deployment should use the generated
 `*.azurecontainerapps.io` origin. The preferred permanent name is
@@ -63,8 +69,9 @@ Complete [the operator account and domain bootstrap](operator-service-bootstrap.
 before creating billable Azure resources. The required external inputs are:
 
 - an Azure subscription on which the operator has Contributor access
-- administrative control of the GitHub repository and owner-scoped container
-  package used for the hosted service
+- Write access to the official GitHub repository for routine source and image
+  releases, plus a package administrator for the one-time public visibility
+  setting (repository policy changes require a repository administrator)
 - an Auth0 Regular Web Application and email OTP connection
 - a production email provider for Auth0
 - the currently deployed CloudBank Foundry Messages endpoint, deployment name,
@@ -205,24 +212,31 @@ export ABDA_DEPLOY_GENERATED_ORIGIN="$(az deployment group show \
 Deploy only a committed revision whose complete CI run passed. The Docker
 context excludes `.env`, local state, the paper, the requirements document,
 tests, and operations documentation. Publishing is intentionally triggered by
-a `service-image-*` Git tag, because the development workflow is not on the
-repository's default branch.
+a `service-image-*` Git tag. Ordinary commits do not publish an image or
+deploy to Azure. Merge the reviewed change into official `main` first, and
+run the following from a clean checkout of that exact commit:
 
 ```bash
-git diff --quiet
-git diff --cached --quiet
+(
+set -e
+test -z "$(git status --porcelain)"
+export ABDA_IMAGE_REMOTE='origin'
+test "$(git remote get-url "$ABDA_IMAGE_REMOTE")" = \
+  'https://github.com/idaks/ABDA-NL.git'
+git fetch "$ABDA_IMAGE_REMOTE" main
 export ABDA_IMAGE_COMMIT="$(git rev-parse --verify HEAD)"
+test "$ABDA_IMAGE_COMMIT" = "$(git rev-parse "$ABDA_IMAGE_REMOTE/main")"
 export ABDA_IMAGE_TRIGGER_TAG="service-image-$(date -u +%Y%m%d-%H%M%S)"
-export ABDA_IMAGE_REMOTE='personal'
 git tag --annotate "$ABDA_IMAGE_TRIGGER_TAG" "$ABDA_IMAGE_COMMIT" \
   --message "Publish ABDA-NL service image $ABDA_IMAGE_COMMIT"
 git push "$ABDA_IMAGE_REMOTE" "$ABDA_IMAGE_TRIGGER_TAG"
+)
 ```
 
-Use `personal` in the shared Delta checkout, where `origin` intentionally
-continues to name the paper-facing iDAKS repository. In a fresh clone of the
-publishing repository, use `origin` instead. Verify the selected remote with
-`git remote --verbose` before pushing the tag.
+In the shared Delta checkout, `origin` is `idaks/ABDA-NL` and `personal` is
+the retained personal repository. The remote guard above expects the shared
+checkout's HTTPS URL; an SSH clone must check the equivalent official SSH URL.
+Do not push new release tags to `personal`.
 
 The `Publish service image` workflow reruns the source checks, dependency
 audits, and complete non-browser test suite. It publishes one Linux AMD64 image,
@@ -232,16 +246,22 @@ provenance attestation. It refuses to replace an existing commit image tag.
 The workflow publishes to `ghcr.io/OWNER/abda-nl`, where `OWNER` is the
 lowercase owner of the repository running the workflow. After the first
 successful workflow, verify anonymous registry access to the exact digest. If
-GitHub created the package as private, the repository owner must open the
+GitHub created the package as private, a package administrator must open the
 `abda-nl` package settings and change its visibility to Public. GitHub does not
 permit a public package to be made private again. Confirm that the image
 contains only public repository content before accepting that one-time change.
+For the official package, use
+[its settings page](https://github.com/orgs/idaks/packages/container/abda-nl/settings).
+If publishing fails for lack of package access, a package administrator can
+grant `idaks/ABDA-NL` Write access under **Manage Actions access**. The workflow
+already requests `packages: write`; no personal registry token or Azure login
+is needed for publication.
 
 Copy the digest URI from the successful workflow summary and verify it:
 
 ```bash
-export ABDA_DEPLOY_SOURCE_REPOSITORY='Liu-Hy/ABDA-NL'
-export ABDA_DEPLOY_IMAGE_REPOSITORY='ghcr.io/liu-hy/abda-nl'
+export ABDA_DEPLOY_SOURCE_REPOSITORY='idaks/ABDA-NL'
+export ABDA_DEPLOY_IMAGE_REPOSITORY='ghcr.io/idaks/abda-nl'
 export ABDA_DEPLOY_IMAGE="${ABDA_DEPLOY_IMAGE_REPOSITORY}@sha256:COPY_64_HEX_DIGEST"
 export ABDA_DEPLOY_IMAGE_SHA256="${ABDA_DEPLOY_IMAGE#*@sha256:}"
 test "$(printf '%s' "$ABDA_DEPLOY_IMAGE_SHA256" | wc -c)" -eq 64
@@ -524,8 +544,8 @@ Repeat every acceptance check against
 
 ## Updates and rollback
 
-The current image and public limits are recorded in the
-[September 6 release](public-release-20260906.md). Privacy acceptance, GPL
+The [September 6 release](public-release-20260906.md) records the original
+public promotion and its then-current image and limits. Privacy acceptance, GPL
 rollout, compatible rollback and restoration, and the 100-user promotion are
 complete. The numbered transition Gates are retained historical procedures,
 not a requirement to create a new manual Gate for every fix. Do not replay
@@ -559,7 +579,7 @@ The image-only operation, after the two reviewed values have been selected,
 has this shape. It is not a command to rerun for the already healthy service:
 
 ```bash
-: "${ABDA_REVIEWED_IMAGE:?Set the verified ghcr.io/liu-hy/abda-nl@sha256 digest URI}"
+: "${ABDA_REVIEWED_IMAGE:?Set the verified ghcr.io/idaks/abda-nl@sha256 digest URI}"
 : "${ABDA_REVIEWED_REVISION_SUFFIX:?Set the reviewed unique revision suffix}"
 az containerapp update \
   --subscription 00e62f6e-2174-40b2-b428-8ebfd7c2ac54 \

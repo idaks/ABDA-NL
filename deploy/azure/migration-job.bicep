@@ -4,7 +4,7 @@ param location string = resourceGroup().location
 param jobName string = 'abda-nl-migrate'
 param containerAppsEnvironmentName string
 
-@description('Public GHCR image repository without a tag or digest, for example ghcr.io/liu-hy/abda-nl.')
+@description('Public GHCR image repository without a tag or digest, for example ghcr.io/idaks/abda-nl.')
 param imageRepository string
 
 @description('The 64-character hexadecimal sha256 digest of the public ABDA-NL GHCR image.')

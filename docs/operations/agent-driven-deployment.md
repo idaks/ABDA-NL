@@ -38,7 +38,10 @@ Selecting the ABDA subscription or specifying a resource group does not narrow
 that RBAC authority. The approved work remains ABDA-NL in `abda-nl-staging`;
 unrelated resources and role assignments are out of scope. Existing trial and
 OpenRouter ceilings are not permission to increase budgets or create arbitrary
-billable infrastructure. Stable `main` remains unchanged.
+billable infrastructure. Source releases now use the official `idaks/ABDA-NL`
+`main` branch, as described in the
+[ownership decision](../decisions/0007-service-repository-ownership-and-promotion.md).
+Azure login does not itself authorize a source release or deployment.
 
 Azure CLI stores its Linux MSAL cache in plaintext. The dedicated profile
 is outside the repository at `~/.local/share/abda-azure/config`, with mode 700

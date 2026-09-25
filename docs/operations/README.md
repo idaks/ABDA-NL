@@ -1,107 +1,27 @@
 # ABDA-NL operations
 
-Start with the [current public release record](symbol-renaming-20260909.md)
-and [agent-driven deployment handoff](agent-driven-deployment.md). The operator's
-Delta Azure login now allows the agent to execute approved routine work directly.
-The [final operator batch](final-operator-batch.md) records the completed cloud
-sequence and the remaining presentation checks. Dated staging checkpoints are
-evidence records. Do not reconstruct a current command from a
-historical checkpoint or edit an immutable commit, image digest, revision, or
-checksum in Cloud Shell.
+Start with [source and release ownership](../decisions/0007-service-repository-ownership-and-promotion.md),
+[public Azure deployment](public-deployment.md), and the
+[agent-driven deployment handoff](agent-driven-deployment.md).
 
-## Current release sequence
+`idaks/ABDA-NL:main` is the canonical source. Publish new images to
+`ghcr.io/idaks/abda-nl`; publication does not deploy them. Verify the exact image
+and read the current Azure configuration before changing the live service.
+The authorized Delta CLI session lets the agent execute approved routine work
+directly while its credentials remain valid.
 
-- [Safe symbol renaming](symbol-renaming-20260909.md) is the latest healthy
-  public image. Statements and rules can be renamed from the unified editor,
-  with exact logical references updated and meanings, priorities, and documents
-  preserved. This was an image-only update. Corpus remains optional and
-  administrator publication is unchanged.
-- [Unified scenario editor](unified-scenario-editor-20260908.md) records the
-  preceding release and compatible rollback image. New and imported scenarios
-  share one editor for rules, glossary, and documents. Version 3 exports embed all reference text, including
-  built-in corpus files, and round-trip without the original server. The
-  database schema is unchanged. Once references exceed the previous parser's
-  limits, use this image or a newer compatible image for recovery.
-- [Three-part scenario materials](scenario-materials-20260908.md) records the
-  preceding release. It added rule-text and glossary import, private reference
-  documents, and bounded PDF extraction. Those capabilities are integrated
-  into the current editor. Its earlier source-linked export format remains
-  importable, but only version 3 guarantees complete server independence.
-- [Reviewed community examples](community-examples-20260908.md) records the
-  preceding release. It added consented submissions, scoped curator review,
-  direct publication, and additive database revision 20260908_0005. That schema
-  head is retained by the current release. Older v4 images reject it. Do not replay
-  historical image rollback gates or downgrade the database.
-- [Create and open scenarios](scenario-library-20260908.md) records the new
-  builder, checked file import, portable export, and custom-project AI support.
-  Those features and the unchanged public limits and routing are retained in
-  the current image. Its prior image is historical evidence,
-  not a rollback target for the new database head.
-- [Conference layout repair](conference-layout-20260906.md) identifies the
-  previous layout image, the fixed conclusion-text clipping, and the
-  verified offline screenshot pack. Its layout fix is retained in the current
-  release.
-- [September 6 public release](public-release-20260906.md) records the live
-  100-user configuration, bounded outage fallback, completed rollback and
-  restoration, final audit, external release check, and browser and capacity
-  acceptance. No routine operator Cloud Shell batch remains.
-- [GPL distribution checkpoint](gpl-distribution-checkpoint-20260905.md)
-  records the selected license, preserved notices, verified source and image,
-  and repinned operator helper. Its image is retained as the compatible
-  predecessor to the current layout repair.
-- [Final public-service operator batch](final-operator-batch.md) contains the
-  historical cloud sequence and the remaining batched hardware checks. Do not
-  replay its completed image-bound transitions against a newer release.
-- [Source-security checkpoint](source-security-checkpoint-20260902.md) binds the
-  earlier hardened source, CI, CodeQL, immutable image digest, provenance,
-  Azure deployment, and live sanitized-log audit.
-- [Development source checkpoint](development-source-checkpoint-20260904.md)
-  records the cumulative application source before the container-security
-  checkpoint, its unchanged stable main ancestor, and the explicit
-  license-gated deployment hold.
-- [Container security checkpoint](container-security-checkpoint-20260904.md)
-  records the development container build, exact severe-vulnerability baseline,
-  independent secret scan, CycloneDX SBOM, and CI evidence. Its historical
-  license hold was resolved by the GPL distribution decision.
-- [Rate-limit retention checkpoint](rate-limit-retention-checkpoint-20260904.md)
-  records the original tested and attested retention image, now preserved as
-  historical evidence.
-- [Account-suspension integrity checkpoint](suspension-integrity-checkpoint-20260904.md)
-  records the final pre-WebKit candidate. It is historical evidence and must
-  not be deployed as the current release target.
-- [Provider accounting integrity checkpoint](accounting-integrity-checkpoint-20260904.md)
-- [Provider lifecycle checkpoint](provider-lifecycle-checkpoint-20260904.md)
-  records an intermediate cumulative retention and hard-cap accounting image
-  that was superseded before deployment.
-- [Requirements traceability](requirements-traceability.md) distinguishes
-  completed implementation evidence from external and hardware acceptance.
-- [Public and COMMA release checklist](release-checklist.md) is the final
-  reusable requirement-by-requirement template. Dated evidence records identify
-  which checks passed for a particular release.
-- [Source license review](source-license-review.md) records the GPL-3.0-only
-  distribution decision, preserved MIT and upstream notices, and artifact checks.
-- [Deterministic engine validation](deterministic-engine-validation-20260904.md)
-  records historical scenario compatibility and exact parity for all six
-  deployed baseline payloads.
-- [Deterministic computation budget](deterministic-computation-budget-20260904.md)
-  records the source-level bound on combinatorial reasoning work and its
-  unchanged bundled outputs, included in the deployed GPL image.
-- [MCP read abuse boundary](mcp-read-abuse-boundary-20260904.md) records the
-  shared per-account request ceiling for deterministic MCP read tools. It is
-  source-level evidence included in the deployed GPL image.
-
-If a Gate stops, preserve its visible sanitized output and exit code. Do not
-issue an improvised Azure update or repeat a paid provider call. Resume only
-through the same pinned Gate or through a reviewed recovery instruction.
-
-OCI license fields in historical image records reproduce immutable artifact
-metadata. They are not proof that the label covers the imported engine. The
-[source license review](source-license-review.md) controls any new public image
-or final release declaration.
+Dated checkpoints describe the release observed on that date. Their image,
+schema, model catalog, and acceptance results may have been superseded.
+Do not reconstruct a current command from a historical checkpoint or rewrite
+its immutable commit, image digest, revision, or checksum. The
+[final operator batch](final-operator-batch.md) records an earlier completed
+cloud sequence, not a batch to replay against today's service.
 
 ## Service runbooks
 
-- [Public Azure deployment](public-deployment.md)
+- [Public and COMMA release checklist](release-checklist.md)
+- [Requirements traceability](requirements-traceability.md)
+- [Source license review](source-license-review.md)
 - [Operator accounts, domains, and external services](operator-service-bootstrap.md)
 - [Auth0 email OTP](auth0-email-otp.md)
 - [Cloudflare root-domain redirect](cloudflare-apex-redirect.md)
@@ -111,15 +31,35 @@ or final release declaration.
 - [Observability alerts](observability-alerts.md)
 - [COMMA 2026 demonstration playbook](comma-2026-demo-playbook.md)
 
-The PostgreSQL recovery runbook documents an incident path. Reading it and
-completing its tabletop do not authorize or require a billable restore.
+Reading a recovery runbook does not authorize or require a billable restore.
+If an operation fails, preserve its sanitized output and exit code, inspect
+what actually completed, and use a reviewed recovery procedure.
 
-## Retained acceptance evidence
+## Historical release evidence
 
-Files named with staging stages or dates record what was true for an exact
-source commit, image, revision, and observation window. They support an audit
-trail but do not replace the current operator batch. In particular:
+Retain these records for their exact source, image, configuration, and
+observation window. A historical rollback image is usable only after checking
+compatibility with the live schema and stored data.
 
+- [September 10 qualified-model rollout](hosted-final-rollout-result-20260910.md)
+- [Safe symbol renaming](symbol-renaming-20260909.md)
+- [Unified scenario editor](unified-scenario-editor-20260908.md)
+- [Three-part scenario materials](scenario-materials-20260908.md)
+- [Reviewed community examples](community-examples-20260908.md)
+- [Create and open scenarios](scenario-library-20260908.md)
+- [Conference layout repair](conference-layout-20260906.md)
+- [September 6 public release](public-release-20260906.md)
+- [GPL distribution checkpoint](gpl-distribution-checkpoint-20260905.md)
+- [Source-security checkpoint](source-security-checkpoint-20260902.md)
+- [Development source checkpoint](development-source-checkpoint-20260904.md)
+- [Container security checkpoint](container-security-checkpoint-20260904.md)
+- [Rate-limit retention checkpoint](rate-limit-retention-checkpoint-20260904.md)
+- [Account-suspension integrity checkpoint](suspension-integrity-checkpoint-20260904.md)
+- [Provider accounting integrity checkpoint](accounting-integrity-checkpoint-20260904.md)
+- [Provider lifecycle checkpoint](provider-lifecycle-checkpoint-20260904.md)
+- [Deterministic engine validation](deterministic-engine-validation-20260904.md)
+- [Deterministic computation budget](deterministic-computation-budget-20260904.md)
+- [MCP read abuse boundary](mcp-read-abuse-boundary-20260904.md)
 - [Initial staging deployment](staging-deployment-record-20260828.md)
 - [Funded trial pilot](staging-trial-pilot-20260828.md)
 - [Early live acceptance](staging-live-acceptance-20260828.md)
@@ -130,5 +70,5 @@ trail but do not replace the current operator batch. In particular:
 - [Consolidated staging release](consolidated-release-acceptance-20260830.md)
 - [Managed-boundary release](managed-boundary-release-acceptance-20260902.md)
 
-Do not delete these records when a later release supersedes them. They explain
-why earlier changes were accepted and preserve compatible rollback evidence.
+Historical image labels reproduce immutable metadata. The source license
+review governs new public releases, including preserved component notices.

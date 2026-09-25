@@ -148,12 +148,12 @@ def test_postgres_recovery_is_private_new_server_and_reviewed_cutover():
     assert "docs/operations/database-recovery.md" in readme
 
 
-def test_operations_index_links_current_release_and_authorized_handoff():
+def test_operations_index_links_release_ownership_and_authorized_handoff():
     index_path = ROOT / "docs" / "operations" / "README.md"
     index = index_path.read_text(encoding="utf-8")
     normalized_index = " ".join(index.split())
 
-    current = re.search(r"\[current public release record\]\(([^)]+\.md)\)", index)
+    current = re.search(r"\[source and release ownership\]\(([^)]+\.md)\)", index)
     assert current
     assert (index_path.parent / current.group(1)).is_file()
     assert "[agent-driven deployment handoff](agent-driven-deployment.md)" in index
@@ -269,7 +269,7 @@ def test_service_image_workflow_prevents_mutable_or_unverified_deployments():
     assert "subject-digest: ${{ steps.publish.outputs.digest }}" in workflow
     assert "push-to-registry: true" in workflow
     assert ":latest" not in workflow
-    assert "ARG ABDA_IMAGE_SOURCE=https://github.com/Liu-Hy/ABDA-NL" in dockerfile
+    assert "ARG ABDA_IMAGE_SOURCE=https://github.com/idaks/ABDA-NL" in dockerfile
     assert 'org.opencontainers.image.source="${ABDA_IMAGE_SOURCE}"' in dockerfile
     assert "pyproject.toml README.md LICENSE ./" in dockerfile
     assert "cat /srv/abda/LICENSE | cmp --silent LICENSE -" in workflow

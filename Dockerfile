@@ -17,7 +17,7 @@ RUN /opt/venv/bin/python -m pip install \
 FROM python:3.13-slim-bookworm@sha256:ed86c82274b3c69b52fb5820f358f0bd7df0b603332063cb5c6e32bd220c3e6e AS runtime
 
 ARG ABDA_IMAGE_REVISION=unknown
-ARG ABDA_IMAGE_SOURCE=https://github.com/Liu-Hy/ABDA-NL
+ARG ABDA_IMAGE_SOURCE=https://github.com/idaks/ABDA-NL
 
 LABEL org.opencontainers.image.source="${ABDA_IMAGE_SOURCE}" \
       org.opencontainers.image.revision="${ABDA_IMAGE_REVISION}" \

@@ -1,77 +1,56 @@
 # Decision 0007: Service repository ownership and promotion
 
-Date: 2026-08-27
+Date: 2026-08-27. Updated: 2026-09-25.
 
 ## Status
 
-Accepted.
+Accepted. Official source promotion is complete. Organization-owned image
+publication and Azure deployment are separate steps.
 
 ## Context
 
-The accepted paper links to `idaks/ABDA-NL`. Its `main` branch must remain a
-stable, paper-faithful demo for readers. The hosted research service needs
-frequent development plus administrative control of Actions, branch rules,
-packages, security settings, and deployment credentials. The current developer
-can write to the iDAKS repository but cannot administer its package or
-repository settings. Waiting for organization-level changes would block the
-service without improving the paper artifact.
-
-A GitHub fork was considered. A fork keeps useful provenance but remains in the
-upstream fork network, adds workflow activation constraints, and cannot later
-be transferred into the organization while the upstream repository occupies
-the target network and name.
+The hosted service was developed in `Liu-Hy/ABDA-NL:development` while the
+paper demo stayed in `idaks/ABDA-NL`. On September 15, the official `main`
+branch received the complete reviewed service at commit `77197ce0`.
+The earlier paper artifact remains available at `comma-2026-paper-snapshot`.
+The paper's repository URL stays valid.
 
 ## Decision
 
-The repositories have separate responsibilities:
+1. `idaks/ABDA-NL:main` is the canonical source for the demo and future releases.
+   Develop on a branch in that repository, run CI, and merge through a pull
+   request. The personal `development` branch is retained for recovery; it is
+   no longer the release target or a mirror that must be kept in sync.
+2. In the shared Delta checkout, `origin` names `idaks/ABDA-NL` and `personal`
+   names `Liu-Hy/ABDA-NL`. Push new work and `service-image-*` tags to `origin`.
+   Use a separate worktree when the local demo still uses the older checkout.
+3. The image workflow derives `ghcr.io/OWNER/abda-nl` from its repository owner.
+   Official releases therefore publish to `ghcr.io/idaks/abda-nl`. Each image
+   has a full-commit tag, a fixed digest, source labels, and a build attestation.
+   The workflow refuses to overwrite an existing commit image.
+4. Repository Write access is sufficient for the current release workflow.
+   A package administrator handles the one-time Public visibility setting and,
+   if needed, grants the official repository workflow access to the package.
+   Routine releases do not require organization administrator approval under
+   the current repository rules. Future branch policies may add review rules.
+5. GitHub publication does not deploy to Azure. After a successful official
+   publication, verify anonymous pull and provenance before changing the web
+   app and persistent migration job to the verified digest. Preserve all
+   non-image settings and the live schema. Do not run a migration for an
+   ownership-only change.
+6. Keep the personal repository and its current public image available until
+   the official image has been deployed and checked. Record the live image
+   before switching so it remains a known recovery target.
 
-1. `idaks/ABDA-NL` remains the paper-facing upstream. Its `main` branch stays at
-   the reviewed paper demo until a separately reviewed release is ready.
-2. `Liu-Hy/ABDA-NL` is a standalone public repository for hosted-service
-   development and operation. It preserves the complete Git ancestry from the
-   paper repository without belonging to its fork network.
-3. The personal repository's `main` begins at the exact paper-demo commit.
-   Hosted work continues on `development` until its public release gates pass.
-4. In the shared Delta checkout, `origin` names the iDAKS upstream and
-   `personal` names the operator-controlled repository. Service branches and
-   image tags are pushed explicitly to `personal`.
-5. Image publication derives `ghcr.io/OWNER/abda-nl` from the repository that
-   runs the workflow. Azure receives the public image repository and immutable
-   digest as separate deployment parameters. No application code assumes a
-   personal or organization package owner.
-6. Personal `main` requires a pull request, all seven CI checks, current-base
-   status, linear history, and resolved conversations. Force pushes and branch
-   deletion are disabled for both `main` and `development`.
-7. GitHub secret scanning, push protection, vulnerability alerts, and automated
-   Dependabot security updates remain enabled on the service repository.
+## Operating boundary
 
-## Promotion paths
+Use the [public deployment runbook](../operations/public-deployment.md) for
+image publication and the
+[agent deployment handoff](../operations/agent-driven-deployment.md) for Azure
+access. Azure credentials, the domain, accounts, user data, and provider funding
+are not transferred by a GitHub source or image release.
 
-Once the hosted service passes its release checklist, either of these paths is
-valid:
-
-- Merge or fast-forward the reviewed commits into a designated iDAKS branch,
-  then promote them under the organization's normal review process.
-- Transfer the standalone repository to iDAKS after an organization
-  administrator makes the target name available and reviews the repository
-  settings.
-
-GitHub container packages and attestations are owner-scoped. Promotion never
-assumes that they move with source ownership. A promoted release publishes a
-new organization-owned image, verifies anonymous access, records its new
-digest and attestation, and updates the Azure image-repository parameter.
-
-## Consequences
-
-- The archival paper URL remains stable throughout service development.
-- Hosted development no longer depends on iDAKS repository or package
-  administration.
-- The personal GitHub account is currently an operational recovery boundary.
-  Before public registration opens, it needs strong multifactor authentication,
-  stored recovery codes, and a second trusted maintainer or documented transfer
-  procedure.
-- GitHub settings, secrets, package visibility, and deployment history are not
-  source-controlled artifacts. The release record must capture their relevant
-  state, and organization promotion must recreate and verify them.
-- A green personal service branch does not authorize changing the paper-facing
-  iDAKS `main` branch.
+Dated deployment scripts and release records retain their original source
+URLs, digests, and checksums. They are historical evidence, not templates to
+rewrite or replay. For current changes, use the reusable deployment templates
+and a fresh snapshot of the actual Azure configuration.
